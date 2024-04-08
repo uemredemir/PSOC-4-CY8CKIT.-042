@@ -1,0 +1,6 @@
+C:\Users\uemre\Documents\PSoC Creator\8x8 dotmatrix example\Design01.cydsn\Design01.cyprj|28977a78-0f96-4011-a9b4-601e95757582
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e42b032f-16ac-47fc-bb15-79ced07ec328
+C:\Users\uemre\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|03849d9f-743b-4227-a9ea-860b4ee8fb0e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|801b2da0-ded2-44f9-8958-6487881c9c2a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c9aa45be-665b-460c-9236-e06472c1f275
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1c95cd92-9ad1-4f92-8fa4-282bf1ebd0ae

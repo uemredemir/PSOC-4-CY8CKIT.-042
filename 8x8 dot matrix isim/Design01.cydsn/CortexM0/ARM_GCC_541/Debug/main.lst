@@ -1,0 +1,2072 @@
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.displayDotMatrix_E,"ax",%progbits
+  20              		.align	2
+  21              		.global	displayDotMatrix_E
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	displayDotMatrix_E, %function
+  25              	displayDotMatrix_E:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** #include "project.h"
+   2:main.c        **** #include <stdint.h>
+   3:main.c        **** 
+   4:main.c        **** #define ROWS 8
+   5:main.c        **** #define COLS 8
+   6:main.c        **** 
+   7:main.c        **** uint8_t dotMatrix_X[ROWS] = {
+   8:main.c        ****     0b00111000,
+   9:main.c        ****     0b00111000,
+  10:main.c        ****     0b00111000,
+  11:main.c        ****     0b01111100,
+  12:main.c        ****     0B10010010,
+  13:main.c        ****     0b00101000,
+  14:main.c        ****     0b00100100,
+  15:main.c        ****     0b00100010
+  16:main.c        **** };
+  17:main.c        **** uint8_t dotMatrix_xx[ROWS] = {
+  18:main.c        ****     0b00111000,
+  19:main.c        ****     0b00111000,
+  20:main.c        ****     0b00111000,
+  21:main.c        ****     0b01010100,
+  22:main.c        ****     0B01010100,
+  23:main.c        ****     0b00101000,
+  24:main.c        ****     0b01001000,
+  25:main.c        ****     0b10001000
+  26:main.c        **** };
+  27:main.c        **** uint8_t dotMatrix_E[ROWS] = {
+  28:main.c        ****     0b11111111,
+  29:main.c        ****     0b00000011,
+  30:main.c        ****     0b00000011,
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 2
+
+
+  31:main.c        ****     0b11111111,
+  32:main.c        ****     0b11111111,
+  33:main.c        ****     0b00000011,
+  34:main.c        ****     0b00000011,
+  35:main.c        ****     0b11111111
+  36:main.c        **** };
+  37:main.c        **** uint8_t dotMatrix_R[ROWS] = {
+  38:main.c        ****     0b11111111,
+  39:main.c        ****     0b11000011,
+  40:main.c        ****     0b11111111,
+  41:main.c        ****     0b00000111,
+  42:main.c        ****     0b00011011,
+  43:main.c        ****     0b00110011,
+  44:main.c        ****     0b01100011,
+  45:main.c        ****     0b11000011
+  46:main.c        **** };
+  47:main.c        **** uint8_t dotMatrix_M[ROWS] = {
+  48:main.c        ****     0b10000001,
+  49:main.c        ****     0b11000011,
+  50:main.c        ****     0b11111111,
+  51:main.c        ****     0b11011011,
+  52:main.c        ****     0b11000011,
+  53:main.c        ****     0b11000011,
+  54:main.c        ****     0b11000011,
+  55:main.c        ****     0b11000011
+  56:main.c        **** };
+  57:main.c        **** void displayDotMatrix_E() {
+  28              		.loc 1 57 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36              	.LVL0:
+  37              	.LBB2:
+  58:main.c        ****     for (int row = 0; row < ROWS; row++) {
+  38              		.loc 1 58 0
+  39 0002 0024     		movs	r4, #0
+  40 0004 10E0     		b	.L2
+  41              	.LVL1:
+  42              	.L3:
+  59:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+  43              		.loc 1 59 0 discriminator 3
+  44 0006 0120     		movs	r0, #1
+  45 0008 A040     		lsls	r0, r0, r4
+  46 000a C043     		mvns	r0, r0
+  47 000c C0B2     		uxtb	r0, r0
+  48 000e FFF7FEFF 		bl	Pin_Row_Write
+  49              	.LVL2:
+  60:main.c        ****         Pin_Col_Write(dotMatrix_E[row]); // Update the column
+  50              		.loc 1 60 0 discriminator 3
+  51 0012 074B     		ldr	r3, .L4
+  52 0014 185D     		ldrb	r0, [r3, r4]
+  53 0016 FFF7FEFF 		bl	Pin_Col_Write
+  54              	.LVL3:
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 3
+
+
+  61:main.c        ****         CyDelay(1); // Delay for visualization
+  55              		.loc 1 61 0 discriminator 3
+  56 001a 0120     		movs	r0, #1
+  57 001c FFF7FEFF 		bl	CyDelay
+  58              	.LVL4:
+  62:main.c        ****         Pin_Row_Write(0); // Turn off the row
+  59              		.loc 1 62 0 discriminator 3
+  60 0020 0020     		movs	r0, #0
+  61 0022 FFF7FEFF 		bl	Pin_Row_Write
+  62              	.LVL5:
+  58:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+  63              		.loc 1 58 0 discriminator 3
+  64 0026 0134     		adds	r4, r4, #1
+  65              	.LVL6:
+  66              	.L2:
+  58:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+  67              		.loc 1 58 0 is_stmt 0 discriminator 1
+  68 0028 072C     		cmp	r4, #7
+  69 002a ECDD     		ble	.L3
+  70              	.LBE2:
+  63:main.c        ****     }
+  64:main.c        **** }
+  71              		.loc 1 64 0 is_stmt 1
+  72              		@ sp needed
+  73              	.LVL7:
+  74 002c 10BD     		pop	{r4, pc}
+  75              	.L5:
+  76 002e C046     		.align	2
+  77              	.L4:
+  78 0030 00000000 		.word	.LANCHOR0
+  79              		.cfi_endproc
+  80              	.LFE32:
+  81              		.size	displayDotMatrix_E, .-displayDotMatrix_E
+  82              		.section	.text.displayDotMatrix_R,"ax",%progbits
+  83              		.align	2
+  84              		.global	displayDotMatrix_R
+  85              		.code	16
+  86              		.thumb_func
+  87              		.type	displayDotMatrix_R, %function
+  88              	displayDotMatrix_R:
+  89              	.LFB33:
+  65:main.c        **** 
+  66:main.c        **** void displayDotMatrix_R() {
+  90              		.loc 1 66 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94 0000 10B5     		push	{r4, lr}
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 4, -8
+  97              		.cfi_offset 14, -4
+  98              	.LVL8:
+  99              	.LBB3:
+  67:main.c        ****     for (int row = 0; row < ROWS; row++) {
+ 100              		.loc 1 67 0
+ 101 0002 0024     		movs	r4, #0
+ 102 0004 11E0     		b	.L7
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 4
+
+
+ 103              	.LVL9:
+ 104              	.L8:
+  68:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 105              		.loc 1 68 0 discriminator 3
+ 106 0006 0120     		movs	r0, #1
+ 107 0008 A040     		lsls	r0, r0, r4
+ 108 000a C043     		mvns	r0, r0
+ 109 000c C0B2     		uxtb	r0, r0
+ 110 000e FFF7FEFF 		bl	Pin_Row_Write
+ 111              	.LVL10:
+  69:main.c        ****         Pin_Col_Write(dotMatrix_R[row]); // Update the column
+ 112              		.loc 1 69 0 discriminator 3
+ 113 0012 074B     		ldr	r3, .L9
+ 114 0014 1B19     		adds	r3, r3, r4
+ 115 0016 187A     		ldrb	r0, [r3, #8]
+ 116 0018 FFF7FEFF 		bl	Pin_Col_Write
+ 117              	.LVL11:
+  70:main.c        ****         CyDelay(1); // Delay for visualization
+ 118              		.loc 1 70 0 discriminator 3
+ 119 001c 0120     		movs	r0, #1
+ 120 001e FFF7FEFF 		bl	CyDelay
+ 121              	.LVL12:
+  71:main.c        ****         Pin_Row_Write(0); // Turn off the row
+ 122              		.loc 1 71 0 discriminator 3
+ 123 0022 0020     		movs	r0, #0
+ 124 0024 FFF7FEFF 		bl	Pin_Row_Write
+ 125              	.LVL13:
+  67:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 126              		.loc 1 67 0 discriminator 3
+ 127 0028 0134     		adds	r4, r4, #1
+ 128              	.LVL14:
+ 129              	.L7:
+  67:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 130              		.loc 1 67 0 is_stmt 0 discriminator 1
+ 131 002a 072C     		cmp	r4, #7
+ 132 002c EBDD     		ble	.L8
+ 133              	.LBE3:
+  72:main.c        ****     }
+  73:main.c        **** }
+ 134              		.loc 1 73 0 is_stmt 1
+ 135              		@ sp needed
+ 136              	.LVL15:
+ 137 002e 10BD     		pop	{r4, pc}
+ 138              	.L10:
+ 139              		.align	2
+ 140              	.L9:
+ 141 0030 00000000 		.word	.LANCHOR0
+ 142              		.cfi_endproc
+ 143              	.LFE33:
+ 144              		.size	displayDotMatrix_R, .-displayDotMatrix_R
+ 145              		.section	.text.displayDotMatrix_M,"ax",%progbits
+ 146              		.align	2
+ 147              		.global	displayDotMatrix_M
+ 148              		.code	16
+ 149              		.thumb_func
+ 150              		.type	displayDotMatrix_M, %function
+ 151              	displayDotMatrix_M:
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 5
+
+
+ 152              	.LFB34:
+  74:main.c        **** void displayDotMatrix_M() {
+ 153              		.loc 1 74 0
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 157 0000 10B5     		push	{r4, lr}
+ 158              		.cfi_def_cfa_offset 8
+ 159              		.cfi_offset 4, -8
+ 160              		.cfi_offset 14, -4
+ 161              	.LVL16:
+ 162              	.LBB4:
+  75:main.c        ****     for (int row = 0; row < ROWS; row++) {
+ 163              		.loc 1 75 0
+ 164 0002 0024     		movs	r4, #0
+ 165 0004 11E0     		b	.L12
+ 166              	.LVL17:
+ 167              	.L13:
+  76:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 168              		.loc 1 76 0 discriminator 3
+ 169 0006 0120     		movs	r0, #1
+ 170 0008 A040     		lsls	r0, r0, r4
+ 171 000a C043     		mvns	r0, r0
+ 172 000c C0B2     		uxtb	r0, r0
+ 173 000e FFF7FEFF 		bl	Pin_Row_Write
+ 174              	.LVL18:
+  77:main.c        ****         Pin_Col_Write(dotMatrix_M[row]); // Update the column
+ 175              		.loc 1 77 0 discriminator 3
+ 176 0012 074B     		ldr	r3, .L14
+ 177 0014 1B19     		adds	r3, r3, r4
+ 178 0016 187C     		ldrb	r0, [r3, #16]
+ 179 0018 FFF7FEFF 		bl	Pin_Col_Write
+ 180              	.LVL19:
+  78:main.c        ****         CyDelay(1); // Delay for visualization
+ 181              		.loc 1 78 0 discriminator 3
+ 182 001c 0120     		movs	r0, #1
+ 183 001e FFF7FEFF 		bl	CyDelay
+ 184              	.LVL20:
+  79:main.c        ****         Pin_Row_Write(0); // Turn off the row
+ 185              		.loc 1 79 0 discriminator 3
+ 186 0022 0020     		movs	r0, #0
+ 187 0024 FFF7FEFF 		bl	Pin_Row_Write
+ 188              	.LVL21:
+  75:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 189              		.loc 1 75 0 discriminator 3
+ 190 0028 0134     		adds	r4, r4, #1
+ 191              	.LVL22:
+ 192              	.L12:
+  75:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 193              		.loc 1 75 0 is_stmt 0 discriminator 1
+ 194 002a 072C     		cmp	r4, #7
+ 195 002c EBDD     		ble	.L13
+ 196              	.LBE4:
+  80:main.c        ****     }
+  81:main.c        **** }
+ 197              		.loc 1 81 0 is_stmt 1
+ 198              		@ sp needed
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 6
+
+
+ 199              	.LVL23:
+ 200 002e 10BD     		pop	{r4, pc}
+ 201              	.L15:
+ 202              		.align	2
+ 203              	.L14:
+ 204 0030 00000000 		.word	.LANCHOR0
+ 205              		.cfi_endproc
+ 206              	.LFE34:
+ 207              		.size	displayDotMatrix_M, .-displayDotMatrix_M
+ 208              		.section	.text.clearDotMatrix,"ax",%progbits
+ 209              		.align	2
+ 210              		.global	clearDotMatrix
+ 211              		.code	16
+ 212              		.thumb_func
+ 213              		.type	clearDotMatrix, %function
+ 214              	clearDotMatrix:
+ 215              	.LFB35:
+  82:main.c        **** 
+  83:main.c        **** void clearDotMatrix() {
+ 216              		.loc 1 83 0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220 0000 10B5     		push	{r4, lr}
+ 221              		.cfi_def_cfa_offset 8
+ 222              		.cfi_offset 4, -8
+ 223              		.cfi_offset 14, -4
+ 224              	.LVL24:
+ 225              	.LBB5:
+  84:main.c        ****     for (int row = 0; row < ROWS; row++) {
+ 226              		.loc 1 84 0
+ 227 0002 0024     		movs	r4, #0
+ 228 0004 0CE0     		b	.L17
+ 229              	.LVL25:
+ 230              	.L18:
+  85:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row with all zeros
+ 231              		.loc 1 85 0 discriminator 3
+ 232 0006 0120     		movs	r0, #1
+ 233 0008 A040     		lsls	r0, r0, r4
+ 234 000a C043     		mvns	r0, r0
+ 235 000c C0B2     		uxtb	r0, r0
+ 236 000e FFF7FEFF 		bl	Pin_Row_Write
+ 237              	.LVL26:
+  86:main.c        ****         Pin_Col_Write(0); // Update the column with all zeros to turn off LEDs
+ 238              		.loc 1 86 0 discriminator 3
+ 239 0012 0020     		movs	r0, #0
+ 240 0014 FFF7FEFF 		bl	Pin_Col_Write
+ 241              	.LVL27:
+  87:main.c        ****         // Delay for visualization (optional)
+  88:main.c        ****         Pin_Row_Write(0); // Turn off the row
+ 242              		.loc 1 88 0 discriminator 3
+ 243 0018 0020     		movs	r0, #0
+ 244 001a FFF7FEFF 		bl	Pin_Row_Write
+ 245              	.LVL28:
+  84:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row with all zeros
+ 246              		.loc 1 84 0 discriminator 3
+ 247 001e 0134     		adds	r4, r4, #1
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 7
+
+
+ 248              	.LVL29:
+ 249              	.L17:
+  84:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row with all zeros
+ 250              		.loc 1 84 0 is_stmt 0 discriminator 1
+ 251 0020 072C     		cmp	r4, #7
+ 252 0022 F0DD     		ble	.L18
+ 253              	.LBE5:
+  89:main.c        ****     }
+  90:main.c        **** }
+ 254              		.loc 1 90 0 is_stmt 1
+ 255              		@ sp needed
+ 256              	.LVL30:
+ 257 0024 10BD     		pop	{r4, pc}
+ 258              		.cfi_endproc
+ 259              	.LFE35:
+ 260              		.size	clearDotMatrix, .-clearDotMatrix
+ 261 0026 C046     		.section	.text.displayDotMatrix_xx,"ax",%progbits
+ 262              		.align	2
+ 263              		.global	displayDotMatrix_xx
+ 264              		.code	16
+ 265              		.thumb_func
+ 266              		.type	displayDotMatrix_xx, %function
+ 267              	displayDotMatrix_xx:
+ 268              	.LFB36:
+  91:main.c        **** void displayDotMatrix_xx() {
+ 269              		.loc 1 91 0
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 273 0000 10B5     		push	{r4, lr}
+ 274              		.cfi_def_cfa_offset 8
+ 275              		.cfi_offset 4, -8
+ 276              		.cfi_offset 14, -4
+ 277              	.LVL31:
+ 278              	.LBB6:
+  92:main.c        ****     for (int row = 0; row < ROWS; row++) {
+ 279              		.loc 1 92 0
+ 280 0002 0024     		movs	r4, #0
+ 281 0004 11E0     		b	.L20
+ 282              	.LVL32:
+ 283              	.L21:
+  93:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 284              		.loc 1 93 0 discriminator 3
+ 285 0006 0120     		movs	r0, #1
+ 286 0008 A040     		lsls	r0, r0, r4
+ 287 000a C043     		mvns	r0, r0
+ 288 000c C0B2     		uxtb	r0, r0
+ 289 000e FFF7FEFF 		bl	Pin_Row_Write
+ 290              	.LVL33:
+  94:main.c        ****         Pin_Col_Write(dotMatrix_xx[row]); // Update the column
+ 291              		.loc 1 94 0 discriminator 3
+ 292 0012 074B     		ldr	r3, .L22
+ 293 0014 1B19     		adds	r3, r3, r4
+ 294 0016 187E     		ldrb	r0, [r3, #24]
+ 295 0018 FFF7FEFF 		bl	Pin_Col_Write
+ 296              	.LVL34:
+  95:main.c        ****         CyDelay(1); // Delay for visualization
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 8
+
+
+ 297              		.loc 1 95 0 discriminator 3
+ 298 001c 0120     		movs	r0, #1
+ 299 001e FFF7FEFF 		bl	CyDelay
+ 300              	.LVL35:
+  96:main.c        ****         Pin_Row_Write(0); // Turn off the row
+ 301              		.loc 1 96 0 discriminator 3
+ 302 0022 0020     		movs	r0, #0
+ 303 0024 FFF7FEFF 		bl	Pin_Row_Write
+ 304              	.LVL36:
+  92:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 305              		.loc 1 92 0 discriminator 3
+ 306 0028 0134     		adds	r4, r4, #1
+ 307              	.LVL37:
+ 308              	.L20:
+  92:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 309              		.loc 1 92 0 is_stmt 0 discriminator 1
+ 310 002a 072C     		cmp	r4, #7
+ 311 002c EBDD     		ble	.L21
+ 312              	.LBE6:
+  97:main.c        ****     }
+  98:main.c        **** }
+ 313              		.loc 1 98 0 is_stmt 1
+ 314              		@ sp needed
+ 315              	.LVL38:
+ 316 002e 10BD     		pop	{r4, pc}
+ 317              	.L23:
+ 318              		.align	2
+ 319              	.L22:
+ 320 0030 00000000 		.word	.LANCHOR0
+ 321              		.cfi_endproc
+ 322              	.LFE36:
+ 323              		.size	displayDotMatrix_xx, .-displayDotMatrix_xx
+ 324              		.section	.text.delay,"ax",%progbits
+ 325              		.align	2
+ 326              		.global	delay
+ 327              		.code	16
+ 328              		.thumb_func
+ 329              		.type	delay, %function
+ 330              	delay:
+ 331              	.LFB37:
+  99:main.c        **** 
+ 100:main.c        ****   void delay(void (*func)()) {
+ 332              		.loc 1 100 0
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 336              	.LVL39:
+ 337 0000 70B5     		push	{r4, r5, r6, lr}
+ 338              		.cfi_def_cfa_offset 16
+ 339              		.cfi_offset 4, -16
+ 340              		.cfi_offset 5, -12
+ 341              		.cfi_offset 6, -8
+ 342              		.cfi_offset 14, -4
+ 343 0002 0500     		movs	r5, r0
+ 344              	.LVL40:
+ 101:main.c        ****     int count;
+ 102:main.c        ****     for (count = 0; count < 100; count++) {
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 9
+
+
+ 345              		.loc 1 102 0
+ 346 0004 0024     		movs	r4, #0
+ 347 0006 01E0     		b	.L25
+ 348              	.LVL41:
+ 349              	.L26:
+ 103:main.c        ****         func();
+ 350              		.loc 1 103 0 discriminator 3
+ 351 0008 A847     		blx	r5
+ 352              	.LVL42:
+ 102:main.c        ****         func();
+ 353              		.loc 1 102 0 discriminator 3
+ 354 000a 0134     		adds	r4, r4, #1
+ 355              	.LVL43:
+ 356              	.L25:
+ 102:main.c        ****         func();
+ 357              		.loc 1 102 0 is_stmt 0 discriminator 1
+ 358 000c 632C     		cmp	r4, #99
+ 359 000e FBDD     		ble	.L26
+ 104:main.c        ****     }}
+ 360              		.loc 1 104 0 is_stmt 1
+ 361              		@ sp needed
+ 362              	.LVL44:
+ 363              	.LVL45:
+ 364 0010 70BD     		pop	{r4, r5, r6, pc}
+ 365              		.cfi_endproc
+ 366              	.LFE37:
+ 367              		.size	delay, .-delay
+ 368 0012 C046     		.section	.text.displayDotMatrix_X,"ax",%progbits
+ 369              		.align	2
+ 370              		.global	displayDotMatrix_X
+ 371              		.code	16
+ 372              		.thumb_func
+ 373              		.type	displayDotMatrix_X, %function
+ 374              	displayDotMatrix_X:
+ 375              	.LFB38:
+ 105:main.c        **** void displayDotMatrix_X() {
+ 376              		.loc 1 105 0
+ 377              		.cfi_startproc
+ 378              		@ args = 0, pretend = 0, frame = 0
+ 379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 380 0000 10B5     		push	{r4, lr}
+ 381              		.cfi_def_cfa_offset 8
+ 382              		.cfi_offset 4, -8
+ 383              		.cfi_offset 14, -4
+ 384              	.LVL46:
+ 385              	.LBB7:
+ 106:main.c        ****     for (int row = 0; row < ROWS; row++) {
+ 386              		.loc 1 106 0
+ 387 0002 0024     		movs	r4, #0
+ 388 0004 12E0     		b	.L28
+ 389              	.LVL47:
+ 390              	.L29:
+ 107:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 391              		.loc 1 107 0 discriminator 3
+ 392 0006 0120     		movs	r0, #1
+ 393 0008 A040     		lsls	r0, r0, r4
+ 394 000a C043     		mvns	r0, r0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 10
+
+
+ 395 000c C0B2     		uxtb	r0, r0
+ 396 000e FFF7FEFF 		bl	Pin_Row_Write
+ 397              	.LVL48:
+ 108:main.c        ****         Pin_Col_Write(dotMatrix_X[row]); // Update the column
+ 398              		.loc 1 108 0 discriminator 3
+ 399 0012 084B     		ldr	r3, .L30
+ 400 0014 1B19     		adds	r3, r3, r4
+ 401 0016 2022     		movs	r2, #32
+ 402 0018 985C     		ldrb	r0, [r3, r2]
+ 403 001a FFF7FEFF 		bl	Pin_Col_Write
+ 404              	.LVL49:
+ 109:main.c        ****         CyDelay(1); // Delay for visualization
+ 405              		.loc 1 109 0 discriminator 3
+ 406 001e 0120     		movs	r0, #1
+ 407 0020 FFF7FEFF 		bl	CyDelay
+ 408              	.LVL50:
+ 110:main.c        ****         Pin_Row_Write(0); // Turn off the row
+ 409              		.loc 1 110 0 discriminator 3
+ 410 0024 0020     		movs	r0, #0
+ 411 0026 FFF7FEFF 		bl	Pin_Row_Write
+ 412              	.LVL51:
+ 106:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 413              		.loc 1 106 0 discriminator 3
+ 414 002a 0134     		adds	r4, r4, #1
+ 415              	.LVL52:
+ 416              	.L28:
+ 106:main.c        ****         Pin_Row_Write(~(1 << row)); // Update the row
+ 417              		.loc 1 106 0 is_stmt 0 discriminator 1
+ 418 002c 072C     		cmp	r4, #7
+ 419 002e EADD     		ble	.L29
+ 420              	.LBE7:
+ 111:main.c        ****     }
+ 112:main.c        **** }
+ 421              		.loc 1 112 0 is_stmt 1
+ 422              		@ sp needed
+ 423              	.LVL53:
+ 424 0030 10BD     		pop	{r4, pc}
+ 425              	.L31:
+ 426 0032 C046     		.align	2
+ 427              	.L30:
+ 428 0034 00000000 		.word	.LANCHOR0
+ 429              		.cfi_endproc
+ 430              	.LFE38:
+ 431              		.size	displayDotMatrix_X, .-displayDotMatrix_X
+ 432              		.section	.text.main,"ax",%progbits
+ 433              		.align	2
+ 434              		.global	main
+ 435              		.code	16
+ 436              		.thumb_func
+ 437              		.type	main, %function
+ 438              	main:
+ 439              	.LFB39:
+ 113:main.c        **** 
+ 114:main.c        **** 
+ 115:main.c        **** int main(void){
+ 440              		.loc 1 115 0
+ 441              		.cfi_startproc
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 11
+
+
+ 442              		@ Volatile: function does not return.
+ 443              		@ args = 0, pretend = 0, frame = 0
+ 444              		@ frame_needed = 0, uses_anonymous_args = 0
+ 445 0000 10B5     		push	{r4, lr}
+ 446              		.cfi_def_cfa_offset 8
+ 447              		.cfi_offset 4, -8
+ 448              		.cfi_offset 14, -4
+ 116:main.c        **** 
+ 117:main.c        ****     CyGlobalIntEnable; // Enable global interrupts
+ 449              		.loc 1 117 0
+ 450              		.syntax divided
+ 451              	@ 117 "main.c" 1
+ 452 0002 62B6     		CPSIE   i
+ 453              	@ 0 "" 2
+ 454              		.thumb
+ 455              		.syntax unified
+ 456              	.L33:
+ 118:main.c        ****    for(;;){
+ 119:main.c        ****     
+ 120:main.c        ****    displayDotMatrix_E();
+ 457              		.loc 1 120 0 discriminator 1
+ 458 0004 FFF7FEFF 		bl	displayDotMatrix_E
+ 459              	.LVL54:
+ 121:main.c        ****     delay(displayDotMatrix_E);
+ 460              		.loc 1 121 0 discriminator 1
+ 461 0008 0948     		ldr	r0, .L34
+ 462 000a FFF7FEFF 		bl	delay
+ 463              	.LVL55:
+ 122:main.c        ****     clearDotMatrix(); 
+ 464              		.loc 1 122 0 discriminator 1
+ 465 000e FFF7FEFF 		bl	clearDotMatrix
+ 466              	.LVL56:
+ 123:main.c        ****     
+ 124:main.c        ****        displayDotMatrix_M();
+ 467              		.loc 1 124 0 discriminator 1
+ 468 0012 FFF7FEFF 		bl	displayDotMatrix_M
+ 469              	.LVL57:
+ 125:main.c        ****        delay(displayDotMatrix_M);
+ 470              		.loc 1 125 0 discriminator 1
+ 471 0016 0748     		ldr	r0, .L34+4
+ 472 0018 FFF7FEFF 		bl	delay
+ 473              	.LVL58:
+ 126:main.c        ****        clearDotMatrix();
+ 474              		.loc 1 126 0 discriminator 1
+ 475 001c FFF7FEFF 		bl	clearDotMatrix
+ 476              	.LVL59:
+ 127:main.c        ****     
+ 128:main.c        ****     
+ 129:main.c        ****        displayDotMatrix_R();
+ 477              		.loc 1 129 0 discriminator 1
+ 478 0020 FFF7FEFF 		bl	displayDotMatrix_R
+ 479              	.LVL60:
+ 130:main.c        ****         delay(displayDotMatrix_R);
+ 480              		.loc 1 130 0 discriminator 1
+ 481 0024 0448     		ldr	r0, .L34+8
+ 482 0026 FFF7FEFF 		bl	delay
+ 483              	.LVL61:
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 12
+
+
+ 131:main.c        ****          clearDotMatrix();
+ 484              		.loc 1 131 0 discriminator 1
+ 485 002a FFF7FEFF 		bl	clearDotMatrix
+ 486              	.LVL62:
+ 487 002e E9E7     		b	.L33
+ 488              	.L35:
+ 489              		.align	2
+ 490              	.L34:
+ 491 0030 00000000 		.word	displayDotMatrix_E
+ 492 0034 00000000 		.word	displayDotMatrix_M
+ 493 0038 00000000 		.word	displayDotMatrix_R
+ 494              		.cfi_endproc
+ 495              	.LFE39:
+ 496              		.size	main, .-main
+ 497              		.global	dotMatrix_M
+ 498              		.global	dotMatrix_R
+ 499              		.global	dotMatrix_E
+ 500              		.global	dotMatrix_xx
+ 501              		.global	dotMatrix_X
+ 502              		.data
+ 503              		.align	2
+ 504              		.set	.LANCHOR0,. + 0
+ 505              		.type	dotMatrix_E, %object
+ 506              		.size	dotMatrix_E, 8
+ 507              	dotMatrix_E:
+ 508 0000 FF       		.byte	-1
+ 509 0001 03       		.byte	3
+ 510 0002 03       		.byte	3
+ 511 0003 FF       		.byte	-1
+ 512 0004 FF       		.byte	-1
+ 513 0005 03       		.byte	3
+ 514 0006 03       		.byte	3
+ 515 0007 FF       		.byte	-1
+ 516              		.type	dotMatrix_R, %object
+ 517              		.size	dotMatrix_R, 8
+ 518              	dotMatrix_R:
+ 519 0008 FF       		.byte	-1
+ 520 0009 C3       		.byte	-61
+ 521 000a FF       		.byte	-1
+ 522 000b 07       		.byte	7
+ 523 000c 1B       		.byte	27
+ 524 000d 33       		.byte	51
+ 525 000e 63       		.byte	99
+ 526 000f C3       		.byte	-61
+ 527              		.type	dotMatrix_M, %object
+ 528              		.size	dotMatrix_M, 8
+ 529              	dotMatrix_M:
+ 530 0010 81       		.byte	-127
+ 531 0011 C3       		.byte	-61
+ 532 0012 FF       		.byte	-1
+ 533 0013 DB       		.byte	-37
+ 534 0014 C3       		.byte	-61
+ 535 0015 C3       		.byte	-61
+ 536 0016 C3       		.byte	-61
+ 537 0017 C3       		.byte	-61
+ 538              		.type	dotMatrix_xx, %object
+ 539              		.size	dotMatrix_xx, 8
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 13
+
+
+ 540              	dotMatrix_xx:
+ 541 0018 38       		.byte	56
+ 542 0019 38       		.byte	56
+ 543 001a 38       		.byte	56
+ 544 001b 54       		.byte	84
+ 545 001c 54       		.byte	84
+ 546 001d 28       		.byte	40
+ 547 001e 48       		.byte	72
+ 548 001f 88       		.byte	-120
+ 549              		.type	dotMatrix_X, %object
+ 550              		.size	dotMatrix_X, 8
+ 551              	dotMatrix_X:
+ 552 0020 38       		.byte	56
+ 553 0021 38       		.byte	56
+ 554 0022 38       		.byte	56
+ 555 0023 7C       		.byte	124
+ 556 0024 92       		.byte	-110
+ 557 0025 28       		.byte	40
+ 558 0026 24       		.byte	36
+ 559 0027 22       		.byte	34
+ 560              		.text
+ 561              	.Letext0:
+ 562              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 563              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 564              		.file 4 "Generated_Source\\PSoC4/Pin_Row.h"
+ 565              		.file 5 "Generated_Source\\PSoC4/Pin_Col.h"
+ 566              		.file 6 "Generated_Source\\PSoC4/CyLib.h"
+ 567              		.section	.debug_info,"",%progbits
+ 568              	.Ldebug_info0:
+ 569 0000 CA040000 		.4byte	0x4ca
+ 570 0004 0400     		.2byte	0x4
+ 571 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 572 000a 04       		.byte	0x4
+ 573 000b 01       		.uleb128 0x1
+ 574 000c 67010000 		.4byte	.LASF31
+ 575 0010 0C       		.byte	0xc
+ 576 0011 0C020000 		.4byte	.LASF32
+ 577 0015 67000000 		.4byte	.LASF33
+ 578 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 579 001d 00000000 		.4byte	0
+ 580 0021 00000000 		.4byte	.Ldebug_line0
+ 581 0025 02       		.uleb128 0x2
+ 582 0026 01       		.byte	0x1
+ 583 0027 06       		.byte	0x6
+ 584 0028 45020000 		.4byte	.LASF0
+ 585 002c 03       		.uleb128 0x3
+ 586 002d 00000000 		.4byte	.LASF9
+ 587 0031 02       		.byte	0x2
+ 588 0032 1D       		.byte	0x1d
+ 589 0033 37000000 		.4byte	0x37
+ 590 0037 02       		.uleb128 0x2
+ 591 0038 01       		.byte	0x1
+ 592 0039 08       		.byte	0x8
+ 593 003a C7000000 		.4byte	.LASF1
+ 594 003e 02       		.uleb128 0x2
+ 595 003f 02       		.byte	0x2
+ 596 0040 05       		.byte	0x5
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 14
+
+
+ 597 0041 26020000 		.4byte	.LASF2
+ 598 0045 02       		.uleb128 0x2
+ 599 0046 02       		.byte	0x2
+ 600 0047 07       		.byte	0x7
+ 601 0048 34000000 		.4byte	.LASF3
+ 602 004c 02       		.uleb128 0x2
+ 603 004d 04       		.byte	0x4
+ 604 004e 05       		.byte	0x5
+ 605 004f 30020000 		.4byte	.LASF4
+ 606 0053 02       		.uleb128 0x2
+ 607 0054 04       		.byte	0x4
+ 608 0055 07       		.byte	0x7
+ 609 0056 E8000000 		.4byte	.LASF5
+ 610 005a 02       		.uleb128 0x2
+ 611 005b 08       		.byte	0x8
+ 612 005c 05       		.byte	0x5
+ 613 005d FE010000 		.4byte	.LASF6
+ 614 0061 02       		.uleb128 0x2
+ 615 0062 08       		.byte	0x8
+ 616 0063 07       		.byte	0x7
+ 617 0064 48010000 		.4byte	.LASF7
+ 618 0068 04       		.uleb128 0x4
+ 619 0069 04       		.byte	0x4
+ 620 006a 05       		.byte	0x5
+ 621 006b 696E7400 		.ascii	"int\000"
+ 622 006f 02       		.uleb128 0x2
+ 623 0070 04       		.byte	0x4
+ 624 0071 07       		.byte	0x7
+ 625 0072 3B010000 		.4byte	.LASF8
+ 626 0076 03       		.uleb128 0x3
+ 627 0077 5F010000 		.4byte	.LASF10
+ 628 007b 03       		.byte	0x3
+ 629 007c 18       		.byte	0x18
+ 630 007d 2C000000 		.4byte	0x2c
+ 631 0081 02       		.uleb128 0x2
+ 632 0082 04       		.byte	0x4
+ 633 0083 04       		.byte	0x4
+ 634 0084 A8000000 		.4byte	.LASF11
+ 635 0088 02       		.uleb128 0x2
+ 636 0089 08       		.byte	0x8
+ 637 008a 04       		.byte	0x4
+ 638 008b 2A010000 		.4byte	.LASF12
+ 639 008f 02       		.uleb128 0x2
+ 640 0090 01       		.byte	0x1
+ 641 0091 08       		.byte	0x8
+ 642 0092 13020000 		.4byte	.LASF13
+ 643 0096 02       		.uleb128 0x2
+ 644 0097 04       		.byte	0x4
+ 645 0098 07       		.byte	0x7
+ 646 0099 F5010000 		.4byte	.LASF14
+ 647 009d 02       		.uleb128 0x2
+ 648 009e 08       		.byte	0x8
+ 649 009f 04       		.byte	0x4
+ 650 00a0 39020000 		.4byte	.LASF15
+ 651 00a4 05       		.uleb128 0x5
+ 652 00a5 47000000 		.4byte	.LASF16
+ 653 00a9 01       		.byte	0x1
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 15
+
+
+ 654 00aa 39       		.byte	0x39
+ 655 00ab 00000000 		.4byte	.LFB32
+ 656 00af 34000000 		.4byte	.LFE32-.LFB32
+ 657 00b3 01       		.uleb128 0x1
+ 658 00b4 9C       		.byte	0x9c
+ 659 00b5 1D010000 		.4byte	0x11d
+ 660 00b9 06       		.uleb128 0x6
+ 661 00ba 02000000 		.4byte	.LBB2
+ 662 00be 2A000000 		.4byte	.LBE2-.LBB2
+ 663 00c2 07       		.uleb128 0x7
+ 664 00c3 726F7700 		.ascii	"row\000"
+ 665 00c7 01       		.byte	0x1
+ 666 00c8 3A       		.byte	0x3a
+ 667 00c9 68000000 		.4byte	0x68
+ 668 00cd 00000000 		.4byte	.LLST0
+ 669 00d1 08       		.uleb128 0x8
+ 670 00d2 12000000 		.4byte	.LVL2
+ 671 00d6 AC040000 		.4byte	0x4ac
+ 672 00da F0000000 		.4byte	0xf0
+ 673 00de 09       		.uleb128 0x9
+ 674 00df 01       		.uleb128 0x1
+ 675 00e0 50       		.byte	0x50
+ 676 00e1 0D       		.uleb128 0xd
+ 677 00e2 09       		.byte	0x9
+ 678 00e3 FE       		.byte	0xfe
+ 679 00e4 74       		.byte	0x74
+ 680 00e5 00       		.sleb128 0
+ 681 00e6 14       		.byte	0x14
+ 682 00e7 14       		.byte	0x14
+ 683 00e8 24       		.byte	0x24
+ 684 00e9 17       		.byte	0x17
+ 685 00ea 1F       		.byte	0x1f
+ 686 00eb 23       		.byte	0x23
+ 687 00ec 20       		.uleb128 0x20
+ 688 00ed 25       		.byte	0x25
+ 689 00ee 21       		.byte	0x21
+ 690 00ef 00       		.byte	0
+ 691 00f0 0A       		.uleb128 0xa
+ 692 00f1 1A000000 		.4byte	.LVL3
+ 693 00f5 B7040000 		.4byte	0x4b7
+ 694 00f9 08       		.uleb128 0x8
+ 695 00fa 20000000 		.4byte	.LVL4
+ 696 00fe C2040000 		.4byte	0x4c2
+ 697 0102 0C010000 		.4byte	0x10c
+ 698 0106 09       		.uleb128 0x9
+ 699 0107 01       		.uleb128 0x1
+ 700 0108 50       		.byte	0x50
+ 701 0109 01       		.uleb128 0x1
+ 702 010a 31       		.byte	0x31
+ 703 010b 00       		.byte	0
+ 704 010c 0B       		.uleb128 0xb
+ 705 010d 26000000 		.4byte	.LVL5
+ 706 0111 AC040000 		.4byte	0x4ac
+ 707 0115 09       		.uleb128 0x9
+ 708 0116 01       		.uleb128 0x1
+ 709 0117 50       		.byte	0x50
+ 710 0118 01       		.uleb128 0x1
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 16
+
+
+ 711 0119 30       		.byte	0x30
+ 712 011a 00       		.byte	0
+ 713 011b 00       		.byte	0
+ 714 011c 00       		.byte	0
+ 715 011d 05       		.uleb128 0x5
+ 716 011e D5000000 		.4byte	.LASF17
+ 717 0122 01       		.byte	0x1
+ 718 0123 42       		.byte	0x42
+ 719 0124 00000000 		.4byte	.LFB33
+ 720 0128 34000000 		.4byte	.LFE33-.LFB33
+ 721 012c 01       		.uleb128 0x1
+ 722 012d 9C       		.byte	0x9c
+ 723 012e 96010000 		.4byte	0x196
+ 724 0132 06       		.uleb128 0x6
+ 725 0133 02000000 		.4byte	.LBB3
+ 726 0137 2C000000 		.4byte	.LBE3-.LBB3
+ 727 013b 07       		.uleb128 0x7
+ 728 013c 726F7700 		.ascii	"row\000"
+ 729 0140 01       		.byte	0x1
+ 730 0141 43       		.byte	0x43
+ 731 0142 68000000 		.4byte	0x68
+ 732 0146 1F000000 		.4byte	.LLST1
+ 733 014a 08       		.uleb128 0x8
+ 734 014b 12000000 		.4byte	.LVL10
+ 735 014f AC040000 		.4byte	0x4ac
+ 736 0153 69010000 		.4byte	0x169
+ 737 0157 09       		.uleb128 0x9
+ 738 0158 01       		.uleb128 0x1
+ 739 0159 50       		.byte	0x50
+ 740 015a 0D       		.uleb128 0xd
+ 741 015b 09       		.byte	0x9
+ 742 015c FE       		.byte	0xfe
+ 743 015d 74       		.byte	0x74
+ 744 015e 00       		.sleb128 0
+ 745 015f 14       		.byte	0x14
+ 746 0160 14       		.byte	0x14
+ 747 0161 24       		.byte	0x24
+ 748 0162 17       		.byte	0x17
+ 749 0163 1F       		.byte	0x1f
+ 750 0164 23       		.byte	0x23
+ 751 0165 20       		.uleb128 0x20
+ 752 0166 25       		.byte	0x25
+ 753 0167 21       		.byte	0x21
+ 754 0168 00       		.byte	0
+ 755 0169 0A       		.uleb128 0xa
+ 756 016a 1C000000 		.4byte	.LVL11
+ 757 016e B7040000 		.4byte	0x4b7
+ 758 0172 08       		.uleb128 0x8
+ 759 0173 22000000 		.4byte	.LVL12
+ 760 0177 C2040000 		.4byte	0x4c2
+ 761 017b 85010000 		.4byte	0x185
+ 762 017f 09       		.uleb128 0x9
+ 763 0180 01       		.uleb128 0x1
+ 764 0181 50       		.byte	0x50
+ 765 0182 01       		.uleb128 0x1
+ 766 0183 31       		.byte	0x31
+ 767 0184 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 17
+
+
+ 768 0185 0B       		.uleb128 0xb
+ 769 0186 28000000 		.4byte	.LVL13
+ 770 018a AC040000 		.4byte	0x4ac
+ 771 018e 09       		.uleb128 0x9
+ 772 018f 01       		.uleb128 0x1
+ 773 0190 50       		.byte	0x50
+ 774 0191 01       		.uleb128 0x1
+ 775 0192 30       		.byte	0x30
+ 776 0193 00       		.byte	0
+ 777 0194 00       		.byte	0
+ 778 0195 00       		.byte	0
+ 779 0196 05       		.uleb128 0x5
+ 780 0197 AE000000 		.4byte	.LASF18
+ 781 019b 01       		.byte	0x1
+ 782 019c 4A       		.byte	0x4a
+ 783 019d 00000000 		.4byte	.LFB34
+ 784 01a1 34000000 		.4byte	.LFE34-.LFB34
+ 785 01a5 01       		.uleb128 0x1
+ 786 01a6 9C       		.byte	0x9c
+ 787 01a7 0F020000 		.4byte	0x20f
+ 788 01ab 06       		.uleb128 0x6
+ 789 01ac 02000000 		.4byte	.LBB4
+ 790 01b0 2C000000 		.4byte	.LBE4-.LBB4
+ 791 01b4 07       		.uleb128 0x7
+ 792 01b5 726F7700 		.ascii	"row\000"
+ 793 01b9 01       		.byte	0x1
+ 794 01ba 4B       		.byte	0x4b
+ 795 01bb 68000000 		.4byte	0x68
+ 796 01bf 3E000000 		.4byte	.LLST2
+ 797 01c3 08       		.uleb128 0x8
+ 798 01c4 12000000 		.4byte	.LVL18
+ 799 01c8 AC040000 		.4byte	0x4ac
+ 800 01cc E2010000 		.4byte	0x1e2
+ 801 01d0 09       		.uleb128 0x9
+ 802 01d1 01       		.uleb128 0x1
+ 803 01d2 50       		.byte	0x50
+ 804 01d3 0D       		.uleb128 0xd
+ 805 01d4 09       		.byte	0x9
+ 806 01d5 FE       		.byte	0xfe
+ 807 01d6 74       		.byte	0x74
+ 808 01d7 00       		.sleb128 0
+ 809 01d8 14       		.byte	0x14
+ 810 01d9 14       		.byte	0x14
+ 811 01da 24       		.byte	0x24
+ 812 01db 17       		.byte	0x17
+ 813 01dc 1F       		.byte	0x1f
+ 814 01dd 23       		.byte	0x23
+ 815 01de 20       		.uleb128 0x20
+ 816 01df 25       		.byte	0x25
+ 817 01e0 21       		.byte	0x21
+ 818 01e1 00       		.byte	0
+ 819 01e2 0A       		.uleb128 0xa
+ 820 01e3 1C000000 		.4byte	.LVL19
+ 821 01e7 B7040000 		.4byte	0x4b7
+ 822 01eb 08       		.uleb128 0x8
+ 823 01ec 22000000 		.4byte	.LVL20
+ 824 01f0 C2040000 		.4byte	0x4c2
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 18
+
+
+ 825 01f4 FE010000 		.4byte	0x1fe
+ 826 01f8 09       		.uleb128 0x9
+ 827 01f9 01       		.uleb128 0x1
+ 828 01fa 50       		.byte	0x50
+ 829 01fb 01       		.uleb128 0x1
+ 830 01fc 31       		.byte	0x31
+ 831 01fd 00       		.byte	0
+ 832 01fe 0B       		.uleb128 0xb
+ 833 01ff 28000000 		.4byte	.LVL21
+ 834 0203 AC040000 		.4byte	0x4ac
+ 835 0207 09       		.uleb128 0x9
+ 836 0208 01       		.uleb128 0x1
+ 837 0209 50       		.byte	0x50
+ 838 020a 01       		.uleb128 0x1
+ 839 020b 30       		.byte	0x30
+ 840 020c 00       		.byte	0
+ 841 020d 00       		.byte	0
+ 842 020e 00       		.byte	0
+ 843 020f 05       		.uleb128 0x5
+ 844 0210 0D010000 		.4byte	.LASF19
+ 845 0214 01       		.byte	0x1
+ 846 0215 53       		.byte	0x53
+ 847 0216 00000000 		.4byte	.LFB35
+ 848 021a 26000000 		.4byte	.LFE35-.LFB35
+ 849 021e 01       		.uleb128 0x1
+ 850 021f 9C       		.byte	0x9c
+ 851 0220 7F020000 		.4byte	0x27f
+ 852 0224 06       		.uleb128 0x6
+ 853 0225 02000000 		.4byte	.LBB5
+ 854 0229 22000000 		.4byte	.LBE5-.LBB5
+ 855 022d 07       		.uleb128 0x7
+ 856 022e 726F7700 		.ascii	"row\000"
+ 857 0232 01       		.byte	0x1
+ 858 0233 54       		.byte	0x54
+ 859 0234 68000000 		.4byte	0x68
+ 860 0238 5D000000 		.4byte	.LLST3
+ 861 023c 08       		.uleb128 0x8
+ 862 023d 12000000 		.4byte	.LVL26
+ 863 0241 AC040000 		.4byte	0x4ac
+ 864 0245 5B020000 		.4byte	0x25b
+ 865 0249 09       		.uleb128 0x9
+ 866 024a 01       		.uleb128 0x1
+ 867 024b 50       		.byte	0x50
+ 868 024c 0D       		.uleb128 0xd
+ 869 024d 09       		.byte	0x9
+ 870 024e FE       		.byte	0xfe
+ 871 024f 74       		.byte	0x74
+ 872 0250 00       		.sleb128 0
+ 873 0251 14       		.byte	0x14
+ 874 0252 14       		.byte	0x14
+ 875 0253 24       		.byte	0x24
+ 876 0254 17       		.byte	0x17
+ 877 0255 1F       		.byte	0x1f
+ 878 0256 23       		.byte	0x23
+ 879 0257 20       		.uleb128 0x20
+ 880 0258 25       		.byte	0x25
+ 881 0259 21       		.byte	0x21
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 19
+
+
+ 882 025a 00       		.byte	0
+ 883 025b 08       		.uleb128 0x8
+ 884 025c 18000000 		.4byte	.LVL27
+ 885 0260 B7040000 		.4byte	0x4b7
+ 886 0264 6E020000 		.4byte	0x26e
+ 887 0268 09       		.uleb128 0x9
+ 888 0269 01       		.uleb128 0x1
+ 889 026a 50       		.byte	0x50
+ 890 026b 01       		.uleb128 0x1
+ 891 026c 30       		.byte	0x30
+ 892 026d 00       		.byte	0
+ 893 026e 0B       		.uleb128 0xb
+ 894 026f 1E000000 		.4byte	.LVL28
+ 895 0273 AC040000 		.4byte	0x4ac
+ 896 0277 09       		.uleb128 0x9
+ 897 0278 01       		.uleb128 0x1
+ 898 0279 50       		.byte	0x50
+ 899 027a 01       		.uleb128 0x1
+ 900 027b 30       		.byte	0x30
+ 901 027c 00       		.byte	0
+ 902 027d 00       		.byte	0
+ 903 027e 00       		.byte	0
+ 904 027f 05       		.uleb128 0x5
+ 905 0280 51020000 		.4byte	.LASF20
+ 906 0284 01       		.byte	0x1
+ 907 0285 5B       		.byte	0x5b
+ 908 0286 00000000 		.4byte	.LFB36
+ 909 028a 34000000 		.4byte	.LFE36-.LFB36
+ 910 028e 01       		.uleb128 0x1
+ 911 028f 9C       		.byte	0x9c
+ 912 0290 F8020000 		.4byte	0x2f8
+ 913 0294 06       		.uleb128 0x6
+ 914 0295 02000000 		.4byte	.LBB6
+ 915 0299 2C000000 		.4byte	.LBE6-.LBB6
+ 916 029d 07       		.uleb128 0x7
+ 917 029e 726F7700 		.ascii	"row\000"
+ 918 02a2 01       		.byte	0x1
+ 919 02a3 5C       		.byte	0x5c
+ 920 02a4 68000000 		.4byte	0x68
+ 921 02a8 7C000000 		.4byte	.LLST4
+ 922 02ac 08       		.uleb128 0x8
+ 923 02ad 12000000 		.4byte	.LVL33
+ 924 02b1 AC040000 		.4byte	0x4ac
+ 925 02b5 CB020000 		.4byte	0x2cb
+ 926 02b9 09       		.uleb128 0x9
+ 927 02ba 01       		.uleb128 0x1
+ 928 02bb 50       		.byte	0x50
+ 929 02bc 0D       		.uleb128 0xd
+ 930 02bd 09       		.byte	0x9
+ 931 02be FE       		.byte	0xfe
+ 932 02bf 74       		.byte	0x74
+ 933 02c0 00       		.sleb128 0
+ 934 02c1 14       		.byte	0x14
+ 935 02c2 14       		.byte	0x14
+ 936 02c3 24       		.byte	0x24
+ 937 02c4 17       		.byte	0x17
+ 938 02c5 1F       		.byte	0x1f
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 20
+
+
+ 939 02c6 23       		.byte	0x23
+ 940 02c7 20       		.uleb128 0x20
+ 941 02c8 25       		.byte	0x25
+ 942 02c9 21       		.byte	0x21
+ 943 02ca 00       		.byte	0
+ 944 02cb 0A       		.uleb128 0xa
+ 945 02cc 1C000000 		.4byte	.LVL34
+ 946 02d0 B7040000 		.4byte	0x4b7
+ 947 02d4 08       		.uleb128 0x8
+ 948 02d5 22000000 		.4byte	.LVL35
+ 949 02d9 C2040000 		.4byte	0x4c2
+ 950 02dd E7020000 		.4byte	0x2e7
+ 951 02e1 09       		.uleb128 0x9
+ 952 02e2 01       		.uleb128 0x1
+ 953 02e3 50       		.byte	0x50
+ 954 02e4 01       		.uleb128 0x1
+ 955 02e5 31       		.byte	0x31
+ 956 02e6 00       		.byte	0
+ 957 02e7 0B       		.uleb128 0xb
+ 958 02e8 28000000 		.4byte	.LVL36
+ 959 02ec AC040000 		.4byte	0x4ac
+ 960 02f0 09       		.uleb128 0x9
+ 961 02f1 01       		.uleb128 0x1
+ 962 02f2 50       		.byte	0x50
+ 963 02f3 01       		.uleb128 0x1
+ 964 02f4 30       		.byte	0x30
+ 965 02f5 00       		.byte	0
+ 966 02f6 00       		.byte	0
+ 967 02f7 00       		.byte	0
+ 968 02f8 0C       		.uleb128 0xc
+ 969 02f9 C1000000 		.4byte	.LASF34
+ 970 02fd 01       		.byte	0x1
+ 971 02fe 64       		.byte	0x64
+ 972 02ff 00000000 		.4byte	.LFB37
+ 973 0303 12000000 		.4byte	.LFE37-.LFB37
+ 974 0307 01       		.uleb128 0x1
+ 975 0308 9C       		.byte	0x9c
+ 976 0309 2C030000 		.4byte	0x32c
+ 977 030d 0D       		.uleb128 0xd
+ 978 030e 31010000 		.4byte	.LASF35
+ 979 0312 01       		.byte	0x1
+ 980 0313 64       		.byte	0x64
+ 981 0314 33030000 		.4byte	0x333
+ 982 0318 9B000000 		.4byte	.LLST5
+ 983 031c 0E       		.uleb128 0xe
+ 984 031d 22000000 		.4byte	.LASF21
+ 985 0321 01       		.byte	0x1
+ 986 0322 65       		.byte	0x65
+ 987 0323 68000000 		.4byte	0x68
+ 988 0327 C7000000 		.4byte	.LLST6
+ 989 032b 00       		.byte	0
+ 990 032c 0F       		.uleb128 0xf
+ 991 032d 33030000 		.4byte	0x333
+ 992 0331 10       		.uleb128 0x10
+ 993 0332 00       		.byte	0
+ 994 0333 11       		.uleb128 0x11
+ 995 0334 04       		.byte	0x4
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 21
+
+
+ 996 0335 2C030000 		.4byte	0x32c
+ 997 0339 05       		.uleb128 0x5
+ 998 033a FA000000 		.4byte	.LASF22
+ 999 033e 01       		.byte	0x1
+ 1000 033f 69       		.byte	0x69
+ 1001 0340 00000000 		.4byte	.LFB38
+ 1002 0344 38000000 		.4byte	.LFE38-.LFB38
+ 1003 0348 01       		.uleb128 0x1
+ 1004 0349 9C       		.byte	0x9c
+ 1005 034a B2030000 		.4byte	0x3b2
+ 1006 034e 06       		.uleb128 0x6
+ 1007 034f 02000000 		.4byte	.LBB7
+ 1008 0353 2E000000 		.4byte	.LBE7-.LBB7
+ 1009 0357 07       		.uleb128 0x7
+ 1010 0358 726F7700 		.ascii	"row\000"
+ 1011 035c 01       		.byte	0x1
+ 1012 035d 6A       		.byte	0x6a
+ 1013 035e 68000000 		.4byte	0x68
+ 1014 0362 E6000000 		.4byte	.LLST7
+ 1015 0366 08       		.uleb128 0x8
+ 1016 0367 12000000 		.4byte	.LVL48
+ 1017 036b AC040000 		.4byte	0x4ac
+ 1018 036f 85030000 		.4byte	0x385
+ 1019 0373 09       		.uleb128 0x9
+ 1020 0374 01       		.uleb128 0x1
+ 1021 0375 50       		.byte	0x50
+ 1022 0376 0D       		.uleb128 0xd
+ 1023 0377 09       		.byte	0x9
+ 1024 0378 FE       		.byte	0xfe
+ 1025 0379 74       		.byte	0x74
+ 1026 037a 00       		.sleb128 0
+ 1027 037b 14       		.byte	0x14
+ 1028 037c 14       		.byte	0x14
+ 1029 037d 24       		.byte	0x24
+ 1030 037e 17       		.byte	0x17
+ 1031 037f 1F       		.byte	0x1f
+ 1032 0380 23       		.byte	0x23
+ 1033 0381 20       		.uleb128 0x20
+ 1034 0382 25       		.byte	0x25
+ 1035 0383 21       		.byte	0x21
+ 1036 0384 00       		.byte	0
+ 1037 0385 0A       		.uleb128 0xa
+ 1038 0386 1E000000 		.4byte	.LVL49
+ 1039 038a B7040000 		.4byte	0x4b7
+ 1040 038e 08       		.uleb128 0x8
+ 1041 038f 24000000 		.4byte	.LVL50
+ 1042 0393 C2040000 		.4byte	0x4c2
+ 1043 0397 A1030000 		.4byte	0x3a1
+ 1044 039b 09       		.uleb128 0x9
+ 1045 039c 01       		.uleb128 0x1
+ 1046 039d 50       		.byte	0x50
+ 1047 039e 01       		.uleb128 0x1
+ 1048 039f 31       		.byte	0x31
+ 1049 03a0 00       		.byte	0
+ 1050 03a1 0B       		.uleb128 0xb
+ 1051 03a2 2A000000 		.4byte	.LVL51
+ 1052 03a6 AC040000 		.4byte	0x4ac
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 22
+
+
+ 1053 03aa 09       		.uleb128 0x9
+ 1054 03ab 01       		.uleb128 0x1
+ 1055 03ac 50       		.byte	0x50
+ 1056 03ad 01       		.uleb128 0x1
+ 1057 03ae 30       		.byte	0x30
+ 1058 03af 00       		.byte	0
+ 1059 03b0 00       		.byte	0
+ 1060 03b1 00       		.byte	0
+ 1061 03b2 12       		.uleb128 0x12
+ 1062 03b3 36010000 		.4byte	.LASF36
+ 1063 03b7 01       		.byte	0x1
+ 1064 03b8 73       		.byte	0x73
+ 1065 03b9 68000000 		.4byte	0x68
+ 1066 03bd 00000000 		.4byte	.LFB39
+ 1067 03c1 3C000000 		.4byte	.LFE39-.LFB39
+ 1068 03c5 01       		.uleb128 0x1
+ 1069 03c6 9C       		.byte	0x9c
+ 1070 03c7 47040000 		.4byte	0x447
+ 1071 03cb 0A       		.uleb128 0xa
+ 1072 03cc 08000000 		.4byte	.LVL54
+ 1073 03d0 A4000000 		.4byte	0xa4
+ 1074 03d4 08       		.uleb128 0x8
+ 1075 03d5 0E000000 		.4byte	.LVL55
+ 1076 03d9 F8020000 		.4byte	0x2f8
+ 1077 03dd EB030000 		.4byte	0x3eb
+ 1078 03e1 09       		.uleb128 0x9
+ 1079 03e2 01       		.uleb128 0x1
+ 1080 03e3 50       		.byte	0x50
+ 1081 03e4 05       		.uleb128 0x5
+ 1082 03e5 03       		.byte	0x3
+ 1083 03e6 00000000 		.4byte	displayDotMatrix_E
+ 1084 03ea 00       		.byte	0
+ 1085 03eb 0A       		.uleb128 0xa
+ 1086 03ec 12000000 		.4byte	.LVL56
+ 1087 03f0 0F020000 		.4byte	0x20f
+ 1088 03f4 0A       		.uleb128 0xa
+ 1089 03f5 16000000 		.4byte	.LVL57
+ 1090 03f9 96010000 		.4byte	0x196
+ 1091 03fd 08       		.uleb128 0x8
+ 1092 03fe 1C000000 		.4byte	.LVL58
+ 1093 0402 F8020000 		.4byte	0x2f8
+ 1094 0406 14040000 		.4byte	0x414
+ 1095 040a 09       		.uleb128 0x9
+ 1096 040b 01       		.uleb128 0x1
+ 1097 040c 50       		.byte	0x50
+ 1098 040d 05       		.uleb128 0x5
+ 1099 040e 03       		.byte	0x3
+ 1100 040f 00000000 		.4byte	displayDotMatrix_M
+ 1101 0413 00       		.byte	0
+ 1102 0414 0A       		.uleb128 0xa
+ 1103 0415 20000000 		.4byte	.LVL59
+ 1104 0419 0F020000 		.4byte	0x20f
+ 1105 041d 0A       		.uleb128 0xa
+ 1106 041e 24000000 		.4byte	.LVL60
+ 1107 0422 1D010000 		.4byte	0x11d
+ 1108 0426 08       		.uleb128 0x8
+ 1109 0427 2A000000 		.4byte	.LVL61
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 23
+
+
+ 1110 042b F8020000 		.4byte	0x2f8
+ 1111 042f 3D040000 		.4byte	0x43d
+ 1112 0433 09       		.uleb128 0x9
+ 1113 0434 01       		.uleb128 0x1
+ 1114 0435 50       		.byte	0x50
+ 1115 0436 05       		.uleb128 0x5
+ 1116 0437 03       		.byte	0x3
+ 1117 0438 00000000 		.4byte	displayDotMatrix_R
+ 1118 043c 00       		.byte	0
+ 1119 043d 0A       		.uleb128 0xa
+ 1120 043e 2E000000 		.4byte	.LVL62
+ 1121 0442 0F020000 		.4byte	0x20f
+ 1122 0446 00       		.byte	0
+ 1123 0447 13       		.uleb128 0x13
+ 1124 0448 76000000 		.4byte	0x76
+ 1125 044c 57040000 		.4byte	0x457
+ 1126 0450 14       		.uleb128 0x14
+ 1127 0451 96000000 		.4byte	0x96
+ 1128 0455 07       		.byte	0x7
+ 1129 0456 00       		.byte	0
+ 1130 0457 15       		.uleb128 0x15
+ 1131 0458 28000000 		.4byte	.LASF23
+ 1132 045c 01       		.byte	0x1
+ 1133 045d 07       		.byte	0x7
+ 1134 045e 47040000 		.4byte	0x447
+ 1135 0462 05       		.uleb128 0x5
+ 1136 0463 03       		.byte	0x3
+ 1137 0464 00000000 		.4byte	dotMatrix_X
+ 1138 0468 15       		.uleb128 0x15
+ 1139 0469 5A000000 		.4byte	.LASF24
+ 1140 046d 01       		.byte	0x1
+ 1141 046e 11       		.byte	0x11
+ 1142 046f 47040000 		.4byte	0x447
+ 1143 0473 05       		.uleb128 0x5
+ 1144 0474 03       		.byte	0x3
+ 1145 0475 00000000 		.4byte	dotMatrix_xx
+ 1146 0479 15       		.uleb128 0x15
+ 1147 047a 6D020000 		.4byte	.LASF25
+ 1148 047e 01       		.byte	0x1
+ 1149 047f 1B       		.byte	0x1b
+ 1150 0480 47040000 		.4byte	0x447
+ 1151 0484 05       		.uleb128 0x5
+ 1152 0485 03       		.byte	0x3
+ 1153 0486 00000000 		.4byte	dotMatrix_E
+ 1154 048a 15       		.uleb128 0x15
+ 1155 048b 16000000 		.4byte	.LASF26
+ 1156 048f 01       		.byte	0x1
+ 1157 0490 25       		.byte	0x25
+ 1158 0491 47040000 		.4byte	0x447
+ 1159 0495 05       		.uleb128 0x5
+ 1160 0496 03       		.byte	0x3
+ 1161 0497 00000000 		.4byte	dotMatrix_R
+ 1162 049b 15       		.uleb128 0x15
+ 1163 049c 0A000000 		.4byte	.LASF27
+ 1164 04a0 01       		.byte	0x1
+ 1165 04a1 2F       		.byte	0x2f
+ 1166 04a2 47040000 		.4byte	0x447
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 24
+
+
+ 1167 04a6 05       		.uleb128 0x5
+ 1168 04a7 03       		.byte	0x3
+ 1169 04a8 00000000 		.4byte	dotMatrix_M
+ 1170 04ac 16       		.uleb128 0x16
+ 1171 04ad 1C010000 		.4byte	.LASF28
+ 1172 04b1 1C010000 		.4byte	.LASF28
+ 1173 04b5 04       		.byte	0x4
+ 1174 04b6 33       		.byte	0x33
+ 1175 04b7 16       		.uleb128 0x16
+ 1176 04b8 18020000 		.4byte	.LASF29
+ 1177 04bc 18020000 		.4byte	.LASF29
+ 1178 04c0 05       		.byte	0x5
+ 1179 04c1 33       		.byte	0x33
+ 1180 04c2 16       		.uleb128 0x16
+ 1181 04c3 65020000 		.4byte	.LASF30
+ 1182 04c7 65020000 		.4byte	.LASF30
+ 1183 04cb 06       		.byte	0x6
+ 1184 04cc EC       		.byte	0xec
+ 1185 04cd 00       		.byte	0
+ 1186              		.section	.debug_abbrev,"",%progbits
+ 1187              	.Ldebug_abbrev0:
+ 1188 0000 01       		.uleb128 0x1
+ 1189 0001 11       		.uleb128 0x11
+ 1190 0002 01       		.byte	0x1
+ 1191 0003 25       		.uleb128 0x25
+ 1192 0004 0E       		.uleb128 0xe
+ 1193 0005 13       		.uleb128 0x13
+ 1194 0006 0B       		.uleb128 0xb
+ 1195 0007 03       		.uleb128 0x3
+ 1196 0008 0E       		.uleb128 0xe
+ 1197 0009 1B       		.uleb128 0x1b
+ 1198 000a 0E       		.uleb128 0xe
+ 1199 000b 55       		.uleb128 0x55
+ 1200 000c 17       		.uleb128 0x17
+ 1201 000d 11       		.uleb128 0x11
+ 1202 000e 01       		.uleb128 0x1
+ 1203 000f 10       		.uleb128 0x10
+ 1204 0010 17       		.uleb128 0x17
+ 1205 0011 00       		.byte	0
+ 1206 0012 00       		.byte	0
+ 1207 0013 02       		.uleb128 0x2
+ 1208 0014 24       		.uleb128 0x24
+ 1209 0015 00       		.byte	0
+ 1210 0016 0B       		.uleb128 0xb
+ 1211 0017 0B       		.uleb128 0xb
+ 1212 0018 3E       		.uleb128 0x3e
+ 1213 0019 0B       		.uleb128 0xb
+ 1214 001a 03       		.uleb128 0x3
+ 1215 001b 0E       		.uleb128 0xe
+ 1216 001c 00       		.byte	0
+ 1217 001d 00       		.byte	0
+ 1218 001e 03       		.uleb128 0x3
+ 1219 001f 16       		.uleb128 0x16
+ 1220 0020 00       		.byte	0
+ 1221 0021 03       		.uleb128 0x3
+ 1222 0022 0E       		.uleb128 0xe
+ 1223 0023 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 25
+
+
+ 1224 0024 0B       		.uleb128 0xb
+ 1225 0025 3B       		.uleb128 0x3b
+ 1226 0026 0B       		.uleb128 0xb
+ 1227 0027 49       		.uleb128 0x49
+ 1228 0028 13       		.uleb128 0x13
+ 1229 0029 00       		.byte	0
+ 1230 002a 00       		.byte	0
+ 1231 002b 04       		.uleb128 0x4
+ 1232 002c 24       		.uleb128 0x24
+ 1233 002d 00       		.byte	0
+ 1234 002e 0B       		.uleb128 0xb
+ 1235 002f 0B       		.uleb128 0xb
+ 1236 0030 3E       		.uleb128 0x3e
+ 1237 0031 0B       		.uleb128 0xb
+ 1238 0032 03       		.uleb128 0x3
+ 1239 0033 08       		.uleb128 0x8
+ 1240 0034 00       		.byte	0
+ 1241 0035 00       		.byte	0
+ 1242 0036 05       		.uleb128 0x5
+ 1243 0037 2E       		.uleb128 0x2e
+ 1244 0038 01       		.byte	0x1
+ 1245 0039 3F       		.uleb128 0x3f
+ 1246 003a 19       		.uleb128 0x19
+ 1247 003b 03       		.uleb128 0x3
+ 1248 003c 0E       		.uleb128 0xe
+ 1249 003d 3A       		.uleb128 0x3a
+ 1250 003e 0B       		.uleb128 0xb
+ 1251 003f 3B       		.uleb128 0x3b
+ 1252 0040 0B       		.uleb128 0xb
+ 1253 0041 11       		.uleb128 0x11
+ 1254 0042 01       		.uleb128 0x1
+ 1255 0043 12       		.uleb128 0x12
+ 1256 0044 06       		.uleb128 0x6
+ 1257 0045 40       		.uleb128 0x40
+ 1258 0046 18       		.uleb128 0x18
+ 1259 0047 9742     		.uleb128 0x2117
+ 1260 0049 19       		.uleb128 0x19
+ 1261 004a 01       		.uleb128 0x1
+ 1262 004b 13       		.uleb128 0x13
+ 1263 004c 00       		.byte	0
+ 1264 004d 00       		.byte	0
+ 1265 004e 06       		.uleb128 0x6
+ 1266 004f 0B       		.uleb128 0xb
+ 1267 0050 01       		.byte	0x1
+ 1268 0051 11       		.uleb128 0x11
+ 1269 0052 01       		.uleb128 0x1
+ 1270 0053 12       		.uleb128 0x12
+ 1271 0054 06       		.uleb128 0x6
+ 1272 0055 00       		.byte	0
+ 1273 0056 00       		.byte	0
+ 1274 0057 07       		.uleb128 0x7
+ 1275 0058 34       		.uleb128 0x34
+ 1276 0059 00       		.byte	0
+ 1277 005a 03       		.uleb128 0x3
+ 1278 005b 08       		.uleb128 0x8
+ 1279 005c 3A       		.uleb128 0x3a
+ 1280 005d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 26
+
+
+ 1281 005e 3B       		.uleb128 0x3b
+ 1282 005f 0B       		.uleb128 0xb
+ 1283 0060 49       		.uleb128 0x49
+ 1284 0061 13       		.uleb128 0x13
+ 1285 0062 02       		.uleb128 0x2
+ 1286 0063 17       		.uleb128 0x17
+ 1287 0064 00       		.byte	0
+ 1288 0065 00       		.byte	0
+ 1289 0066 08       		.uleb128 0x8
+ 1290 0067 898201   		.uleb128 0x4109
+ 1291 006a 01       		.byte	0x1
+ 1292 006b 11       		.uleb128 0x11
+ 1293 006c 01       		.uleb128 0x1
+ 1294 006d 31       		.uleb128 0x31
+ 1295 006e 13       		.uleb128 0x13
+ 1296 006f 01       		.uleb128 0x1
+ 1297 0070 13       		.uleb128 0x13
+ 1298 0071 00       		.byte	0
+ 1299 0072 00       		.byte	0
+ 1300 0073 09       		.uleb128 0x9
+ 1301 0074 8A8201   		.uleb128 0x410a
+ 1302 0077 00       		.byte	0
+ 1303 0078 02       		.uleb128 0x2
+ 1304 0079 18       		.uleb128 0x18
+ 1305 007a 9142     		.uleb128 0x2111
+ 1306 007c 18       		.uleb128 0x18
+ 1307 007d 00       		.byte	0
+ 1308 007e 00       		.byte	0
+ 1309 007f 0A       		.uleb128 0xa
+ 1310 0080 898201   		.uleb128 0x4109
+ 1311 0083 00       		.byte	0
+ 1312 0084 11       		.uleb128 0x11
+ 1313 0085 01       		.uleb128 0x1
+ 1314 0086 31       		.uleb128 0x31
+ 1315 0087 13       		.uleb128 0x13
+ 1316 0088 00       		.byte	0
+ 1317 0089 00       		.byte	0
+ 1318 008a 0B       		.uleb128 0xb
+ 1319 008b 898201   		.uleb128 0x4109
+ 1320 008e 01       		.byte	0x1
+ 1321 008f 11       		.uleb128 0x11
+ 1322 0090 01       		.uleb128 0x1
+ 1323 0091 31       		.uleb128 0x31
+ 1324 0092 13       		.uleb128 0x13
+ 1325 0093 00       		.byte	0
+ 1326 0094 00       		.byte	0
+ 1327 0095 0C       		.uleb128 0xc
+ 1328 0096 2E       		.uleb128 0x2e
+ 1329 0097 01       		.byte	0x1
+ 1330 0098 3F       		.uleb128 0x3f
+ 1331 0099 19       		.uleb128 0x19
+ 1332 009a 03       		.uleb128 0x3
+ 1333 009b 0E       		.uleb128 0xe
+ 1334 009c 3A       		.uleb128 0x3a
+ 1335 009d 0B       		.uleb128 0xb
+ 1336 009e 3B       		.uleb128 0x3b
+ 1337 009f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 27
+
+
+ 1338 00a0 27       		.uleb128 0x27
+ 1339 00a1 19       		.uleb128 0x19
+ 1340 00a2 11       		.uleb128 0x11
+ 1341 00a3 01       		.uleb128 0x1
+ 1342 00a4 12       		.uleb128 0x12
+ 1343 00a5 06       		.uleb128 0x6
+ 1344 00a6 40       		.uleb128 0x40
+ 1345 00a7 18       		.uleb128 0x18
+ 1346 00a8 9642     		.uleb128 0x2116
+ 1347 00aa 19       		.uleb128 0x19
+ 1348 00ab 01       		.uleb128 0x1
+ 1349 00ac 13       		.uleb128 0x13
+ 1350 00ad 00       		.byte	0
+ 1351 00ae 00       		.byte	0
+ 1352 00af 0D       		.uleb128 0xd
+ 1353 00b0 05       		.uleb128 0x5
+ 1354 00b1 00       		.byte	0
+ 1355 00b2 03       		.uleb128 0x3
+ 1356 00b3 0E       		.uleb128 0xe
+ 1357 00b4 3A       		.uleb128 0x3a
+ 1358 00b5 0B       		.uleb128 0xb
+ 1359 00b6 3B       		.uleb128 0x3b
+ 1360 00b7 0B       		.uleb128 0xb
+ 1361 00b8 49       		.uleb128 0x49
+ 1362 00b9 13       		.uleb128 0x13
+ 1363 00ba 02       		.uleb128 0x2
+ 1364 00bb 17       		.uleb128 0x17
+ 1365 00bc 00       		.byte	0
+ 1366 00bd 00       		.byte	0
+ 1367 00be 0E       		.uleb128 0xe
+ 1368 00bf 34       		.uleb128 0x34
+ 1369 00c0 00       		.byte	0
+ 1370 00c1 03       		.uleb128 0x3
+ 1371 00c2 0E       		.uleb128 0xe
+ 1372 00c3 3A       		.uleb128 0x3a
+ 1373 00c4 0B       		.uleb128 0xb
+ 1374 00c5 3B       		.uleb128 0x3b
+ 1375 00c6 0B       		.uleb128 0xb
+ 1376 00c7 49       		.uleb128 0x49
+ 1377 00c8 13       		.uleb128 0x13
+ 1378 00c9 02       		.uleb128 0x2
+ 1379 00ca 17       		.uleb128 0x17
+ 1380 00cb 00       		.byte	0
+ 1381 00cc 00       		.byte	0
+ 1382 00cd 0F       		.uleb128 0xf
+ 1383 00ce 15       		.uleb128 0x15
+ 1384 00cf 01       		.byte	0x1
+ 1385 00d0 01       		.uleb128 0x1
+ 1386 00d1 13       		.uleb128 0x13
+ 1387 00d2 00       		.byte	0
+ 1388 00d3 00       		.byte	0
+ 1389 00d4 10       		.uleb128 0x10
+ 1390 00d5 18       		.uleb128 0x18
+ 1391 00d6 00       		.byte	0
+ 1392 00d7 00       		.byte	0
+ 1393 00d8 00       		.byte	0
+ 1394 00d9 11       		.uleb128 0x11
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 28
+
+
+ 1395 00da 0F       		.uleb128 0xf
+ 1396 00db 00       		.byte	0
+ 1397 00dc 0B       		.uleb128 0xb
+ 1398 00dd 0B       		.uleb128 0xb
+ 1399 00de 49       		.uleb128 0x49
+ 1400 00df 13       		.uleb128 0x13
+ 1401 00e0 00       		.byte	0
+ 1402 00e1 00       		.byte	0
+ 1403 00e2 12       		.uleb128 0x12
+ 1404 00e3 2E       		.uleb128 0x2e
+ 1405 00e4 01       		.byte	0x1
+ 1406 00e5 3F       		.uleb128 0x3f
+ 1407 00e6 19       		.uleb128 0x19
+ 1408 00e7 03       		.uleb128 0x3
+ 1409 00e8 0E       		.uleb128 0xe
+ 1410 00e9 3A       		.uleb128 0x3a
+ 1411 00ea 0B       		.uleb128 0xb
+ 1412 00eb 3B       		.uleb128 0x3b
+ 1413 00ec 0B       		.uleb128 0xb
+ 1414 00ed 27       		.uleb128 0x27
+ 1415 00ee 19       		.uleb128 0x19
+ 1416 00ef 49       		.uleb128 0x49
+ 1417 00f0 13       		.uleb128 0x13
+ 1418 00f1 8701     		.uleb128 0x87
+ 1419 00f3 19       		.uleb128 0x19
+ 1420 00f4 11       		.uleb128 0x11
+ 1421 00f5 01       		.uleb128 0x1
+ 1422 00f6 12       		.uleb128 0x12
+ 1423 00f7 06       		.uleb128 0x6
+ 1424 00f8 40       		.uleb128 0x40
+ 1425 00f9 18       		.uleb128 0x18
+ 1426 00fa 9742     		.uleb128 0x2117
+ 1427 00fc 19       		.uleb128 0x19
+ 1428 00fd 01       		.uleb128 0x1
+ 1429 00fe 13       		.uleb128 0x13
+ 1430 00ff 00       		.byte	0
+ 1431 0100 00       		.byte	0
+ 1432 0101 13       		.uleb128 0x13
+ 1433 0102 01       		.uleb128 0x1
+ 1434 0103 01       		.byte	0x1
+ 1435 0104 49       		.uleb128 0x49
+ 1436 0105 13       		.uleb128 0x13
+ 1437 0106 01       		.uleb128 0x1
+ 1438 0107 13       		.uleb128 0x13
+ 1439 0108 00       		.byte	0
+ 1440 0109 00       		.byte	0
+ 1441 010a 14       		.uleb128 0x14
+ 1442 010b 21       		.uleb128 0x21
+ 1443 010c 00       		.byte	0
+ 1444 010d 49       		.uleb128 0x49
+ 1445 010e 13       		.uleb128 0x13
+ 1446 010f 2F       		.uleb128 0x2f
+ 1447 0110 0B       		.uleb128 0xb
+ 1448 0111 00       		.byte	0
+ 1449 0112 00       		.byte	0
+ 1450 0113 15       		.uleb128 0x15
+ 1451 0114 34       		.uleb128 0x34
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 29
+
+
+ 1452 0115 00       		.byte	0
+ 1453 0116 03       		.uleb128 0x3
+ 1454 0117 0E       		.uleb128 0xe
+ 1455 0118 3A       		.uleb128 0x3a
+ 1456 0119 0B       		.uleb128 0xb
+ 1457 011a 3B       		.uleb128 0x3b
+ 1458 011b 0B       		.uleb128 0xb
+ 1459 011c 49       		.uleb128 0x49
+ 1460 011d 13       		.uleb128 0x13
+ 1461 011e 3F       		.uleb128 0x3f
+ 1462 011f 19       		.uleb128 0x19
+ 1463 0120 02       		.uleb128 0x2
+ 1464 0121 18       		.uleb128 0x18
+ 1465 0122 00       		.byte	0
+ 1466 0123 00       		.byte	0
+ 1467 0124 16       		.uleb128 0x16
+ 1468 0125 2E       		.uleb128 0x2e
+ 1469 0126 00       		.byte	0
+ 1470 0127 3F       		.uleb128 0x3f
+ 1471 0128 19       		.uleb128 0x19
+ 1472 0129 3C       		.uleb128 0x3c
+ 1473 012a 19       		.uleb128 0x19
+ 1474 012b 6E       		.uleb128 0x6e
+ 1475 012c 0E       		.uleb128 0xe
+ 1476 012d 03       		.uleb128 0x3
+ 1477 012e 0E       		.uleb128 0xe
+ 1478 012f 3A       		.uleb128 0x3a
+ 1479 0130 0B       		.uleb128 0xb
+ 1480 0131 3B       		.uleb128 0x3b
+ 1481 0132 0B       		.uleb128 0xb
+ 1482 0133 00       		.byte	0
+ 1483 0134 00       		.byte	0
+ 1484 0135 00       		.byte	0
+ 1485              		.section	.debug_loc,"",%progbits
+ 1486              	.Ldebug_loc0:
+ 1487              	.LLST0:
+ 1488 0000 02000000 		.4byte	.LVL0
+ 1489 0004 06000000 		.4byte	.LVL1
+ 1490 0008 0200     		.2byte	0x2
+ 1491 000a 30       		.byte	0x30
+ 1492 000b 9F       		.byte	0x9f
+ 1493 000c 06000000 		.4byte	.LVL1
+ 1494 0010 2C000000 		.4byte	.LVL7
+ 1495 0014 0100     		.2byte	0x1
+ 1496 0016 54       		.byte	0x54
+ 1497 0017 00000000 		.4byte	0
+ 1498 001b 00000000 		.4byte	0
+ 1499              	.LLST1:
+ 1500 001f 02000000 		.4byte	.LVL8
+ 1501 0023 06000000 		.4byte	.LVL9
+ 1502 0027 0200     		.2byte	0x2
+ 1503 0029 30       		.byte	0x30
+ 1504 002a 9F       		.byte	0x9f
+ 1505 002b 06000000 		.4byte	.LVL9
+ 1506 002f 2E000000 		.4byte	.LVL15
+ 1507 0033 0100     		.2byte	0x1
+ 1508 0035 54       		.byte	0x54
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 30
+
+
+ 1509 0036 00000000 		.4byte	0
+ 1510 003a 00000000 		.4byte	0
+ 1511              	.LLST2:
+ 1512 003e 02000000 		.4byte	.LVL16
+ 1513 0042 06000000 		.4byte	.LVL17
+ 1514 0046 0200     		.2byte	0x2
+ 1515 0048 30       		.byte	0x30
+ 1516 0049 9F       		.byte	0x9f
+ 1517 004a 06000000 		.4byte	.LVL17
+ 1518 004e 2E000000 		.4byte	.LVL23
+ 1519 0052 0100     		.2byte	0x1
+ 1520 0054 54       		.byte	0x54
+ 1521 0055 00000000 		.4byte	0
+ 1522 0059 00000000 		.4byte	0
+ 1523              	.LLST3:
+ 1524 005d 02000000 		.4byte	.LVL24
+ 1525 0061 06000000 		.4byte	.LVL25
+ 1526 0065 0200     		.2byte	0x2
+ 1527 0067 30       		.byte	0x30
+ 1528 0068 9F       		.byte	0x9f
+ 1529 0069 06000000 		.4byte	.LVL25
+ 1530 006d 24000000 		.4byte	.LVL30
+ 1531 0071 0100     		.2byte	0x1
+ 1532 0073 54       		.byte	0x54
+ 1533 0074 00000000 		.4byte	0
+ 1534 0078 00000000 		.4byte	0
+ 1535              	.LLST4:
+ 1536 007c 02000000 		.4byte	.LVL31
+ 1537 0080 06000000 		.4byte	.LVL32
+ 1538 0084 0200     		.2byte	0x2
+ 1539 0086 30       		.byte	0x30
+ 1540 0087 9F       		.byte	0x9f
+ 1541 0088 06000000 		.4byte	.LVL32
+ 1542 008c 2E000000 		.4byte	.LVL38
+ 1543 0090 0100     		.2byte	0x1
+ 1544 0092 54       		.byte	0x54
+ 1545 0093 00000000 		.4byte	0
+ 1546 0097 00000000 		.4byte	0
+ 1547              	.LLST5:
+ 1548 009b 00000000 		.4byte	.LVL39
+ 1549 009f 08000000 		.4byte	.LVL41
+ 1550 00a3 0100     		.2byte	0x1
+ 1551 00a5 50       		.byte	0x50
+ 1552 00a6 08000000 		.4byte	.LVL41
+ 1553 00aa 10000000 		.4byte	.LVL45
+ 1554 00ae 0100     		.2byte	0x1
+ 1555 00b0 55       		.byte	0x55
+ 1556 00b1 10000000 		.4byte	.LVL45
+ 1557 00b5 12000000 		.4byte	.LFE37
+ 1558 00b9 0400     		.2byte	0x4
+ 1559 00bb F3       		.byte	0xf3
+ 1560 00bc 01       		.uleb128 0x1
+ 1561 00bd 50       		.byte	0x50
+ 1562 00be 9F       		.byte	0x9f
+ 1563 00bf 00000000 		.4byte	0
+ 1564 00c3 00000000 		.4byte	0
+ 1565              	.LLST6:
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 31
+
+
+ 1566 00c7 04000000 		.4byte	.LVL40
+ 1567 00cb 08000000 		.4byte	.LVL41
+ 1568 00cf 0200     		.2byte	0x2
+ 1569 00d1 30       		.byte	0x30
+ 1570 00d2 9F       		.byte	0x9f
+ 1571 00d3 08000000 		.4byte	.LVL41
+ 1572 00d7 10000000 		.4byte	.LVL44
+ 1573 00db 0100     		.2byte	0x1
+ 1574 00dd 54       		.byte	0x54
+ 1575 00de 00000000 		.4byte	0
+ 1576 00e2 00000000 		.4byte	0
+ 1577              	.LLST7:
+ 1578 00e6 02000000 		.4byte	.LVL46
+ 1579 00ea 06000000 		.4byte	.LVL47
+ 1580 00ee 0200     		.2byte	0x2
+ 1581 00f0 30       		.byte	0x30
+ 1582 00f1 9F       		.byte	0x9f
+ 1583 00f2 06000000 		.4byte	.LVL47
+ 1584 00f6 30000000 		.4byte	.LVL53
+ 1585 00fa 0100     		.2byte	0x1
+ 1586 00fc 54       		.byte	0x54
+ 1587 00fd 00000000 		.4byte	0
+ 1588 0101 00000000 		.4byte	0
+ 1589              		.section	.debug_aranges,"",%progbits
+ 1590 0000 54000000 		.4byte	0x54
+ 1591 0004 0200     		.2byte	0x2
+ 1592 0006 00000000 		.4byte	.Ldebug_info0
+ 1593 000a 04       		.byte	0x4
+ 1594 000b 00       		.byte	0
+ 1595 000c 0000     		.2byte	0
+ 1596 000e 0000     		.2byte	0
+ 1597 0010 00000000 		.4byte	.LFB32
+ 1598 0014 34000000 		.4byte	.LFE32-.LFB32
+ 1599 0018 00000000 		.4byte	.LFB33
+ 1600 001c 34000000 		.4byte	.LFE33-.LFB33
+ 1601 0020 00000000 		.4byte	.LFB34
+ 1602 0024 34000000 		.4byte	.LFE34-.LFB34
+ 1603 0028 00000000 		.4byte	.LFB35
+ 1604 002c 26000000 		.4byte	.LFE35-.LFB35
+ 1605 0030 00000000 		.4byte	.LFB36
+ 1606 0034 34000000 		.4byte	.LFE36-.LFB36
+ 1607 0038 00000000 		.4byte	.LFB37
+ 1608 003c 12000000 		.4byte	.LFE37-.LFB37
+ 1609 0040 00000000 		.4byte	.LFB38
+ 1610 0044 38000000 		.4byte	.LFE38-.LFB38
+ 1611 0048 00000000 		.4byte	.LFB39
+ 1612 004c 3C000000 		.4byte	.LFE39-.LFB39
+ 1613 0050 00000000 		.4byte	0
+ 1614 0054 00000000 		.4byte	0
+ 1615              		.section	.debug_ranges,"",%progbits
+ 1616              	.Ldebug_ranges0:
+ 1617 0000 00000000 		.4byte	.LFB32
+ 1618 0004 34000000 		.4byte	.LFE32
+ 1619 0008 00000000 		.4byte	.LFB33
+ 1620 000c 34000000 		.4byte	.LFE33
+ 1621 0010 00000000 		.4byte	.LFB34
+ 1622 0014 34000000 		.4byte	.LFE34
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 32
+
+
+ 1623 0018 00000000 		.4byte	.LFB35
+ 1624 001c 26000000 		.4byte	.LFE35
+ 1625 0020 00000000 		.4byte	.LFB36
+ 1626 0024 34000000 		.4byte	.LFE36
+ 1627 0028 00000000 		.4byte	.LFB37
+ 1628 002c 12000000 		.4byte	.LFE37
+ 1629 0030 00000000 		.4byte	.LFB38
+ 1630 0034 38000000 		.4byte	.LFE38
+ 1631 0038 00000000 		.4byte	.LFB39
+ 1632 003c 3C000000 		.4byte	.LFE39
+ 1633 0040 00000000 		.4byte	0
+ 1634 0044 00000000 		.4byte	0
+ 1635              		.section	.debug_line,"",%progbits
+ 1636              	.Ldebug_line0:
+ 1637 0000 E3020000 		.section	.debug_str,"MS",%progbits,1
+ 1637      02005601 
+ 1637      00000201 
+ 1637      FB0E0D00 
+ 1637      01010101 
+ 1638              	.LASF9:
+ 1639 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1639      6E74385F 
+ 1639      7400
+ 1640              	.LASF27:
+ 1641 000a 646F744D 		.ascii	"dotMatrix_M\000"
+ 1641      61747269 
+ 1641      785F4D00 
+ 1642              	.LASF26:
+ 1643 0016 646F744D 		.ascii	"dotMatrix_R\000"
+ 1643      61747269 
+ 1643      785F5200 
+ 1644              	.LASF21:
+ 1645 0022 636F756E 		.ascii	"count\000"
+ 1645      7400
+ 1646              	.LASF23:
+ 1647 0028 646F744D 		.ascii	"dotMatrix_X\000"
+ 1647      61747269 
+ 1647      785F5800 
+ 1648              	.LASF3:
+ 1649 0034 73686F72 		.ascii	"short unsigned int\000"
+ 1649      7420756E 
+ 1649      7369676E 
+ 1649      65642069 
+ 1649      6E7400
+ 1650              	.LASF16:
+ 1651 0047 64697370 		.ascii	"displayDotMatrix_E\000"
+ 1651      6C617944 
+ 1651      6F744D61 
+ 1651      74726978 
+ 1651      5F4500
+ 1652              	.LASF24:
+ 1653 005a 646F744D 		.ascii	"dotMatrix_xx\000"
+ 1653      61747269 
+ 1653      785F7878 
+ 1653      00
+ 1654              	.LASF33:
+ 1655 0067 433A5C55 		.ascii	"C:\\Users\\uemre\\Documents\\PSoC Creator\\Workspac"
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 33
+
+
+ 1655      73657273 
+ 1655      5C75656D 
+ 1655      72655C44 
+ 1655      6F63756D 
+ 1656 0095 6530315C 		.ascii	"e01\\Design01.cydsn\000"
+ 1656      44657369 
+ 1656      676E3031 
+ 1656      2E637964 
+ 1656      736E00
+ 1657              	.LASF11:
+ 1658 00a8 666C6F61 		.ascii	"float\000"
+ 1658      7400
+ 1659              	.LASF18:
+ 1660 00ae 64697370 		.ascii	"displayDotMatrix_M\000"
+ 1660      6C617944 
+ 1660      6F744D61 
+ 1660      74726978 
+ 1660      5F4D00
+ 1661              	.LASF34:
+ 1662 00c1 64656C61 		.ascii	"delay\000"
+ 1662      7900
+ 1663              	.LASF1:
+ 1664 00c7 756E7369 		.ascii	"unsigned char\000"
+ 1664      676E6564 
+ 1664      20636861 
+ 1664      7200
+ 1665              	.LASF17:
+ 1666 00d5 64697370 		.ascii	"displayDotMatrix_R\000"
+ 1666      6C617944 
+ 1666      6F744D61 
+ 1666      74726978 
+ 1666      5F5200
+ 1667              	.LASF5:
+ 1668 00e8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1668      20756E73 
+ 1668      69676E65 
+ 1668      6420696E 
+ 1668      7400
+ 1669              	.LASF22:
+ 1670 00fa 64697370 		.ascii	"displayDotMatrix_X\000"
+ 1670      6C617944 
+ 1670      6F744D61 
+ 1670      74726978 
+ 1670      5F5800
+ 1671              	.LASF19:
+ 1672 010d 636C6561 		.ascii	"clearDotMatrix\000"
+ 1672      72446F74 
+ 1672      4D617472 
+ 1672      697800
+ 1673              	.LASF28:
+ 1674 011c 50696E5F 		.ascii	"Pin_Row_Write\000"
+ 1674      526F775F 
+ 1674      57726974 
+ 1674      6500
+ 1675              	.LASF12:
+ 1676 012a 646F7562 		.ascii	"double\000"
+ 1676      6C6500
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 34
+
+
+ 1677              	.LASF35:
+ 1678 0131 66756E63 		.ascii	"func\000"
+ 1678      00
+ 1679              	.LASF36:
+ 1680 0136 6D61696E 		.ascii	"main\000"
+ 1680      00
+ 1681              	.LASF8:
+ 1682 013b 756E7369 		.ascii	"unsigned int\000"
+ 1682      676E6564 
+ 1682      20696E74 
+ 1682      00
+ 1683              	.LASF7:
+ 1684 0148 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1684      206C6F6E 
+ 1684      6720756E 
+ 1684      7369676E 
+ 1684      65642069 
+ 1685              	.LASF10:
+ 1686 015f 75696E74 		.ascii	"uint8_t\000"
+ 1686      385F7400 
+ 1687              	.LASF31:
+ 1688 0167 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1688      43313120 
+ 1688      352E342E 
+ 1688      31203230 
+ 1688      31363036 
+ 1689 019a 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1689      20726576 
+ 1689      6973696F 
+ 1689      6E203233 
+ 1689      37373135 
+ 1690 01cd 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1690      66756E63 
+ 1690      74696F6E 
+ 1690      2D736563 
+ 1690      74696F6E 
+ 1691              	.LASF14:
+ 1692 01f5 73697A65 		.ascii	"sizetype\000"
+ 1692      74797065 
+ 1692      00
+ 1693              	.LASF6:
+ 1694 01fe 6C6F6E67 		.ascii	"long long int\000"
+ 1694      206C6F6E 
+ 1694      6720696E 
+ 1694      7400
+ 1695              	.LASF32:
+ 1696 020c 6D61696E 		.ascii	"main.c\000"
+ 1696      2E6300
+ 1697              	.LASF13:
+ 1698 0213 63686172 		.ascii	"char\000"
+ 1698      00
+ 1699              	.LASF29:
+ 1700 0218 50696E5F 		.ascii	"Pin_Col_Write\000"
+ 1700      436F6C5F 
+ 1700      57726974 
+ 1700      6500
+ 1701              	.LASF2:
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\ccO27xVq.s 			page 35
+
+
+ 1702 0226 73686F72 		.ascii	"short int\000"
+ 1702      7420696E 
+ 1702      7400
+ 1703              	.LASF4:
+ 1704 0230 6C6F6E67 		.ascii	"long int\000"
+ 1704      20696E74 
+ 1704      00
+ 1705              	.LASF15:
+ 1706 0239 6C6F6E67 		.ascii	"long double\000"
+ 1706      20646F75 
+ 1706      626C6500 
+ 1707              	.LASF0:
+ 1708 0245 7369676E 		.ascii	"signed char\000"
+ 1708      65642063 
+ 1708      68617200 
+ 1709              	.LASF20:
+ 1710 0251 64697370 		.ascii	"displayDotMatrix_xx\000"
+ 1710      6C617944 
+ 1710      6F744D61 
+ 1710      74726978 
+ 1710      5F787800 
+ 1711              	.LASF30:
+ 1712 0265 43794465 		.ascii	"CyDelay\000"
+ 1712      6C617900 
+ 1713              	.LASF25:
+ 1714 026d 646F744D 		.ascii	"dotMatrix_E\000"
+ 1714      61747269 
+ 1714      785F4500 
+ 1715              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,6 @@
+C:\Users\uemre\Documents\PSoC Creator\UZAKLIKSENSORU\Design01.cydsn\Design01.cyprj|d1cf47f0-df0e-4076-9f3e-123abfa8b484
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|90b11381-6ebf-44a1-9b8a-f95784d3bf0f
+C:\Users\uemre\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|3de29797-623d-43ae-a5e6-17d3b2752b92
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|e1c93d62-a8d5-41d1-bad7-645e2efc93c8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5a71f499-14db-4a6f-833f-6193c5338766
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|364055d1-48a7-498d-a7f2-94b1ef180b37

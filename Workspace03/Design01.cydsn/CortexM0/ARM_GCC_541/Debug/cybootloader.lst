@@ -1,0 +1,4628 @@
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cybootloader.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_meta_chipprotect
+  20              		.global	cy_meta_flashprotect
+  21              		.global	cy_metadata
+  22              		.global	cy_bootloader
+  23              		.global	cy_meta_loader
+  24              		.section	.cychipprotect,"a",%progbits
+  25              		.align	2
+  26              		.type	cy_meta_chipprotect, %object
+  27              		.size	cy_meta_chipprotect, 1
+  28              	cy_meta_chipprotect:
+  29 0000 01       		.byte	1
+  30              		.section	.cyloadermeta,"a",%progbits
+  31              		.align	2
+  32              		.type	cy_meta_loader, %object
+  33              		.size	cy_meta_loader, 64
+  34              	cy_meta_loader:
+  35 0000 4E       		.byte	78
+  36 0001 91       		.byte	-111
+  37 0002 07       		.byte	7
+  38 0003 00       		.byte	0
+  39 0004 00       		.byte	0
+  40 0005 0E       		.byte	14
+  41 0006 00       		.byte	0
+  42 0007 00       		.byte	0
+  43 0008 00       		.byte	0
+  44 0009 80       		.byte	-128
+  45 000a 07       		.byte	7
+  46 000b 00       		.byte	0
+  47 000c 00       		.byte	0
+  48 000d 00       		.byte	0
+  49 000e 00       		.byte	0
+  50 000f 00       		.byte	0
+  51 0010 00       		.byte	0
+  52 0011 00       		.byte	0
+  53 0012 00       		.byte	0
+  54 0013 00       		.byte	0
+  55 0014 00       		.byte	0
+  56 0015 00       		.byte	0
+  57 0016 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 2
+
+
+  58 0017 00       		.byte	0
+  59 0018 00       		.byte	0
+  60 0019 00       		.byte	0
+  61 001a 00       		.byte	0
+  62 001b 00       		.byte	0
+  63 001c 00       		.byte	0
+  64 001d 00       		.byte	0
+  65 001e 00       		.byte	0
+  66 001f 00       		.byte	0
+  67 0020 00       		.byte	0
+  68 0021 00       		.byte	0
+  69 0022 00       		.byte	0
+  70 0023 00       		.byte	0
+  71 0024 00       		.byte	0
+  72 0025 00       		.byte	0
+  73 0026 00       		.byte	0
+  74 0027 00       		.byte	0
+  75 0028 00       		.byte	0
+  76 0029 00       		.byte	0
+  77 002a 00       		.byte	0
+  78 002b 00       		.byte	0
+  79 002c 00       		.byte	0
+  80 002d 00       		.byte	0
+  81 002e 00       		.byte	0
+  82 002f 00       		.byte	0
+  83 0030 00       		.byte	0
+  84 0031 00       		.byte	0
+  85 0032 00       		.byte	0
+  86 0033 00       		.byte	0
+  87 0034 00       		.byte	0
+  88 0035 00       		.byte	0
+  89 0036 00       		.byte	0
+  90 0037 00       		.byte	0
+  91 0038 00       		.byte	0
+  92 0039 00       		.byte	0
+  93 003a 00       		.byte	0
+  94 003b 00       		.byte	0
+  95 003c 00       		.byte	0
+  96 003d 00       		.byte	0
+  97 003e 00       		.byte	0
+  98 003f 00       		.byte	0
+  99              		.section	.cymeta,"a",%progbits
+ 100              		.align	2
+ 101              		.type	cy_metadata, %object
+ 102              		.size	cy_metadata, 12
+ 103              	cy_metadata:
+ 104 0000 00       		.byte	0
+ 105 0001 02       		.byte	2
+ 106 0002 04       		.byte	4
+ 107 0003 C8       		.byte	-56
+ 108 0004 11       		.byte	17
+ 109 0005 93       		.byte	-109
+ 110 0006 11       		.byte	17
+ 111 0007 01       		.byte	1
+ 112 0008 04       		.byte	4
+ 113 0009 CC       		.byte	-52
+ 114 000a 8D       		.byte	-115
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 3
+
+
+ 115 000b DB       		.byte	-37
+ 116              		.section	.cybootloader,"a",%progbits
+ 117              		.align	2
+ 118              		.type	cy_bootloader, %object
+ 119              		.size	cy_bootloader, 3840
+ 120              	cy_bootloader:
+ 121 0000 00       		.byte	0
+ 122 0001 10       		.byte	16
+ 123 0002 00       		.byte	0
+ 124 0003 20       		.byte	32
+ 125 0004 11       		.byte	17
+ 126 0005 00       		.byte	0
+ 127 0006 00       		.byte	0
+ 128 0007 00       		.byte	0
+ 129 0008 91       		.byte	-111
+ 130 0009 01       		.byte	1
+ 131 000a 00       		.byte	0
+ 132 000b 00       		.byte	0
+ 133 000c 91       		.byte	-111
+ 134 000d 01       		.byte	1
+ 135 000e 00       		.byte	0
+ 136 000f 00       		.byte	0
+ 137 0010 10       		.byte	16
+ 138 0011 B5       		.byte	-75
+ 139 0012 00       		.byte	0
+ 140 0013 F0       		.byte	-16
+ 141 0014 C5       		.byte	-59
+ 142 0015 F8       		.byte	-8
+ 143 0016 C0       		.byte	-64
+ 144 0017 46       		.byte	70
+ 145 0018 70       		.byte	112
+ 146 0019 B5       		.byte	-75
+ 147 001a 0F       		.byte	15
+ 148 001b 4C       		.byte	76
+ 149 001c 23       		.byte	35
+ 150 001d 68       		.byte	104
+ 151 001e 80       		.byte	-128
+ 152 001f 22       		.byte	34
+ 153 0020 D2       		.byte	-46
+ 154 0021 02       		.byte	2
+ 155 0022 13       		.byte	19
+ 156 0023 43       		.byte	67
+ 157 0024 23       		.byte	35
+ 158 0025 60       		.byte	96
+ 159 0026 18       		.byte	24
+ 160 0027 20       		.byte	32
+ 161 0028 00       		.byte	0
+ 162 0029 F0       		.byte	-16
+ 163 002a 44       		.byte	68
+ 164 002b F9       		.byte	-7
+ 165 002c 22       		.byte	34
+ 166 002d 68       		.byte	104
+ 167 002e 0B       		.byte	11
+ 168 002f 4B       		.byte	75
+ 169 0030 13       		.byte	19
+ 170 0031 40       		.byte	64
+ 171 0032 23       		.byte	35
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 4
+
+
+ 172 0033 60       		.byte	96
+ 173 0034 0A       		.byte	10
+ 174 0035 4A       		.byte	74
+ 175 0036 0B       		.byte	11
+ 176 0037 4B       		.byte	75
+ 177 0038 1A       		.byte	26
+ 178 0039 60       		.byte	96
+ 179 003a 06       		.byte	6
+ 180 003b 3A       		.byte	58
+ 181 003c 0A       		.byte	10
+ 182 003d 4B       		.byte	75
+ 183 003e 1A       		.byte	26
+ 184 003f 60       		.byte	96
+ 185 0040 00       		.byte	0
+ 186 0041 25       		.byte	37
+ 187 0042 25       		.byte	37
+ 188 0043 60       		.byte	96
+ 189 0044 09       		.byte	9
+ 190 0045 49       		.byte	73
+ 191 0046 09       		.byte	9
+ 192 0047 20       		.byte	32
+ 193 0048 00       		.byte	0
+ 194 0049 F0       		.byte	-16
+ 195 004a 00       		.byte	0
+ 196 004b F9       		.byte	-7
+ 197 004c 09       		.byte	9
+ 198 004d 20       		.byte	32
+ 199 004e 00       		.byte	0
+ 200 004f F0       		.byte	-16
+ 201 0050 F1       		.byte	-15
+ 202 0051 F8       		.byte	-8
+ 203 0052 07       		.byte	7
+ 204 0053 4B       		.byte	75
+ 205 0054 1D       		.byte	29
+ 206 0055 60       		.byte	96
+ 207 0056 70       		.byte	112
+ 208 0057 BD       		.byte	-67
+ 209 0058 00       		.byte	0
+ 210 0059 01       		.byte	1
+ 211 005a 0B       		.byte	11
+ 212 005b 40       		.byte	64
+ 213 005c FF       		.byte	-1
+ 214 005d FF       		.byte	-1
+ 215 005e FB       		.byte	-5
+ 216 005f FF       		.byte	-1
+ 217 0060 06       		.byte	6
+ 218 0061 00       		.byte	0
+ 219 0062 00       		.byte	0
+ 220 0063 80       		.byte	-128
+ 221 0064 04       		.byte	4
+ 222 0065 01       		.byte	1
+ 223 0066 0B       		.byte	11
+ 224 0067 40       		.byte	64
+ 225 0068 08       		.byte	8
+ 226 0069 01       		.byte	1
+ 227 006a 0B       		.byte	11
+ 228 006b 40       		.byte	64
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 5
+
+
+ 229 006c C5       		.byte	-59
+ 230 006d 04       		.byte	4
+ 231 006e 00       		.byte	0
+ 232 006f 00       		.byte	0
+ 233 0070 0C       		.byte	12
+ 234 0071 02       		.byte	2
+ 235 0072 0B       		.byte	11
+ 236 0073 40       		.byte	64
+ 237 0074 10       		.byte	16
+ 238 0075 B5       		.byte	-75
+ 239 0076 72       		.byte	114
+ 240 0077 B6       		.byte	-74
+ 241 0078 00       		.byte	0
+ 242 0079 24       		.byte	36
+ 243 007a 0F       		.byte	15
+ 244 007b E0       		.byte	-32
+ 245 007c 15       		.byte	21
+ 246 007d 48       		.byte	72
+ 247 007e 62       		.byte	98
+ 248 007f 00       		.byte	0
+ 249 0080 13       		.byte	19
+ 250 0081 19       		.byte	25
+ 251 0082 59       		.byte	89
+ 252 0083 00       		.byte	0
+ 253 0084 0B       		.byte	11
+ 254 0085 00       		.byte	0
+ 255 0086 41       		.byte	65
+ 256 0087 18       		.byte	24
+ 257 0088 89       		.byte	-119
+ 258 0089 88       		.byte	-120
+ 259 008a 1A       		.byte	26
+ 260 008b 5A       		.byte	90
+ 261 008c C3       		.byte	-61
+ 262 008d 18       		.byte	24
+ 263 008e 58       		.byte	88
+ 264 008f 88       		.byte	-120
+ 265 0090 00       		.byte	0
+ 266 0091 04       		.byte	4
+ 267 0092 10       		.byte	16
+ 268 0093 43       		.byte	67
+ 269 0094 00       		.byte	0
+ 270 0095 F0       		.byte	-16
+ 271 0096 76       		.byte	118
+ 272 0097 F8       		.byte	-8
+ 273 0098 01       		.byte	1
+ 274 0099 34       		.byte	52
+ 275 009a E4       		.byte	-28
+ 276 009b B2       		.byte	-78
+ 277 009c 01       		.byte	1
+ 278 009d 2C       		.byte	44
+ 279 009e ED       		.byte	-19
+ 280 009f D9       		.byte	-39
+ 281 00a0 EE       		.byte	-18
+ 282 00a1 22       		.byte	34
+ 283 00a2 12       		.byte	18
+ 284 00a3 02       		.byte	2
+ 285 00a4 0C       		.byte	12
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 6
+
+
+ 286 00a5 4B       		.byte	75
+ 287 00a6 1A       		.byte	26
+ 288 00a7 60       		.byte	96
+ 289 00a8 99       		.byte	-103
+ 290 00a9 23       		.byte	35
+ 291 00aa 1B       		.byte	27
+ 292 00ab 04       		.byte	4
+ 293 00ac 0B       		.byte	11
+ 294 00ad 4A       		.byte	74
+ 295 00ae 13       		.byte	19
+ 296 00af 60       		.byte	96
+ 297 00b0 0B       		.byte	11
+ 298 00b1 4A       		.byte	74
+ 299 00b2 13       		.byte	19
+ 300 00b3 60       		.byte	96
+ 301 00b4 0B       		.byte	11
+ 302 00b5 4A       		.byte	74
+ 303 00b6 11       		.byte	17
+ 304 00b7 78       		.byte	120
+ 305 00b8 06       		.byte	6
+ 306 00b9 23       		.byte	35
+ 307 00ba 0B       		.byte	11
+ 308 00bb 43       		.byte	67
+ 309 00bc DB       		.byte	-37
+ 310 00bd B2       		.byte	-78
+ 311 00be 13       		.byte	19
+ 312 00bf 70       		.byte	112
+ 313 00c0 09       		.byte	9
+ 314 00c1 4A       		.byte	74
+ 315 00c2 0A       		.byte	10
+ 316 00c3 4B       		.byte	75
+ 317 00c4 1A       		.byte	26
+ 318 00c5 60       		.byte	96
+ 319 00c6 D8       		.byte	-40
+ 320 00c7 22       		.byte	34
+ 321 00c8 12       		.byte	18
+ 322 00c9 01       		.byte	1
+ 323 00ca 09       		.byte	9
+ 324 00cb 4B       		.byte	75
+ 325 00cc 1A       		.byte	26
+ 326 00cd 60       		.byte	96
+ 327 00ce FF       		.byte	-1
+ 328 00cf F7       		.byte	-9
+ 329 00d0 A3       		.byte	-93
+ 330 00d1 FF       		.byte	-1
+ 331 00d2 10       		.byte	16
+ 332 00d3 BD       		.byte	-67
+ 333 00d4 38       		.byte	56
+ 334 00d5 06       		.byte	6
+ 335 00d6 00       		.byte	0
+ 336 00d7 00       		.byte	0
+ 337 00d8 0C       		.byte	12
+ 338 00d9 00       		.byte	0
+ 339 00da 01       		.byte	1
+ 340 00db 40       		.byte	64
+ 341 00dc 00       		.byte	0
+ 342 00dd 50       		.byte	80
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 7
+
+
+ 343 00de 0F       		.byte	15
+ 344 00df 40       		.byte	64
+ 345 00e0 30       		.byte	48
+ 346 00e1 50       		.byte	80
+ 347 00e2 0F       		.byte	15
+ 348 00e3 40       		.byte	64
+ 349 00e4 00       		.byte	0
+ 350 00e5 70       		.byte	112
+ 351 00e6 0F       		.byte	15
+ 352 00e7 40       		.byte	64
+ 353 00e8 B6       		.byte	-74
+ 354 00e9 6D       		.byte	109
+ 355 00ea DB       		.byte	-37
+ 356 00eb 00       		.byte	0
+ 357 00ec 08       		.byte	8
+ 358 00ed 00       		.byte	0
+ 359 00ee 04       		.byte	4
+ 360 00ef 40       		.byte	64
+ 361 00f0 08       		.byte	8
+ 362 00f1 03       		.byte	3
+ 363 00f2 04       		.byte	4
+ 364 00f3 40       		.byte	64
+ 365 00f4 00       		.byte	0
+ 366 00f5 00       		.byte	0
+ 367 00f6 00       		.byte	0
+ 368 00f7 00       		.byte	0
+ 369 00f8 00       		.byte	0
+ 370 00f9 00       		.byte	0
+ 371 00fa 00       		.byte	0
+ 372 00fb 00       		.byte	0
+ 373 00fc 00       		.byte	0
+ 374 00fd 00       		.byte	0
+ 375 00fe 00       		.byte	0
+ 376 00ff 00       		.byte	0
+ 377 0100 10       		.byte	16
+ 378 0101 B5       		.byte	-75
+ 379 0102 06       		.byte	6
+ 380 0103 4C       		.byte	76
+ 381 0104 23       		.byte	35
+ 382 0105 78       		.byte	120
+ 383 0106 00       		.byte	0
+ 384 0107 2B       		.byte	43
+ 385 0108 07       		.byte	7
+ 386 0109 D1       		.byte	-47
+ 387 010a 05       		.byte	5
+ 388 010b 4B       		.byte	75
+ 389 010c 00       		.byte	0
+ 390 010d 2B       		.byte	43
+ 391 010e 02       		.byte	2
+ 392 010f D0       		.byte	-48
+ 393 0110 04       		.byte	4
+ 394 0111 48       		.byte	72
+ 395 0112 00       		.byte	0
+ 396 0113 E0       		.byte	-32
+ 397 0114 00       		.byte	0
+ 398 0115 BF       		.byte	-65
+ 399 0116 01       		.byte	1
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 8
+
+
+ 400 0117 23       		.byte	35
+ 401 0118 23       		.byte	35
+ 402 0119 70       		.byte	112
+ 403 011a 10       		.byte	16
+ 404 011b BD       		.byte	-67
+ 405 011c 40       		.byte	64
+ 406 011d 01       		.byte	1
+ 407 011e 00       		.byte	0
+ 408 011f 20       		.byte	32
+ 409 0120 00       		.byte	0
+ 410 0121 00       		.byte	0
+ 411 0122 00       		.byte	0
+ 412 0123 00       		.byte	0
+ 413 0124 F4       		.byte	-12
+ 414 0125 05       		.byte	5
+ 415 0126 00       		.byte	0
+ 416 0127 00       		.byte	0
+ 417 0128 08       		.byte	8
+ 418 0129 4B       		.byte	75
+ 419 012a 10       		.byte	16
+ 420 012b B5       		.byte	-75
+ 421 012c 00       		.byte	0
+ 422 012d 2B       		.byte	43
+ 423 012e 03       		.byte	3
+ 424 012f D0       		.byte	-48
+ 425 0130 07       		.byte	7
+ 426 0131 49       		.byte	73
+ 427 0132 08       		.byte	8
+ 428 0133 48       		.byte	72
+ 429 0134 00       		.byte	0
+ 430 0135 E0       		.byte	-32
+ 431 0136 00       		.byte	0
+ 432 0137 BF       		.byte	-65
+ 433 0138 07       		.byte	7
+ 434 0139 48       		.byte	72
+ 435 013a 03       		.byte	3
+ 436 013b 68       		.byte	104
+ 437 013c 00       		.byte	0
+ 438 013d 2B       		.byte	43
+ 439 013e 00       		.byte	0
+ 440 013f D1       		.byte	-47
+ 441 0140 10       		.byte	16
+ 442 0141 BD       		.byte	-67
+ 443 0142 06       		.byte	6
+ 444 0143 4B       		.byte	75
+ 445 0144 00       		.byte	0
+ 446 0145 2B       		.byte	43
+ 447 0146 FB       		.byte	-5
+ 448 0147 D0       		.byte	-48
+ 449 0148 98       		.byte	-104
+ 450 0149 47       		.byte	71
+ 451 014a F9       		.byte	-7
+ 452 014b E7       		.byte	-25
+ 453 014c 00       		.byte	0
+ 454 014d 00       		.byte	0
+ 455 014e 00       		.byte	0
+ 456 014f 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 9
+
+
+ 457 0150 44       		.byte	68
+ 458 0151 01       		.byte	1
+ 459 0152 00       		.byte	0
+ 460 0153 20       		.byte	32
+ 461 0154 F4       		.byte	-12
+ 462 0155 05       		.byte	5
+ 463 0156 00       		.byte	0
+ 464 0157 00       		.byte	0
+ 465 0158 C0       		.byte	-64
+ 466 0159 00       		.byte	0
+ 467 015a 00       		.byte	0
+ 468 015b 20       		.byte	32
+ 469 015c 00       		.byte	0
+ 470 015d 00       		.byte	0
+ 471 015e 00       		.byte	0
+ 472 015f 00       		.byte	0
+ 473 0160 10       		.byte	16
+ 474 0161 B5       		.byte	-75
+ 475 0162 62       		.byte	98
+ 476 0163 B6       		.byte	-74
+ 477 0164 00       		.byte	0
+ 478 0165 24       		.byte	36
+ 479 0166 08       		.byte	8
+ 480 0167 E0       		.byte	-32
+ 481 0168 A3       		.byte	-93
+ 482 0169 00       		.byte	0
+ 483 016a 05       		.byte	5
+ 484 016b 4A       		.byte	74
+ 485 016c D0       		.byte	-48
+ 486 016d 5C       		.byte	92
+ 487 016e 00       		.byte	0
+ 488 016f F0       		.byte	-16
+ 489 0170 5B       		.byte	91
+ 490 0171 F8       		.byte	-8
+ 491 0172 C8       		.byte	-56
+ 492 0173 20       		.byte	32
+ 493 0174 00       		.byte	0
+ 494 0175 F0       		.byte	-16
+ 495 0176 7C       		.byte	124
+ 496 0177 F8       		.byte	-8
+ 497 0178 01       		.byte	1
+ 498 0179 34       		.byte	52
+ 499 017a 10       		.byte	16
+ 500 017b 2C       		.byte	44
+ 501 017c F4       		.byte	-12
+ 502 017d DD       		.byte	-35
+ 503 017e F1       		.byte	-15
+ 504 017f E7       		.byte	-25
+ 505 0180 F8       		.byte	-8
+ 506 0181 05       		.byte	5
+ 507 0182 00       		.byte	0
+ 508 0183 00       		.byte	0
+ 509 0184 10       		.byte	16
+ 510 0185 B5       		.byte	-75
+ 511 0186 0A       		.byte	10
+ 512 0187 00       		.byte	0
+ 513 0188 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 10
+
+
+ 514 0189 21       		.byte	33
+ 515 018a 00       		.byte	0
+ 516 018b F0       		.byte	-16
+ 517 018c 2B       		.byte	43
+ 518 018d FA       		.byte	-6
+ 519 018e 10       		.byte	16
+ 520 018f BD       		.byte	-67
+ 521 0190 10       		.byte	16
+ 522 0191 B5       		.byte	-75
+ 523 0192 00       		.byte	0
+ 524 0193 F0       		.byte	-16
+ 525 0194 FB       		.byte	-5
+ 526 0195 F9       		.byte	-7
+ 527 0196 03       		.byte	3
+ 528 0197 68       		.byte	104
+ 529 0198 0C       		.byte	12
+ 530 0199 2B       		.byte	43
+ 531 019a 00       		.byte	0
+ 532 019b D1       		.byte	-47
+ 533 019c FE       		.byte	-2
+ 534 019d E7       		.byte	-25
+ 535 019e FE       		.byte	-2
+ 536 019f E7       		.byte	-25
+ 537 01a0 70       		.byte	112
+ 538 01a1 B5       		.byte	-75
+ 539 01a2 0F       		.byte	15
+ 540 01a3 4E       		.byte	78
+ 541 01a4 0F       		.byte	15
+ 542 01a5 4D       		.byte	77
+ 543 01a6 13       		.byte	19
+ 544 01a7 E0       		.byte	-32
+ 545 01a8 29       		.byte	41
+ 546 01a9 68       		.byte	104
+ 547 01aa 6B       		.byte	107
+ 548 01ab 68       		.byte	104
+ 549 01ac AC       		.byte	-84
+ 550 01ad 68       		.byte	104
+ 551 01ae 00       		.byte	0
+ 552 01af 22       		.byte	34
+ 553 01b0 02       		.byte	2
+ 554 01b1 E0       		.byte	-32
+ 555 01b2 01       		.byte	1
+ 556 01b3 C9       		.byte	-55
+ 557 01b4 01       		.byte	1
+ 558 01b5 C3       		.byte	-61
+ 559 01b6 04       		.byte	4
+ 560 01b7 32       		.byte	50
+ 561 01b8 A2       		.byte	-94
+ 562 01b9 42       		.byte	66
+ 563 01ba FA       		.byte	-6
+ 564 01bb D1       		.byte	-47
+ 565 01bc E8       		.byte	-24
+ 566 01bd 68       		.byte	104
+ 567 01be 00       		.byte	0
+ 568 01bf 22       		.byte	34
+ 569 01c0 02       		.byte	2
+ 570 01c1 E0       		.byte	-32
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 11
+
+
+ 571 01c2 00       		.byte	0
+ 572 01c3 21       		.byte	33
+ 573 01c4 02       		.byte	2
+ 574 01c5 C3       		.byte	-61
+ 575 01c6 04       		.byte	4
+ 576 01c7 32       		.byte	50
+ 577 01c8 82       		.byte	-126
+ 578 01c9 42       		.byte	66
+ 579 01ca FA       		.byte	-6
+ 580 01cb D1       		.byte	-47
+ 581 01cc 10       		.byte	16
+ 582 01cd 35       		.byte	53
+ 583 01ce 01       		.byte	1
+ 584 01cf 3E       		.byte	62
+ 585 01d0 00       		.byte	0
+ 586 01d1 2E       		.byte	46
+ 587 01d2 E9       		.byte	-23
+ 588 01d3 D1       		.byte	-47
+ 589 01d4 00       		.byte	0
+ 590 01d5 F0       		.byte	-16
+ 591 01d6 E0       		.byte	-32
+ 592 01d7 F9       		.byte	-7
+ 593 01d8 FF       		.byte	-1
+ 594 01d9 F7       		.byte	-9
+ 595 01da C2       		.byte	-62
+ 596 01db FF       		.byte	-1
+ 597 01dc FE       		.byte	-2
+ 598 01dd E7       		.byte	-25
+ 599 01de C0       		.byte	-64
+ 600 01df 46       		.byte	70
+ 601 01e0 01       		.byte	1
+ 602 01e1 00       		.byte	0
+ 603 01e2 00       		.byte	0
+ 604 01e3 00       		.byte	0
+ 605 01e4 98       		.byte	-104
+ 606 01e5 06       		.byte	6
+ 607 01e6 00       		.byte	0
+ 608 01e7 00       		.byte	0
+ 609 01e8 10       		.byte	16
+ 610 01e9 B5       		.byte	-75
+ 611 01ea 00       		.byte	0
+ 612 01eb 23       		.byte	35
+ 613 01ec 0A       		.byte	10
+ 614 01ed E0       		.byte	-32
+ 615 01ee 03       		.byte	3
+ 616 01ef 2B       		.byte	43
+ 617 01f0 03       		.byte	3
+ 618 01f1 D8       		.byte	-40
+ 619 01f2 9A       		.byte	-102
+ 620 01f3 00       		.byte	0
+ 621 01f4 09       		.byte	9
+ 622 01f5 49       		.byte	73
+ 623 01f6 50       		.byte	80
+ 624 01f7 58       		.byte	88
+ 625 01f8 00       		.byte	0
+ 626 01f9 E0       		.byte	-32
+ 627 01fa 09       		.byte	9
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 12
+
+
+ 628 01fb 48       		.byte	72
+ 629 01fc 99       		.byte	-103
+ 630 01fd 00       		.byte	0
+ 631 01fe 09       		.byte	9
+ 632 01ff 4A       		.byte	74
+ 633 0200 88       		.byte	-120
+ 634 0201 50       		.byte	80
+ 635 0202 01       		.byte	1
+ 636 0203 33       		.byte	51
+ 637 0204 2F       		.byte	47
+ 638 0205 2B       		.byte	43
+ 639 0206 F2       		.byte	-14
+ 640 0207 D9       		.byte	-39
+ 641 0208 FF       		.byte	-1
+ 642 0209 F7       		.byte	-9
+ 643 020a 34       		.byte	52
+ 644 020b FF       		.byte	-1
+ 645 020c 80       		.byte	-128
+ 646 020d 22       		.byte	34
+ 647 020e D2       		.byte	-46
+ 648 020f 05       		.byte	5
+ 649 0210 11       		.byte	17
+ 650 0211 68       		.byte	104
+ 651 0212 01       		.byte	1
+ 652 0213 23       		.byte	35
+ 653 0214 0B       		.byte	11
+ 654 0215 43       		.byte	67
+ 655 0216 13       		.byte	19
+ 656 0217 60       		.byte	96
+ 657 0218 10       		.byte	16
+ 658 0219 BD       		.byte	-67
+ 659 021a C0       		.byte	-64
+ 660 021b 46       		.byte	70
+ 661 021c 00       		.byte	0
+ 662 021d 00       		.byte	0
+ 663 021e 00       		.byte	0
+ 664 021f 00       		.byte	0
+ 665 0220 91       		.byte	-111
+ 666 0221 01       		.byte	1
+ 667 0222 00       		.byte	0
+ 668 0223 00       		.byte	0
+ 669 0224 00       		.byte	0
+ 670 0225 00       		.byte	0
+ 671 0226 00       		.byte	0
+ 672 0227 20       		.byte	32
+ 673 0228 01       		.byte	1
+ 674 0229 4B       		.byte	75
+ 675 022a 1A       		.byte	26
+ 676 022b 68       		.byte	104
+ 677 022c 18       		.byte	24
+ 678 022d 60       		.byte	96
+ 679 022e 70       		.byte	112
+ 680 022f 47       		.byte	71
+ 681 0230 00       		.byte	0
+ 682 0231 00       		.byte	0
+ 683 0232 04       		.byte	4
+ 684 0233 40       		.byte	64
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 13
+
+
+ 685 0234 1F       		.byte	31
+ 686 0235 23       		.byte	35
+ 687 0236 18       		.byte	24
+ 688 0237 40       		.byte	64
+ 689 0238 1E       		.byte	30
+ 690 0239 3B       		.byte	59
+ 691 023a 83       		.byte	-125
+ 692 023b 40       		.byte	64
+ 693 023c 01       		.byte	1
+ 694 023d 4A       		.byte	74
+ 695 023e 13       		.byte	19
+ 696 023f 60       		.byte	96
+ 697 0240 70       		.byte	112
+ 698 0241 47       		.byte	71
+ 699 0242 C0       		.byte	-64
+ 700 0243 46       		.byte	70
+ 701 0244 00       		.byte	0
+ 702 0245 E1       		.byte	-31
+ 703 0246 00       		.byte	0
+ 704 0247 E0       		.byte	-32
+ 705 0248 01       		.byte	1
+ 706 0249 BE       		.byte	-66
+ 707 024a 70       		.byte	112
+ 708 024b 47       		.byte	71
+ 709 024c 70       		.byte	112
+ 710 024d B5       		.byte	-75
+ 711 024e 04       		.byte	4
+ 712 024f 00       		.byte	0
+ 713 0250 0D       		.byte	13
+ 714 0251 00       		.byte	0
+ 715 0252 1F       		.byte	31
+ 716 0253 28       		.byte	40
+ 717 0254 02       		.byte	2
+ 718 0255 D9       		.byte	-39
+ 719 0256 00       		.byte	0
+ 720 0257 20       		.byte	32
+ 721 0258 FF       		.byte	-1
+ 722 0259 F7       		.byte	-9
+ 723 025a F6       		.byte	-10
+ 724 025b FF       		.byte	-1
+ 725 025c 10       		.byte	16
+ 726 025d 34       		.byte	52
+ 727 025e A4       		.byte	-92
+ 728 025f 00       		.byte	0
+ 729 0260 80       		.byte	-128
+ 730 0261 23       		.byte	35
+ 731 0262 9B       		.byte	-101
+ 732 0263 05       		.byte	5
+ 733 0264 9C       		.byte	-100
+ 734 0265 46       		.byte	70
+ 735 0266 64       		.byte	100
+ 736 0267 44       		.byte	68
+ 737 0268 20       		.byte	32
+ 738 0269 68       		.byte	104
+ 739 026a 25       		.byte	37
+ 740 026b 60       		.byte	96
+ 741 026c 70       		.byte	112
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 14
+
+
+ 742 026d BD       		.byte	-67
+ 743 026e C0       		.byte	-64
+ 744 026f 46       		.byte	70
+ 745 0270 10       		.byte	16
+ 746 0271 B5       		.byte	-75
+ 747 0272 04       		.byte	4
+ 748 0273 00       		.byte	0
+ 749 0274 06       		.byte	6
+ 750 0275 E0       		.byte	-32
+ 751 0276 08       		.byte	8
+ 752 0277 4B       		.byte	75
+ 753 0278 58       		.byte	88
+ 754 0279 68       		.byte	104
+ 755 027a 00       		.byte	0
+ 756 027b F0       		.byte	-16
+ 757 027c 75       		.byte	117
+ 758 027d F9       		.byte	-7
+ 759 027e 07       		.byte	7
+ 760 027f 4B       		.byte	75
+ 761 0280 9C       		.byte	-100
+ 762 0281 46       		.byte	70
+ 763 0282 64       		.byte	100
+ 764 0283 44       		.byte	68
+ 765 0284 80       		.byte	-128
+ 766 0285 23       		.byte	35
+ 767 0286 1B       		.byte	27
+ 768 0287 02       		.byte	2
+ 769 0288 9C       		.byte	-100
+ 770 0289 42       		.byte	66
+ 771 028a F4       		.byte	-12
+ 772 028b D8       		.byte	-40
+ 773 028c 02       		.byte	2
+ 774 028d 4B       		.byte	75
+ 775 028e 98       		.byte	-104
+ 776 028f 68       		.byte	104
+ 777 0290 60       		.byte	96
+ 778 0291 43       		.byte	67
+ 779 0292 00       		.byte	0
+ 780 0293 F0       		.byte	-16
+ 781 0294 69       		.byte	105
+ 782 0295 F9       		.byte	-7
+ 783 0296 10       		.byte	16
+ 784 0297 BD       		.byte	-67
+ 785 0298 C4       		.byte	-60
+ 786 0299 00       		.byte	0
+ 787 029a 00       		.byte	0
+ 788 029b 20       		.byte	32
+ 789 029c 00       		.byte	0
+ 790 029d 80       		.byte	-128
+ 791 029e FF       		.byte	-1
+ 792 029f FF       		.byte	-1
+ 793 02a0 10       		.byte	16
+ 794 02a1 B5       		.byte	-75
+ 795 02a2 03       		.byte	3
+ 796 02a3 4B       		.byte	75
+ 797 02a4 1B       		.byte	27
+ 798 02a5 7B       		.byte	123
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 15
+
+
+ 799 02a6 58       		.byte	88
+ 800 02a7 43       		.byte	67
+ 801 02a8 00       		.byte	0
+ 802 02a9 F0       		.byte	-16
+ 803 02aa 5E       		.byte	94
+ 804 02ab F9       		.byte	-7
+ 805 02ac 10       		.byte	16
+ 806 02ad BD       		.byte	-67
+ 807 02ae C0       		.byte	-64
+ 808 02af 46       		.byte	70
+ 809 02b0 C4       		.byte	-60
+ 810 02b1 00       		.byte	0
+ 811 02b2 00       		.byte	0
+ 812 02b3 20       		.byte	32
+ 813 02b4 F0       		.byte	-16
+ 814 02b5 B5       		.byte	-75
+ 815 02b6 57       		.byte	87
+ 816 02b7 46       		.byte	70
+ 817 02b8 4E       		.byte	78
+ 818 02b9 46       		.byte	70
+ 819 02ba C0       		.byte	-64
+ 820 02bb B4       		.byte	-76
+ 821 02bc 83       		.byte	-125
+ 822 02bd B0       		.byte	-80
+ 823 02be 04       		.byte	4
+ 824 02bf 00       		.byte	0
+ 825 02c0 00       		.byte	0
+ 826 02c1 F0       		.byte	-16
+ 827 02c2 5C       		.byte	92
+ 828 02c3 F9       		.byte	-7
+ 829 02c4 01       		.byte	1
+ 830 02c5 90       		.byte	-112
+ 831 02c6 E7       		.byte	-25
+ 832 02c7 1E       		.byte	30
+ 833 02c8 2D       		.byte	45
+ 834 02c9 2F       		.byte	47
+ 835 02ca 74       		.byte	116
+ 836 02cb D8       		.byte	-40
+ 837 02cc 3F       		.byte	63
+ 838 02cd 4B       		.byte	75
+ 839 02ce 1B       		.byte	27
+ 840 02cf 78       		.byte	120
+ 841 02d0 DB       		.byte	-37
+ 842 02d1 B2       		.byte	-78
+ 843 02d2 9C       		.byte	-100
+ 844 02d3 42       		.byte	66
+ 845 02d4 08       		.byte	8
+ 846 02d5 D8       		.byte	-40
+ 847 02d6 3E       		.byte	62
+ 848 02d7 4B       		.byte	75
+ 849 02d8 1B       		.byte	27
+ 850 02d9 78       		.byte	120
+ 851 02da DB       		.byte	-37
+ 852 02db B2       		.byte	-78
+ 853 02dc 9A       		.byte	-102
+ 854 02dd 46       		.byte	70
+ 855 02de 3D       		.byte	61
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 16
+
+
+ 856 02df 4B       		.byte	75
+ 857 02e0 1B       		.byte	27
+ 858 02e1 78       		.byte	120
+ 859 02e2 DB       		.byte	-37
+ 860 02e3 B2       		.byte	-78
+ 861 02e4 99       		.byte	-103
+ 862 02e5 46       		.byte	70
+ 863 02e6 31       		.byte	49
+ 864 02e7 E0       		.byte	-32
+ 865 02e8 3B       		.byte	59
+ 866 02e9 4B       		.byte	75
+ 867 02ea 1B       		.byte	27
+ 868 02eb 78       		.byte	120
+ 869 02ec DB       		.byte	-37
+ 870 02ed B2       		.byte	-78
+ 871 02ee 9C       		.byte	-100
+ 872 02ef 42       		.byte	66
+ 873 02f0 08       		.byte	8
+ 874 02f1 D8       		.byte	-40
+ 875 02f2 3A       		.byte	58
+ 876 02f3 4B       		.byte	75
+ 877 02f4 1B       		.byte	27
+ 878 02f5 78       		.byte	120
+ 879 02f6 DB       		.byte	-37
+ 880 02f7 B2       		.byte	-78
+ 881 02f8 9A       		.byte	-102
+ 882 02f9 46       		.byte	70
+ 883 02fa 39       		.byte	57
+ 884 02fb 4B       		.byte	75
+ 885 02fc 1B       		.byte	27
+ 886 02fd 78       		.byte	120
+ 887 02fe DB       		.byte	-37
+ 888 02ff B2       		.byte	-78
+ 889 0300 99       		.byte	-103
+ 890 0301 46       		.byte	70
+ 891 0302 23       		.byte	35
+ 892 0303 E0       		.byte	-32
+ 893 0304 37       		.byte	55
+ 894 0305 4B       		.byte	75
+ 895 0306 1B       		.byte	27
+ 896 0307 78       		.byte	120
+ 897 0308 DB       		.byte	-37
+ 898 0309 B2       		.byte	-78
+ 899 030a 9C       		.byte	-100
+ 900 030b 42       		.byte	66
+ 901 030c 08       		.byte	8
+ 902 030d D8       		.byte	-40
+ 903 030e 36       		.byte	54
+ 904 030f 4B       		.byte	75
+ 905 0310 1B       		.byte	27
+ 906 0311 78       		.byte	120
+ 907 0312 DB       		.byte	-37
+ 908 0313 B2       		.byte	-78
+ 909 0314 9A       		.byte	-102
+ 910 0315 46       		.byte	70
+ 911 0316 35       		.byte	53
+ 912 0317 4B       		.byte	75
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 17
+
+
+ 913 0318 1B       		.byte	27
+ 914 0319 78       		.byte	120
+ 915 031a DB       		.byte	-37
+ 916 031b B2       		.byte	-78
+ 917 031c 99       		.byte	-103
+ 918 031d 46       		.byte	70
+ 919 031e 15       		.byte	21
+ 920 031f E0       		.byte	-32
+ 921 0320 33       		.byte	51
+ 922 0321 4B       		.byte	75
+ 923 0322 1B       		.byte	27
+ 924 0323 78       		.byte	120
+ 925 0324 DB       		.byte	-37
+ 926 0325 B2       		.byte	-78
+ 927 0326 9C       		.byte	-100
+ 928 0327 42       		.byte	66
+ 929 0328 08       		.byte	8
+ 930 0329 D8       		.byte	-40
+ 931 032a 32       		.byte	50
+ 932 032b 4B       		.byte	75
+ 933 032c 1B       		.byte	27
+ 934 032d 78       		.byte	120
+ 935 032e DB       		.byte	-37
+ 936 032f B2       		.byte	-78
+ 937 0330 9A       		.byte	-102
+ 938 0331 46       		.byte	70
+ 939 0332 31       		.byte	49
+ 940 0333 4B       		.byte	75
+ 941 0334 1B       		.byte	27
+ 942 0335 78       		.byte	120
+ 943 0336 DB       		.byte	-37
+ 944 0337 B2       		.byte	-78
+ 945 0338 99       		.byte	-103
+ 946 0339 46       		.byte	70
+ 947 033a 07       		.byte	7
+ 948 033b E0       		.byte	-32
+ 949 033c 2F       		.byte	47
+ 950 033d 4B       		.byte	75
+ 951 033e 1B       		.byte	27
+ 952 033f 78       		.byte	120
+ 953 0340 DB       		.byte	-37
+ 954 0341 B2       		.byte	-78
+ 955 0342 9A       		.byte	-102
+ 956 0343 46       		.byte	70
+ 957 0344 2E       		.byte	46
+ 958 0345 4B       		.byte	75
+ 959 0346 1B       		.byte	27
+ 960 0347 78       		.byte	120
+ 961 0348 DB       		.byte	-37
+ 962 0349 B2       		.byte	-78
+ 963 034a 99       		.byte	-103
+ 964 034b 46       		.byte	70
+ 965 034c 2D       		.byte	45
+ 966 034d 4B       		.byte	75
+ 967 034e DE       		.byte	-34
+ 968 034f 5D       		.byte	93
+ 969 0350 2F       		.byte	47
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 18
+
+
+ 970 0351 2E       		.byte	46
+ 971 0352 09       		.byte	9
+ 972 0353 D9       		.byte	-39
+ 973 0354 2A       		.byte	42
+ 974 0355 2C       		.byte	44
+ 975 0356 07       		.byte	7
+ 976 0357 D9       		.byte	-39
+ 977 0358 19       		.byte	25
+ 978 0359 22       		.byte	34
+ 979 035a 2B       		.byte	43
+ 980 035b 4B       		.byte	75
+ 981 035c 1A       		.byte	26
+ 982 035d 60       		.byte	96
+ 983 035e 05       		.byte	5
+ 984 035f 20       		.byte	32
+ 985 0360 00       		.byte	0
+ 986 0361 F0       		.byte	-16
+ 987 0362 02       		.byte	2
+ 988 0363 F9       		.byte	-7
+ 989 0364 19       		.byte	25
+ 990 0365 25       		.byte	37
+ 991 0366 03       		.byte	3
+ 992 0367 E0       		.byte	-32
+ 993 0368 27       		.byte	39
+ 994 0369 4B       		.byte	75
+ 995 036a 1D       		.byte	29
+ 996 036b 68       		.byte	104
+ 997 036c 3F       		.byte	63
+ 998 036d 23       		.byte	35
+ 999 036e 1D       		.byte	29
+ 1000 036f 40       		.byte	64
+ 1001 0370 B5       		.byte	-75
+ 1002 0371 42       		.byte	66
+ 1003 0372 06       		.byte	6
+ 1004 0373 D9       		.byte	-39
+ 1005 0374 23       		.byte	35
+ 1006 0375 4B       		.byte	75
+ 1007 0376 DA       		.byte	-38
+ 1008 0377 5D       		.byte	93
+ 1009 0378 23       		.byte	35
+ 1010 0379 4B       		.byte	75
+ 1011 037a 1A       		.byte	26
+ 1012 037b 60       		.byte	96
+ 1013 037c 05       		.byte	5
+ 1014 037d 20       		.byte	32
+ 1015 037e 00       		.byte	0
+ 1016 037f F0       		.byte	-16
+ 1017 0380 F3       		.byte	-13
+ 1018 0381 F8       		.byte	-8
+ 1019 0382 1F       		.byte	31
+ 1020 0383 4B       		.byte	75
+ 1021 0384 9C       		.byte	-100
+ 1022 0385 46       		.byte	70
+ 1023 0386 64       		.byte	100
+ 1024 0387 44       		.byte	68
+ 1025 0388 23       		.byte	35
+ 1026 0389 78       		.byte	120
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 19
+
+
+ 1027 038a DB       		.byte	-37
+ 1028 038b B2       		.byte	-78
+ 1029 038c 1F       		.byte	31
+ 1030 038d 4A       		.byte	74
+ 1031 038e 13       		.byte	19
+ 1032 038f 60       		.byte	96
+ 1033 0390 1F       		.byte	31
+ 1034 0391 4B       		.byte	75
+ 1035 0392 52       		.byte	82
+ 1036 0393 46       		.byte	70
+ 1037 0394 1A       		.byte	26
+ 1038 0395 60       		.byte	96
+ 1039 0396 1F       		.byte	31
+ 1040 0397 4B       		.byte	75
+ 1041 0398 4A       		.byte	74
+ 1042 0399 46       		.byte	70
+ 1043 039a 1A       		.byte	26
+ 1044 039b 60       		.byte	96
+ 1045 039c 05       		.byte	5
+ 1046 039d 20       		.byte	32
+ 1047 039e FF       		.byte	-1
+ 1048 039f F7       		.byte	-9
+ 1049 03a0 7F       		.byte	127
+ 1050 03a1 FF       		.byte	-1
+ 1051 03a2 B5       		.byte	-75
+ 1052 03a3 42       		.byte	66
+ 1053 03a4 0A       		.byte	10
+ 1054 03a5 D2       		.byte	-46
+ 1055 03a6 17       		.byte	23
+ 1056 03a7 4B       		.byte	75
+ 1057 03a8 DA       		.byte	-38
+ 1058 03a9 5D       		.byte	93
+ 1059 03aa 17       		.byte	23
+ 1060 03ab 4B       		.byte	75
+ 1061 03ac 1A       		.byte	26
+ 1062 03ad 60       		.byte	96
+ 1063 03ae 05       		.byte	5
+ 1064 03af 20       		.byte	32
+ 1065 03b0 00       		.byte	0
+ 1066 03b1 F0       		.byte	-16
+ 1067 03b2 DA       		.byte	-38
+ 1068 03b3 F8       		.byte	-8
+ 1069 03b4 02       		.byte	2
+ 1070 03b5 E0       		.byte	-32
+ 1071 03b6 00       		.byte	0
+ 1072 03b7 20       		.byte	32
+ 1073 03b8 FF       		.byte	-1
+ 1074 03b9 F7       		.byte	-9
+ 1075 03ba 46       		.byte	70
+ 1076 03bb FF       		.byte	-1
+ 1077 03bc 01       		.byte	1
+ 1078 03bd 98       		.byte	-104
+ 1079 03be 00       		.byte	0
+ 1080 03bf F0       		.byte	-16
+ 1081 03c0 E1       		.byte	-31
+ 1082 03c1 F8       		.byte	-8
+ 1083 03c2 03       		.byte	3
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 20
+
+
+ 1084 03c3 B0       		.byte	-80
+ 1085 03c4 0C       		.byte	12
+ 1086 03c5 BC       		.byte	-68
+ 1087 03c6 91       		.byte	-111
+ 1088 03c7 46       		.byte	70
+ 1089 03c8 9A       		.byte	-102
+ 1090 03c9 46       		.byte	70
+ 1091 03ca F0       		.byte	-16
+ 1092 03cb BD       		.byte	-67
+ 1093 03cc C0       		.byte	-64
+ 1094 03cd F1       		.byte	-15
+ 1095 03ce FF       		.byte	-1
+ 1096 03cf 0F       		.byte	15
+ 1097 03d0 C1       		.byte	-63
+ 1098 03d1 F1       		.byte	-15
+ 1099 03d2 FF       		.byte	-1
+ 1100 03d3 0F       		.byte	15
+ 1101 03d4 C2       		.byte	-62
+ 1102 03d5 F1       		.byte	-15
+ 1103 03d6 FF       		.byte	-1
+ 1104 03d7 0F       		.byte	15
+ 1105 03d8 C3       		.byte	-61
+ 1106 03d9 F1       		.byte	-15
+ 1107 03da FF       		.byte	-1
+ 1108 03db 0F       		.byte	15
+ 1109 03dc C4       		.byte	-60
+ 1110 03dd F1       		.byte	-15
+ 1111 03de FF       		.byte	-1
+ 1112 03df 0F       		.byte	15
+ 1113 03e0 C5       		.byte	-59
+ 1114 03e1 F1       		.byte	-15
+ 1115 03e2 FF       		.byte	-1
+ 1116 03e3 0F       		.byte	15
+ 1117 03e4 C6       		.byte	-58
+ 1118 03e5 F1       		.byte	-15
+ 1119 03e6 FF       		.byte	-1
+ 1120 03e7 0F       		.byte	15
+ 1121 03e8 C7       		.byte	-57
+ 1122 03e9 F1       		.byte	-15
+ 1123 03ea FF       		.byte	-1
+ 1124 03eb 0F       		.byte	15
+ 1125 03ec C8       		.byte	-56
+ 1126 03ed F1       		.byte	-15
+ 1127 03ee FF       		.byte	-1
+ 1128 03ef 0F       		.byte	15
+ 1129 03f0 C9       		.byte	-55
+ 1130 03f1 F1       		.byte	-15
+ 1131 03f2 FF       		.byte	-1
+ 1132 03f3 0F       		.byte	15
+ 1133 03f4 CA       		.byte	-54
+ 1134 03f5 F1       		.byte	-15
+ 1135 03f6 FF       		.byte	-1
+ 1136 03f7 0F       		.byte	15
+ 1137 03f8 CB       		.byte	-53
+ 1138 03f9 F1       		.byte	-15
+ 1139 03fa FF       		.byte	-1
+ 1140 03fb 0F       		.byte	15
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 21
+
+
+ 1141 03fc CC       		.byte	-52
+ 1142 03fd F1       		.byte	-15
+ 1143 03fe FF       		.byte	-1
+ 1144 03ff 0F       		.byte	15
+ 1145 0400 CD       		.byte	-51
+ 1146 0401 F1       		.byte	-15
+ 1147 0402 FF       		.byte	-1
+ 1148 0403 0F       		.byte	15
+ 1149 0404 44       		.byte	68
+ 1150 0405 06       		.byte	6
+ 1151 0406 00       		.byte	0
+ 1152 0407 00       		.byte	0
+ 1153 0408 2C       		.byte	44
+ 1154 0409 FF       		.byte	-1
+ 1155 040a 0B       		.byte	11
+ 1156 040b 40       		.byte	64
+ 1157 040c 28       		.byte	40
+ 1158 040d FF       		.byte	-1
+ 1159 040e 0B       		.byte	11
+ 1160 040f 40       		.byte	64
+ 1161 0410 1C       		.byte	28
+ 1162 0411 FF       		.byte	-1
+ 1163 0412 0B       		.byte	11
+ 1164 0413 40       		.byte	64
+ 1165 0414 20       		.byte	32
+ 1166 0415 FF       		.byte	-1
+ 1167 0416 0B       		.byte	11
+ 1168 0417 40       		.byte	64
+ 1169 0418 03       		.byte	3
+ 1170 0419 4B       		.byte	75
+ 1171 041a 18       		.byte	24
+ 1172 041b 68       		.byte	104
+ 1173 041c C0       		.byte	-64
+ 1174 041d 23       		.byte	35
+ 1175 041e 1B       		.byte	27
+ 1176 041f 02       		.byte	2
+ 1177 0420 18       		.byte	24
+ 1178 0421 40       		.byte	64
+ 1179 0422 00       		.byte	0
+ 1180 0423 D0       		.byte	-48
+ 1181 0424 01       		.byte	1
+ 1182 0425 20       		.byte	32
+ 1183 0426 70       		.byte	112
+ 1184 0427 47       		.byte	71
+ 1185 0428 00       		.byte	0
+ 1186 0429 01       		.byte	1
+ 1187 042a 0B       		.byte	11
+ 1188 042b 40       		.byte	64
+ 1189 042c 10       		.byte	16
+ 1190 042d B5       		.byte	-75
+ 1191 042e 00       		.byte	0
+ 1192 042f F0       		.byte	-16
+ 1193 0430 A5       		.byte	-91
+ 1194 0431 F8       		.byte	-8
+ 1195 0432 04       		.byte	4
+ 1196 0433 4A       		.byte	74
+ 1197 0434 13       		.byte	19
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 22
+
+
+ 1198 0435 68       		.byte	104
+ 1199 0436 C0       		.byte	-64
+ 1200 0437 21       		.byte	33
+ 1201 0438 09       		.byte	9
+ 1202 0439 02       		.byte	2
+ 1203 043a 0B       		.byte	11
+ 1204 043b 43       		.byte	67
+ 1205 043c 13       		.byte	19
+ 1206 043d 60       		.byte	96
+ 1207 043e 00       		.byte	0
+ 1208 043f F0       		.byte	-16
+ 1209 0440 A1       		.byte	-95
+ 1210 0441 F8       		.byte	-8
+ 1211 0442 10       		.byte	16
+ 1212 0443 BD       		.byte	-67
+ 1213 0444 00       		.byte	0
+ 1214 0445 01       		.byte	1
+ 1215 0446 0B       		.byte	11
+ 1216 0447 40       		.byte	64
+ 1217 0448 10       		.byte	16
+ 1218 0449 B5       		.byte	-75
+ 1219 044a 00       		.byte	0
+ 1220 044b F0       		.byte	-16
+ 1221 044c 97       		.byte	-105
+ 1222 044d F8       		.byte	-8
+ 1223 044e 08       		.byte	8
+ 1224 044f 49       		.byte	73
+ 1225 0450 0A       		.byte	10
+ 1226 0451 68       		.byte	104
+ 1227 0452 08       		.byte	8
+ 1228 0453 4B       		.byte	75
+ 1229 0454 1A       		.byte	26
+ 1230 0455 40       		.byte	64
+ 1231 0456 80       		.byte	-128
+ 1232 0457 24       		.byte	36
+ 1233 0458 E4       		.byte	-28
+ 1234 0459 01       		.byte	1
+ 1235 045a 22       		.byte	34
+ 1236 045b 43       		.byte	67
+ 1237 045c 0A       		.byte	10
+ 1238 045d 60       		.byte	96
+ 1239 045e 0A       		.byte	10
+ 1240 045f 68       		.byte	104
+ 1241 0460 13       		.byte	19
+ 1242 0461 40       		.byte	64
+ 1243 0462 80       		.byte	-128
+ 1244 0463 22       		.byte	34
+ 1245 0464 12       		.byte	18
+ 1246 0465 02       		.byte	2
+ 1247 0466 13       		.byte	19
+ 1248 0467 43       		.byte	67
+ 1249 0468 0B       		.byte	11
+ 1250 0469 60       		.byte	96
+ 1251 046a 00       		.byte	0
+ 1252 046b F0       		.byte	-16
+ 1253 046c 8B       		.byte	-117
+ 1254 046d F8       		.byte	-8
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 23
+
+
+ 1255 046e 10       		.byte	16
+ 1256 046f BD       		.byte	-67
+ 1257 0470 00       		.byte	0
+ 1258 0471 01       		.byte	1
+ 1259 0472 0B       		.byte	11
+ 1260 0473 40       		.byte	64
+ 1261 0474 FF       		.byte	-1
+ 1262 0475 3F       		.byte	63
+ 1263 0476 FF       		.byte	-1
+ 1264 0477 FF       		.byte	-1
+ 1265 0478 70       		.byte	112
+ 1266 0479 B5       		.byte	-75
+ 1267 047a 05       		.byte	5
+ 1268 047b 00       		.byte	0
+ 1269 047c 00       		.byte	0
+ 1270 047d F0       		.byte	-16
+ 1271 047e 7E       		.byte	126
+ 1272 047f F8       		.byte	-8
+ 1273 0480 04       		.byte	4
+ 1274 0481 00       		.byte	0
+ 1275 0482 FF       		.byte	-1
+ 1276 0483 F7       		.byte	-9
+ 1277 0484 C9       		.byte	-55
+ 1278 0485 FF       		.byte	-1
+ 1279 0486 00       		.byte	0
+ 1280 0487 28       		.byte	40
+ 1281 0488 03       		.byte	3
+ 1282 0489 D0       		.byte	-48
+ 1283 048a FF       		.byte	-1
+ 1284 048b F7       		.byte	-9
+ 1285 048c DD       		.byte	-35
+ 1286 048d FF       		.byte	-1
+ 1287 048e 01       		.byte	1
+ 1288 048f 21       		.byte	33
+ 1289 0490 00       		.byte	0
+ 1290 0491 E0       		.byte	-32
+ 1291 0492 00       		.byte	0
+ 1292 0493 21       		.byte	33
+ 1293 0494 08       		.byte	8
+ 1294 0495 48       		.byte	72
+ 1295 0496 28       		.byte	40
+ 1296 0497 40       		.byte	64
+ 1297 0498 08       		.byte	8
+ 1298 0499 4A       		.byte	74
+ 1299 049a 15       		.byte	21
+ 1300 049b 68       		.byte	104
+ 1301 049c 08       		.byte	8
+ 1302 049d 4B       		.byte	75
+ 1303 049e 2B       		.byte	43
+ 1304 049f 40       		.byte	64
+ 1305 04a0 18       		.byte	24
+ 1306 04a1 43       		.byte	67
+ 1307 04a2 10       		.byte	16
+ 1308 04a3 60       		.byte	96
+ 1309 04a4 13       		.byte	19
+ 1310 04a5 68       		.byte	104
+ 1311 04a6 01       		.byte	1
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 24
+
+
+ 1312 04a7 29       		.byte	41
+ 1313 04a8 01       		.byte	1
+ 1314 04a9 D1       		.byte	-47
+ 1315 04aa FF       		.byte	-1
+ 1316 04ab F7       		.byte	-9
+ 1317 04ac BF       		.byte	-65
+ 1318 04ad FF       		.byte	-1
+ 1319 04ae 20       		.byte	32
+ 1320 04af 00       		.byte	0
+ 1321 04b0 00       		.byte	0
+ 1322 04b1 F0       		.byte	-16
+ 1323 04b2 68       		.byte	104
+ 1324 04b3 F8       		.byte	-8
+ 1325 04b4 70       		.byte	112
+ 1326 04b5 BD       		.byte	-67
+ 1327 04b6 C0       		.byte	-64
+ 1328 04b7 46       		.byte	70
+ 1329 04b8 04       		.byte	4
+ 1330 04b9 04       		.byte	4
+ 1331 04ba 04       		.byte	4
+ 1332 04bb 00       		.byte	0
+ 1333 04bc 10       		.byte	16
+ 1334 04bd 02       		.byte	2
+ 1335 04be 0B       		.byte	11
+ 1336 04bf 40       		.byte	64
+ 1337 04c0 FB       		.byte	-5
+ 1338 04c1 FB       		.byte	-5
+ 1339 04c2 FB       		.byte	-5
+ 1340 04c3 FF       		.byte	-1
+ 1341 04c4 10       		.byte	16
+ 1342 04c5 B5       		.byte	-75
+ 1343 04c6 24       		.byte	36
+ 1344 04c7 4B       		.byte	75
+ 1345 04c8 1B       		.byte	27
+ 1346 04c9 68       		.byte	104
+ 1347 04ca 5B       		.byte	91
+ 1348 04cb 07       		.byte	7
+ 1349 04cc 15       		.byte	21
+ 1350 04cd D5       		.byte	-43
+ 1351 04ce 23       		.byte	35
+ 1352 04cf 4B       		.byte	75
+ 1353 04d0 1B       		.byte	27
+ 1354 04d1 68       		.byte	104
+ 1355 04d2 5B       		.byte	91
+ 1356 04d3 07       		.byte	7
+ 1357 04d4 0E       		.byte	14
+ 1358 04d5 D5       		.byte	-43
+ 1359 04d6 22       		.byte	34
+ 1360 04d7 4B       		.byte	75
+ 1361 04d8 D9       		.byte	-39
+ 1362 04d9 69       		.byte	105
+ 1363 04da 04       		.byte	4
+ 1364 04db 20       		.byte	32
+ 1365 04dc 01       		.byte	1
+ 1366 04dd 40       		.byte	64
+ 1367 04de 1F       		.byte	31
+ 1368 04df 4C       		.byte	76
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 25
+
+
+ 1369 04e0 22       		.byte	34
+ 1370 04e1 68       		.byte	104
+ 1371 04e2 8A       		.byte	-118
+ 1372 04e3 43       		.byte	67
+ 1373 04e4 22       		.byte	34
+ 1374 04e5 60       		.byte	96
+ 1375 04e6 DA       		.byte	-38
+ 1376 04e7 69       		.byte	105
+ 1377 04e8 82       		.byte	-126
+ 1378 04e9 43       		.byte	67
+ 1379 04ea DA       		.byte	-38
+ 1380 04eb 61       		.byte	97
+ 1381 04ec 1B       		.byte	27
+ 1382 04ed 69       		.byte	105
+ 1383 04ee 00       		.byte	0
+ 1384 04ef 2B       		.byte	43
+ 1385 04f0 00       		.byte	0
+ 1386 04f1 D0       		.byte	-48
+ 1387 04f2 98       		.byte	-104
+ 1388 04f3 47       		.byte	71
+ 1389 04f4 04       		.byte	4
+ 1390 04f5 20       		.byte	32
+ 1391 04f6 FF       		.byte	-1
+ 1392 04f7 F7       		.byte	-9
+ 1393 04f8 BF       		.byte	-65
+ 1394 04f9 FF       		.byte	-1
+ 1395 04fa 17       		.byte	23
+ 1396 04fb 4B       		.byte	75
+ 1397 04fc 1B       		.byte	27
+ 1398 04fd 68       		.byte	104
+ 1399 04fe 5B       		.byte	91
+ 1400 04ff 05       		.byte	5
+ 1401 0500 18       		.byte	24
+ 1402 0501 D5       		.byte	-43
+ 1403 0502 16       		.byte	22
+ 1404 0503 4B       		.byte	75
+ 1405 0504 1B       		.byte	27
+ 1406 0505 68       		.byte	104
+ 1407 0506 5B       		.byte	91
+ 1408 0507 05       		.byte	5
+ 1409 0508 10       		.byte	16
+ 1410 0509 D5       		.byte	-43
+ 1411 050a 15       		.byte	21
+ 1412 050b 4B       		.byte	75
+ 1413 050c D9       		.byte	-39
+ 1414 050d 69       		.byte	105
+ 1415 050e 80       		.byte	-128
+ 1416 050f 22       		.byte	34
+ 1417 0510 D2       		.byte	-46
+ 1418 0511 00       		.byte	0
+ 1419 0512 11       		.byte	17
+ 1420 0513 40       		.byte	64
+ 1421 0514 11       		.byte	17
+ 1422 0515 48       		.byte	72
+ 1423 0516 02       		.byte	2
+ 1424 0517 68       		.byte	104
+ 1425 0518 8A       		.byte	-118
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 26
+
+
+ 1426 0519 43       		.byte	67
+ 1427 051a 02       		.byte	2
+ 1428 051b 60       		.byte	96
+ 1429 051c D9       		.byte	-39
+ 1430 051d 69       		.byte	105
+ 1431 051e 11       		.byte	17
+ 1432 051f 4A       		.byte	74
+ 1433 0520 0A       		.byte	10
+ 1434 0521 40       		.byte	64
+ 1435 0522 DA       		.byte	-38
+ 1436 0523 61       		.byte	97
+ 1437 0524 5B       		.byte	91
+ 1438 0525 69       		.byte	105
+ 1439 0526 00       		.byte	0
+ 1440 0527 2B       		.byte	43
+ 1441 0528 00       		.byte	0
+ 1442 0529 D0       		.byte	-48
+ 1443 052a 98       		.byte	-104
+ 1444 052b 47       		.byte	71
+ 1445 052c 80       		.byte	-128
+ 1446 052d 20       		.byte	32
+ 1447 052e C0       		.byte	-64
+ 1448 052f 00       		.byte	0
+ 1449 0530 FF       		.byte	-1
+ 1450 0531 F7       		.byte	-9
+ 1451 0532 A2       		.byte	-94
+ 1452 0533 FF       		.byte	-1
+ 1453 0534 08       		.byte	8
+ 1454 0535 4B       		.byte	75
+ 1455 0536 1B       		.byte	27
+ 1456 0537 68       		.byte	104
+ 1457 0538 5B       		.byte	91
+ 1458 0539 03       		.byte	3
+ 1459 053a 0C       		.byte	12
+ 1460 053b D5       		.byte	-43
+ 1461 053c 07       		.byte	7
+ 1462 053d 4B       		.byte	75
+ 1463 053e 1B       		.byte	27
+ 1464 053f 68       		.byte	104
+ 1465 0540 5B       		.byte	91
+ 1466 0541 03       		.byte	3
+ 1467 0542 04       		.byte	4
+ 1468 0543 D5       		.byte	-43
+ 1469 0544 06       		.byte	6
+ 1470 0545 4B       		.byte	75
+ 1471 0546 9B       		.byte	-101
+ 1472 0547 69       		.byte	105
+ 1473 0548 00       		.byte	0
+ 1474 0549 2B       		.byte	43
+ 1475 054a 00       		.byte	0
+ 1476 054b D0       		.byte	-48
+ 1477 054c 98       		.byte	-104
+ 1478 054d 47       		.byte	71
+ 1479 054e 80       		.byte	-128
+ 1480 054f 20       		.byte	32
+ 1481 0550 C0       		.byte	-64
+ 1482 0551 02       		.byte	2
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 27
+
+
+ 1483 0552 FF       		.byte	-1
+ 1484 0553 F7       		.byte	-9
+ 1485 0554 91       		.byte	-111
+ 1486 0555 FF       		.byte	-1
+ 1487 0556 10       		.byte	16
+ 1488 0557 BD       		.byte	-67
+ 1489 0558 10       		.byte	16
+ 1490 0559 02       		.byte	2
+ 1491 055a 0B       		.byte	11
+ 1492 055b 40       		.byte	64
+ 1493 055c D8       		.byte	-40
+ 1494 055d 00       		.byte	0
+ 1495 055e 00       		.byte	0
+ 1496 055f 20       		.byte	32
+ 1497 0560 5C       		.byte	92
+ 1498 0561 01       		.byte	1
+ 1499 0562 00       		.byte	0
+ 1500 0563 20       		.byte	32
+ 1501 0564 FF       		.byte	-1
+ 1502 0565 FB       		.byte	-5
+ 1503 0566 FF       		.byte	-1
+ 1504 0567 FF       		.byte	-1
+ 1505 0568 02       		.byte	2
+ 1506 0569 30       		.byte	48
+ 1507 056a 80       		.byte	-128
+ 1508 056b 08       		.byte	8
+ 1509 056c 04       		.byte	4
+ 1510 056d D0       		.byte	-48
+ 1511 056e C0       		.byte	-64
+ 1512 056f 46       		.byte	70
+ 1513 0570 01       		.byte	1
+ 1514 0571 38       		.byte	56
+ 1515 0572 FD       		.byte	-3
+ 1516 0573 D1       		.byte	-47
+ 1517 0574 C0       		.byte	-64
+ 1518 0575 46       		.byte	70
+ 1519 0576 C0       		.byte	-64
+ 1520 0577 46       		.byte	70
+ 1521 0578 C0       		.byte	-64
+ 1522 0579 46       		.byte	70
+ 1523 057a 70       		.byte	112
+ 1524 057b 47       		.byte	71
+ 1525 057c EF       		.byte	-17
+ 1526 057d F3       		.byte	-13
+ 1527 057e 10       		.byte	16
+ 1528 057f 80       		.byte	-128
+ 1529 0580 72       		.byte	114
+ 1530 0581 B6       		.byte	-74
+ 1531 0582 70       		.byte	112
+ 1532 0583 47       		.byte	71
+ 1533 0584 80       		.byte	-128
+ 1534 0585 F3       		.byte	-13
+ 1535 0586 10       		.byte	16
+ 1536 0587 88       		.byte	-120
+ 1537 0588 70       		.byte	112
+ 1538 0589 47       		.byte	71
+ 1539 058a C0       		.byte	-64
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 28
+
+
+ 1540 058b 46       		.byte	70
+ 1541 058c 01       		.byte	1
+ 1542 058d 4B       		.byte	75
+ 1543 058e 18       		.byte	24
+ 1544 058f 68       		.byte	104
+ 1545 0590 70       		.byte	112
+ 1546 0591 47       		.byte	71
+ 1547 0592 C0       		.byte	-64
+ 1548 0593 46       		.byte	70
+ 1549 0594 3C       		.byte	60
+ 1550 0595 01       		.byte	1
+ 1551 0596 00       		.byte	0
+ 1552 0597 20       		.byte	32
+ 1553 0598 0E       		.byte	14
+ 1554 0599 4B       		.byte	75
+ 1555 059a 70       		.byte	112
+ 1556 059b B5       		.byte	-75
+ 1557 059c 00       		.byte	0
+ 1558 059d 25       		.byte	37
+ 1559 059e 1E       		.byte	30
+ 1560 059f 00       		.byte	0
+ 1561 05a0 0D       		.byte	13
+ 1562 05a1 4C       		.byte	76
+ 1563 05a2 E4       		.byte	-28
+ 1564 05a3 1A       		.byte	26
+ 1565 05a4 A4       		.byte	-92
+ 1566 05a5 10       		.byte	16
+ 1567 05a6 A5       		.byte	-91
+ 1568 05a7 42       		.byte	66
+ 1569 05a8 04       		.byte	4
+ 1570 05a9 D0       		.byte	-48
+ 1571 05aa AB       		.byte	-85
+ 1572 05ab 00       		.byte	0
+ 1573 05ac F3       		.byte	-13
+ 1574 05ad 58       		.byte	88
+ 1575 05ae 98       		.byte	-104
+ 1576 05af 47       		.byte	71
+ 1577 05b0 01       		.byte	1
+ 1578 05b1 35       		.byte	53
+ 1579 05b2 F8       		.byte	-8
+ 1580 05b3 E7       		.byte	-25
+ 1581 05b4 00       		.byte	0
+ 1582 05b5 F0       		.byte	-16
+ 1583 05b6 5E       		.byte	94
+ 1584 05b7 F8       		.byte	-8
+ 1585 05b8 08       		.byte	8
+ 1586 05b9 4B       		.byte	75
+ 1587 05ba 00       		.byte	0
+ 1588 05bb 25       		.byte	37
+ 1589 05bc 1E       		.byte	30
+ 1590 05bd 00       		.byte	0
+ 1591 05be 08       		.byte	8
+ 1592 05bf 4C       		.byte	76
+ 1593 05c0 E4       		.byte	-28
+ 1594 05c1 1A       		.byte	26
+ 1595 05c2 A4       		.byte	-92
+ 1596 05c3 10       		.byte	16
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 29
+
+
+ 1597 05c4 A5       		.byte	-91
+ 1598 05c5 42       		.byte	66
+ 1599 05c6 04       		.byte	4
+ 1600 05c7 D0       		.byte	-48
+ 1601 05c8 AB       		.byte	-85
+ 1602 05c9 00       		.byte	0
+ 1603 05ca F3       		.byte	-13
+ 1604 05cb 58       		.byte	88
+ 1605 05cc 98       		.byte	-104
+ 1606 05cd 47       		.byte	71
+ 1607 05ce 01       		.byte	1
+ 1608 05cf 35       		.byte	53
+ 1609 05d0 F8       		.byte	-8
+ 1610 05d1 E7       		.byte	-25
+ 1611 05d2 70       		.byte	112
+ 1612 05d3 BD       		.byte	-67
+ 1613 05d4 80       		.byte	-128
+ 1614 05d5 06       		.byte	6
+ 1615 05d6 00       		.byte	0
+ 1616 05d7 00       		.byte	0
+ 1617 05d8 80       		.byte	-128
+ 1618 05d9 06       		.byte	6
+ 1619 05da 00       		.byte	0
+ 1620 05db 00       		.byte	0
+ 1621 05dc 80       		.byte	-128
+ 1622 05dd 06       		.byte	6
+ 1623 05de 00       		.byte	0
+ 1624 05df 00       		.byte	0
+ 1625 05e0 88       		.byte	-120
+ 1626 05e1 06       		.byte	6
+ 1627 05e2 00       		.byte	0
+ 1628 05e3 00       		.byte	0
+ 1629 05e4 03       		.byte	3
+ 1630 05e5 00       		.byte	0
+ 1631 05e6 82       		.byte	-126
+ 1632 05e7 18       		.byte	24
+ 1633 05e8 93       		.byte	-109
+ 1634 05e9 42       		.byte	66
+ 1635 05ea 02       		.byte	2
+ 1636 05eb D0       		.byte	-48
+ 1637 05ec 19       		.byte	25
+ 1638 05ed 70       		.byte	112
+ 1639 05ee 01       		.byte	1
+ 1640 05ef 33       		.byte	51
+ 1641 05f0 FA       		.byte	-6
+ 1642 05f1 E7       		.byte	-25
+ 1643 05f2 70       		.byte	112
+ 1644 05f3 47       		.byte	71
+ 1645 05f4 00       		.byte	0
+ 1646 05f5 00       		.byte	0
+ 1647 05f6 00       		.byte	0
+ 1648 05f7 00       		.byte	0
+ 1649 05f8 01       		.byte	1
+ 1650 05f9 00       		.byte	0
+ 1651 05fa 00       		.byte	0
+ 1652 05fb 00       		.byte	0
+ 1653 05fc 02       		.byte	2
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 30
+
+
+ 1654 05fd 00       		.byte	0
+ 1655 05fe 00       		.byte	0
+ 1656 05ff 00       		.byte	0
+ 1657 0600 04       		.byte	4
+ 1658 0601 00       		.byte	0
+ 1659 0602 00       		.byte	0
+ 1660 0603 00       		.byte	0
+ 1661 0604 08       		.byte	8
+ 1662 0605 00       		.byte	0
+ 1663 0606 00       		.byte	0
+ 1664 0607 00       		.byte	0
+ 1665 0608 10       		.byte	16
+ 1666 0609 00       		.byte	0
+ 1667 060a 00       		.byte	0
+ 1668 060b 00       		.byte	0
+ 1669 060c 20       		.byte	32
+ 1670 060d 00       		.byte	0
+ 1671 060e 00       		.byte	0
+ 1672 060f 00       		.byte	0
+ 1673 0610 40       		.byte	64
+ 1674 0611 00       		.byte	0
+ 1675 0612 00       		.byte	0
+ 1676 0613 00       		.byte	0
+ 1677 0614 80       		.byte	-128
+ 1678 0615 00       		.byte	0
+ 1679 0616 00       		.byte	0
+ 1680 0617 00       		.byte	0
+ 1681 0618 80       		.byte	-128
+ 1682 0619 00       		.byte	0
+ 1683 061a 00       		.byte	0
+ 1684 061b 00       		.byte	0
+ 1685 061c 40       		.byte	64
+ 1686 061d 00       		.byte	0
+ 1687 061e 00       		.byte	0
+ 1688 061f 00       		.byte	0
+ 1689 0620 20       		.byte	32
+ 1690 0621 00       		.byte	0
+ 1691 0622 00       		.byte	0
+ 1692 0623 00       		.byte	0
+ 1693 0624 10       		.byte	16
+ 1694 0625 00       		.byte	0
+ 1695 0626 00       		.byte	0
+ 1696 0627 00       		.byte	0
+ 1697 0628 08       		.byte	8
+ 1698 0629 00       		.byte	0
+ 1699 062a 00       		.byte	0
+ 1700 062b 00       		.byte	0
+ 1701 062c 04       		.byte	4
+ 1702 062d 00       		.byte	0
+ 1703 062e 00       		.byte	0
+ 1704 062f 00       		.byte	0
+ 1705 0630 02       		.byte	2
+ 1706 0631 00       		.byte	0
+ 1707 0632 00       		.byte	0
+ 1708 0633 00       		.byte	0
+ 1709 0634 01       		.byte	1
+ 1710 0635 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 31
+
+
+ 1711 0636 00       		.byte	0
+ 1712 0637 00       		.byte	0
+ 1713 0638 00       		.byte	0
+ 1714 0639 30       		.byte	48
+ 1715 063a 0F       		.byte	15
+ 1716 063b 40       		.byte	64
+ 1717 063c 00       		.byte	0
+ 1718 063d 04       		.byte	4
+ 1719 063e 00       		.byte	0
+ 1720 063f 40       		.byte	64
+ 1721 0640 0F       		.byte	15
+ 1722 0641 40       		.byte	64
+ 1723 0642 00       		.byte	0
+ 1724 0643 04       		.byte	4
+ 1725 0644 03       		.byte	3
+ 1726 0645 04       		.byte	4
+ 1727 0646 05       		.byte	5
+ 1728 0647 06       		.byte	6
+ 1729 0648 07       		.byte	7
+ 1730 0649 08       		.byte	8
+ 1731 064a 09       		.byte	9
+ 1732 064b 0A       		.byte	10
+ 1733 064c 0B       		.byte	11
+ 1734 064d 0C       		.byte	12
+ 1735 064e 0E       		.byte	14
+ 1736 064f 0F       		.byte	15
+ 1737 0650 10       		.byte	16
+ 1738 0651 11       		.byte	17
+ 1739 0652 12       		.byte	18
+ 1740 0653 13       		.byte	19
+ 1741 0654 14       		.byte	20
+ 1742 0655 15       		.byte	21
+ 1743 0656 16       		.byte	22
+ 1744 0657 17       		.byte	23
+ 1745 0658 18       		.byte	24
+ 1746 0659 19       		.byte	25
+ 1747 065a 1B       		.byte	27
+ 1748 065b 1C       		.byte	28
+ 1749 065c 1D       		.byte	29
+ 1750 065d 1E       		.byte	30
+ 1751 065e 1F       		.byte	31
+ 1752 065f 20       		.byte	32
+ 1753 0660 21       		.byte	33
+ 1754 0661 22       		.byte	34
+ 1755 0662 23       		.byte	35
+ 1756 0663 25       		.byte	37
+ 1757 0664 26       		.byte	38
+ 1758 0665 27       		.byte	39
+ 1759 0666 28       		.byte	40
+ 1760 0667 29       		.byte	41
+ 1761 0668 2A       		.byte	42
+ 1762 0669 2B       		.byte	43
+ 1763 066a 2E       		.byte	46
+ 1764 066b 2F       		.byte	47
+ 1765 066c 30       		.byte	48
+ 1766 066d 31       		.byte	49
+ 1767 066e 32       		.byte	50
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 32
+
+
+ 1768 066f 33       		.byte	51
+ 1769 0670 34       		.byte	52
+ 1770 0671 35       		.byte	53
+ 1771 0672 43       		.byte	67
+ 1772 0673 00       		.byte	0
+ 1773 0674 F8       		.byte	-8
+ 1774 0675 B5       		.byte	-75
+ 1775 0676 C0       		.byte	-64
+ 1776 0677 46       		.byte	70
+ 1777 0678 F8       		.byte	-8
+ 1778 0679 BC       		.byte	-68
+ 1779 067a 08       		.byte	8
+ 1780 067b BC       		.byte	-68
+ 1781 067c 9E       		.byte	-98
+ 1782 067d 46       		.byte	70
+ 1783 067e 70       		.byte	112
+ 1784 067f 47       		.byte	71
+ 1785 0680 29       		.byte	41
+ 1786 0681 01       		.byte	1
+ 1787 0682 00       		.byte	0
+ 1788 0683 00       		.byte	0
+ 1789 0684 E9       		.byte	-23
+ 1790 0685 01       		.byte	1
+ 1791 0686 00       		.byte	0
+ 1792 0687 00       		.byte	0
+ 1793 0688 F8       		.byte	-8
+ 1794 0689 B5       		.byte	-75
+ 1795 068a C0       		.byte	-64
+ 1796 068b 46       		.byte	70
+ 1797 068c F8       		.byte	-8
+ 1798 068d BC       		.byte	-68
+ 1799 068e 08       		.byte	8
+ 1800 068f BC       		.byte	-68
+ 1801 0690 9E       		.byte	-98
+ 1802 0691 46       		.byte	70
+ 1803 0692 70       		.byte	112
+ 1804 0693 47       		.byte	71
+ 1805 0694 01       		.byte	1
+ 1806 0695 01       		.byte	1
+ 1807 0696 00       		.byte	0
+ 1808 0697 00       		.byte	0
+ 1809 0698 A8       		.byte	-88
+ 1810 0699 06       		.byte	6
+ 1811 069a 00       		.byte	0
+ 1812 069b 00       		.byte	0
+ 1813 069c C0       		.byte	-64
+ 1814 069d 00       		.byte	0
+ 1815 069e 00       		.byte	0
+ 1816 069f 20       		.byte	32
+ 1817 06a0 80       		.byte	-128
+ 1818 06a1 00       		.byte	0
+ 1819 06a2 00       		.byte	0
+ 1820 06a3 00       		.byte	0
+ 1821 06a4 40       		.byte	64
+ 1822 06a5 00       		.byte	0
+ 1823 06a6 00       		.byte	0
+ 1824 06a7 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 33
+
+
+ 1825 06a8 00       		.byte	0
+ 1826 06a9 00       		.byte	0
+ 1827 06aa 00       		.byte	0
+ 1828 06ab 00       		.byte	0
+ 1829 06ac 01       		.byte	1
+ 1830 06ad 00       		.byte	0
+ 1831 06ae 00       		.byte	0
+ 1832 06af 00       		.byte	0
+ 1833 06b0 00       		.byte	0
+ 1834 06b1 00       		.byte	0
+ 1835 06b2 E0       		.byte	-32
+ 1836 06b3 2E       		.byte	46
+ 1837 06b4 C0       		.byte	-64
+ 1838 06b5 5D       		.byte	93
+ 1839 06b6 00       		.byte	0
+ 1840 06b7 00       		.byte	0
+ 1841 06b8 18       		.byte	24
+ 1842 06b9 00       		.byte	0
+ 1843 06ba 00       		.byte	0
+ 1844 06bb 00       		.byte	0
+ 1845 06bc 00       		.byte	0
+ 1846 06bd 36       		.byte	54
+ 1847 06be 6E       		.byte	110
+ 1848 06bf 01       		.byte	1
+ 1849 06c0 04       		.byte	4
+ 1850 06c1 04       		.byte	4
+ 1851 06c2 04       		.byte	4
+ 1852 06c3 00       		.byte	0
+ 1853 06c4 00       		.byte	0
+ 1854 06c5 00       		.byte	0
+ 1855 06c6 00       		.byte	0
+ 1856 06c7 00       		.byte	0
+ 1857 06c8 00       		.byte	0
+ 1858 06c9 00       		.byte	0
+ 1859 06ca 00       		.byte	0
+ 1860 06cb 00       		.byte	0
+ 1861 06cc 00       		.byte	0
+ 1862 06cd 00       		.byte	0
+ 1863 06ce 00       		.byte	0
+ 1864 06cf 00       		.byte	0
+ 1865 06d0 00       		.byte	0
+ 1866 06d1 00       		.byte	0
+ 1867 06d2 00       		.byte	0
+ 1868 06d3 00       		.byte	0
+ 1869 06d4 00       		.byte	0
+ 1870 06d5 00       		.byte	0
+ 1871 06d6 00       		.byte	0
+ 1872 06d7 00       		.byte	0
+ 1873 06d8 00       		.byte	0
+ 1874 06d9 00       		.byte	0
+ 1875 06da 00       		.byte	0
+ 1876 06db 00       		.byte	0
+ 1877 06dc 00       		.byte	0
+ 1878 06dd 00       		.byte	0
+ 1879 06de 00       		.byte	0
+ 1880 06df 00       		.byte	0
+ 1881 06e0 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 34
+
+
+ 1882 06e1 00       		.byte	0
+ 1883 06e2 00       		.byte	0
+ 1884 06e3 00       		.byte	0
+ 1885 06e4 72       		.byte	114
+ 1886 06e5 06       		.byte	6
+ 1887 06e6 00       		.byte	0
+ 1888 06e7 00       		.byte	0
+ 1889 06e8 00       		.byte	0
+ 1890 06e9 00       		.byte	0
+ 1891 06ea 00       		.byte	0
+ 1892 06eb 00       		.byte	0
+ 1893 06ec 00       		.byte	0
+ 1894 06ed 00       		.byte	0
+ 1895 06ee 00       		.byte	0
+ 1896 06ef 00       		.byte	0
+ 1897 06f0 00       		.byte	0
+ 1898 06f1 00       		.byte	0
+ 1899 06f2 00       		.byte	0
+ 1900 06f3 00       		.byte	0
+ 1901 06f4 00       		.byte	0
+ 1902 06f5 00       		.byte	0
+ 1903 06f6 00       		.byte	0
+ 1904 06f7 00       		.byte	0
+ 1905 06f8 00       		.byte	0
+ 1906 06f9 00       		.byte	0
+ 1907 06fa 00       		.byte	0
+ 1908 06fb 00       		.byte	0
+ 1909 06fc 00       		.byte	0
+ 1910 06fd 00       		.byte	0
+ 1911 06fe 00       		.byte	0
+ 1912 06ff 00       		.byte	0
+ 1913 0700 00       		.byte	0
+ 1914 0701 00       		.byte	0
+ 1915 0702 00       		.byte	0
+ 1916 0703 00       		.byte	0
+ 1917 0704 00       		.byte	0
+ 1918 0705 00       		.byte	0
+ 1919 0706 00       		.byte	0
+ 1920 0707 00       		.byte	0
+ 1921 0708 00       		.byte	0
+ 1922 0709 00       		.byte	0
+ 1923 070a 00       		.byte	0
+ 1924 070b 00       		.byte	0
+ 1925 070c 00       		.byte	0
+ 1926 070d 00       		.byte	0
+ 1927 070e 00       		.byte	0
+ 1928 070f 00       		.byte	0
+ 1929 0710 00       		.byte	0
+ 1930 0711 00       		.byte	0
+ 1931 0712 00       		.byte	0
+ 1932 0713 00       		.byte	0
+ 1933 0714 00       		.byte	0
+ 1934 0715 00       		.byte	0
+ 1935 0716 00       		.byte	0
+ 1936 0717 00       		.byte	0
+ 1937 0718 00       		.byte	0
+ 1938 0719 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 35
+
+
+ 1939 071a 00       		.byte	0
+ 1940 071b 00       		.byte	0
+ 1941 071c 00       		.byte	0
+ 1942 071d 00       		.byte	0
+ 1943 071e 00       		.byte	0
+ 1944 071f 00       		.byte	0
+ 1945 0720 00       		.byte	0
+ 1946 0721 00       		.byte	0
+ 1947 0722 00       		.byte	0
+ 1948 0723 00       		.byte	0
+ 1949 0724 DC       		.byte	-36
+ 1950 0725 00       		.byte	0
+ 1951 0726 00       		.byte	0
+ 1952 0727 20       		.byte	32
+ 1953 0728 00       		.byte	0
+ 1954 0729 00       		.byte	0
+ 1955 072a 00       		.byte	0
+ 1956 072b 00       		.byte	0
+ 1957 072c 00       		.byte	0
+ 1958 072d 00       		.byte	0
+ 1959 072e 00       		.byte	0
+ 1960 072f 00       		.byte	0
+ 1961 0730 00       		.byte	0
+ 1962 0731 00       		.byte	0
+ 1963 0732 00       		.byte	0
+ 1964 0733 00       		.byte	0
+ 1965 0734 00       		.byte	0
+ 1966 0735 00       		.byte	0
+ 1967 0736 00       		.byte	0
+ 1968 0737 00       		.byte	0
+ 1969 0738 00       		.byte	0
+ 1970 0739 00       		.byte	0
+ 1971 073a 00       		.byte	0
+ 1972 073b 00       		.byte	0
+ 1973 073c 00       		.byte	0
+ 1974 073d 00       		.byte	0
+ 1975 073e 00       		.byte	0
+ 1976 073f 00       		.byte	0
+ 1977 0740 00       		.byte	0
+ 1978 0741 00       		.byte	0
+ 1979 0742 00       		.byte	0
+ 1980 0743 00       		.byte	0
+ 1981 0744 00       		.byte	0
+ 1982 0745 00       		.byte	0
+ 1983 0746 00       		.byte	0
+ 1984 0747 00       		.byte	0
+ 1985 0748 00       		.byte	0
+ 1986 0749 00       		.byte	0
+ 1987 074a 00       		.byte	0
+ 1988 074b 00       		.byte	0
+ 1989 074c 00       		.byte	0
+ 1990 074d 00       		.byte	0
+ 1991 074e 00       		.byte	0
+ 1992 074f 00       		.byte	0
+ 1993 0750 00       		.byte	0
+ 1994 0751 00       		.byte	0
+ 1995 0752 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 36
+
+
+ 1996 0753 00       		.byte	0
+ 1997 0754 00       		.byte	0
+ 1998 0755 00       		.byte	0
+ 1999 0756 00       		.byte	0
+ 2000 0757 00       		.byte	0
+ 2001 0758 00       		.byte	0
+ 2002 0759 00       		.byte	0
+ 2003 075a 00       		.byte	0
+ 2004 075b 00       		.byte	0
+ 2005 075c 00       		.byte	0
+ 2006 075d 00       		.byte	0
+ 2007 075e 00       		.byte	0
+ 2008 075f 00       		.byte	0
+ 2009 0760 00       		.byte	0
+ 2010 0761 00       		.byte	0
+ 2011 0762 00       		.byte	0
+ 2012 0763 00       		.byte	0
+ 2013 0764 00       		.byte	0
+ 2014 0765 00       		.byte	0
+ 2015 0766 00       		.byte	0
+ 2016 0767 00       		.byte	0
+ 2017 0768 00       		.byte	0
+ 2018 0769 00       		.byte	0
+ 2019 076a 00       		.byte	0
+ 2020 076b 00       		.byte	0
+ 2021 076c 00       		.byte	0
+ 2022 076d 00       		.byte	0
+ 2023 076e 00       		.byte	0
+ 2024 076f 00       		.byte	0
+ 2025 0770 00       		.byte	0
+ 2026 0771 00       		.byte	0
+ 2027 0772 00       		.byte	0
+ 2028 0773 00       		.byte	0
+ 2029 0774 00       		.byte	0
+ 2030 0775 00       		.byte	0
+ 2031 0776 00       		.byte	0
+ 2032 0777 00       		.byte	0
+ 2033 0778 00       		.byte	0
+ 2034 0779 00       		.byte	0
+ 2035 077a 00       		.byte	0
+ 2036 077b 00       		.byte	0
+ 2037 077c 00       		.byte	0
+ 2038 077d 00       		.byte	0
+ 2039 077e 00       		.byte	0
+ 2040 077f 00       		.byte	0
+ 2041 0780 00       		.byte	0
+ 2042 0781 10       		.byte	16
+ 2043 0782 00       		.byte	0
+ 2044 0783 20       		.byte	32
+ 2045 0784 91       		.byte	-111
+ 2046 0785 07       		.byte	7
+ 2047 0786 00       		.byte	0
+ 2048 0787 00       		.byte	0
+ 2049 0788 11       		.byte	17
+ 2050 0789 09       		.byte	9
+ 2051 078a 00       		.byte	0
+ 2052 078b 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 37
+
+
+ 2053 078c 11       		.byte	17
+ 2054 078d 09       		.byte	9
+ 2055 078e 00       		.byte	0
+ 2056 078f 00       		.byte	0
+ 2057 0790 10       		.byte	16
+ 2058 0791 B5       		.byte	-75
+ 2059 0792 02       		.byte	2
+ 2060 0793 4B       		.byte	75
+ 2061 0794 83       		.byte	-125
+ 2062 0795 F3       		.byte	-13
+ 2063 0796 08       		.byte	8
+ 2064 0797 88       		.byte	-120
+ 2065 0798 00       		.byte	0
+ 2066 0799 F0       		.byte	-16
+ 2067 079a C2       		.byte	-62
+ 2068 079b F8       		.byte	-8
+ 2069 079c 00       		.byte	0
+ 2070 079d 10       		.byte	16
+ 2071 079e 00       		.byte	0
+ 2072 079f 20       		.byte	32
+ 2073 07a0 70       		.byte	112
+ 2074 07a1 B5       		.byte	-75
+ 2075 07a2 0F       		.byte	15
+ 2076 07a3 4C       		.byte	76
+ 2077 07a4 23       		.byte	35
+ 2078 07a5 68       		.byte	104
+ 2079 07a6 80       		.byte	-128
+ 2080 07a7 22       		.byte	34
+ 2081 07a8 D2       		.byte	-46
+ 2082 07a9 02       		.byte	2
+ 2083 07aa 13       		.byte	19
+ 2084 07ab 43       		.byte	67
+ 2085 07ac 23       		.byte	35
+ 2086 07ad 60       		.byte	96
+ 2087 07ae 18       		.byte	24
+ 2088 07af 20       		.byte	32
+ 2089 07b0 00       		.byte	0
+ 2090 07b1 F0       		.byte	-16
+ 2091 07b2 48       		.byte	72
+ 2092 07b3 F9       		.byte	-7
+ 2093 07b4 22       		.byte	34
+ 2094 07b5 68       		.byte	104
+ 2095 07b6 0B       		.byte	11
+ 2096 07b7 4B       		.byte	75
+ 2097 07b8 13       		.byte	19
+ 2098 07b9 40       		.byte	64
+ 2099 07ba 23       		.byte	35
+ 2100 07bb 60       		.byte	96
+ 2101 07bc 0A       		.byte	10
+ 2102 07bd 4A       		.byte	74
+ 2103 07be 0B       		.byte	11
+ 2104 07bf 4B       		.byte	75
+ 2105 07c0 1A       		.byte	26
+ 2106 07c1 60       		.byte	96
+ 2107 07c2 06       		.byte	6
+ 2108 07c3 3A       		.byte	58
+ 2109 07c4 0A       		.byte	10
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 38
+
+
+ 2110 07c5 4B       		.byte	75
+ 2111 07c6 1A       		.byte	26
+ 2112 07c7 60       		.byte	96
+ 2113 07c8 00       		.byte	0
+ 2114 07c9 25       		.byte	37
+ 2115 07ca 25       		.byte	37
+ 2116 07cb 60       		.byte	96
+ 2117 07cc 09       		.byte	9
+ 2118 07cd 49       		.byte	73
+ 2119 07ce 09       		.byte	9
+ 2120 07cf 20       		.byte	32
+ 2121 07d0 00       		.byte	0
+ 2122 07d1 F0       		.byte	-16
+ 2123 07d2 04       		.byte	4
+ 2124 07d3 F9       		.byte	-7
+ 2125 07d4 09       		.byte	9
+ 2126 07d5 20       		.byte	32
+ 2127 07d6 00       		.byte	0
+ 2128 07d7 F0       		.byte	-16
+ 2129 07d8 F5       		.byte	-11
+ 2130 07d9 F8       		.byte	-8
+ 2131 07da 07       		.byte	7
+ 2132 07db 4B       		.byte	75
+ 2133 07dc 1D       		.byte	29
+ 2134 07dd 60       		.byte	96
+ 2135 07de 70       		.byte	112
+ 2136 07df BD       		.byte	-67
+ 2137 07e0 00       		.byte	0
+ 2138 07e1 01       		.byte	1
+ 2139 07e2 0B       		.byte	11
+ 2140 07e3 40       		.byte	64
+ 2141 07e4 FF       		.byte	-1
+ 2142 07e5 FF       		.byte	-1
+ 2143 07e6 FB       		.byte	-5
+ 2144 07e7 FF       		.byte	-1
+ 2145 07e8 06       		.byte	6
+ 2146 07e9 00       		.byte	0
+ 2147 07ea 00       		.byte	0
+ 2148 07eb 80       		.byte	-128
+ 2149 07ec 04       		.byte	4
+ 2150 07ed 01       		.byte	1
+ 2151 07ee 0B       		.byte	11
+ 2152 07ef 40       		.byte	64
+ 2153 07f0 08       		.byte	8
+ 2154 07f1 01       		.byte	1
+ 2155 07f2 0B       		.byte	11
+ 2156 07f3 40       		.byte	64
+ 2157 07f4 55       		.byte	85
+ 2158 07f5 0C       		.byte	12
+ 2159 07f6 00       		.byte	0
+ 2160 07f7 00       		.byte	0
+ 2161 07f8 0C       		.byte	12
+ 2162 07f9 02       		.byte	2
+ 2163 07fa 0B       		.byte	11
+ 2164 07fb 40       		.byte	64
+ 2165 07fc 10       		.byte	16
+ 2166 07fd B5       		.byte	-75
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 39
+
+
+ 2167 07fe 72       		.byte	114
+ 2168 07ff B6       		.byte	-74
+ 2169 0800 00       		.byte	0
+ 2170 0801 24       		.byte	36
+ 2171 0802 0F       		.byte	15
+ 2172 0803 E0       		.byte	-32
+ 2173 0804 15       		.byte	21
+ 2174 0805 48       		.byte	72
+ 2175 0806 62       		.byte	98
+ 2176 0807 00       		.byte	0
+ 2177 0808 13       		.byte	19
+ 2178 0809 19       		.byte	25
+ 2179 080a 59       		.byte	89
+ 2180 080b 00       		.byte	0
+ 2181 080c 0B       		.byte	11
+ 2182 080d 00       		.byte	0
+ 2183 080e 41       		.byte	65
+ 2184 080f 18       		.byte	24
+ 2185 0810 89       		.byte	-119
+ 2186 0811 88       		.byte	-120
+ 2187 0812 1A       		.byte	26
+ 2188 0813 5A       		.byte	90
+ 2189 0814 C3       		.byte	-61
+ 2190 0815 18       		.byte	24
+ 2191 0816 58       		.byte	88
+ 2192 0817 88       		.byte	-120
+ 2193 0818 00       		.byte	0
+ 2194 0819 04       		.byte	4
+ 2195 081a 10       		.byte	16
+ 2196 081b 43       		.byte	67
+ 2197 081c 00       		.byte	0
+ 2198 081d F0       		.byte	-16
+ 2199 081e 72       		.byte	114
+ 2200 081f F8       		.byte	-8
+ 2201 0820 01       		.byte	1
+ 2202 0821 34       		.byte	52
+ 2203 0822 E4       		.byte	-28
+ 2204 0823 B2       		.byte	-78
+ 2205 0824 01       		.byte	1
+ 2206 0825 2C       		.byte	44
+ 2207 0826 ED       		.byte	-19
+ 2208 0827 D9       		.byte	-39
+ 2209 0828 EE       		.byte	-18
+ 2210 0829 22       		.byte	34
+ 2211 082a 12       		.byte	18
+ 2212 082b 02       		.byte	2
+ 2213 082c 0C       		.byte	12
+ 2214 082d 4B       		.byte	75
+ 2215 082e 1A       		.byte	26
+ 2216 082f 60       		.byte	96
+ 2217 0830 99       		.byte	-103
+ 2218 0831 23       		.byte	35
+ 2219 0832 1B       		.byte	27
+ 2220 0833 04       		.byte	4
+ 2221 0834 0B       		.byte	11
+ 2222 0835 4A       		.byte	74
+ 2223 0836 13       		.byte	19
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 40
+
+
+ 2224 0837 60       		.byte	96
+ 2225 0838 0B       		.byte	11
+ 2226 0839 4A       		.byte	74
+ 2227 083a 13       		.byte	19
+ 2228 083b 60       		.byte	96
+ 2229 083c 0B       		.byte	11
+ 2230 083d 4A       		.byte	74
+ 2231 083e 11       		.byte	17
+ 2232 083f 78       		.byte	120
+ 2233 0840 06       		.byte	6
+ 2234 0841 23       		.byte	35
+ 2235 0842 0B       		.byte	11
+ 2236 0843 43       		.byte	67
+ 2237 0844 DB       		.byte	-37
+ 2238 0845 B2       		.byte	-78
+ 2239 0846 13       		.byte	19
+ 2240 0847 70       		.byte	112
+ 2241 0848 09       		.byte	9
+ 2242 0849 4A       		.byte	74
+ 2243 084a 0A       		.byte	10
+ 2244 084b 4B       		.byte	75
+ 2245 084c 1A       		.byte	26
+ 2246 084d 60       		.byte	96
+ 2247 084e D8       		.byte	-40
+ 2248 084f 22       		.byte	34
+ 2249 0850 12       		.byte	18
+ 2250 0851 01       		.byte	1
+ 2251 0852 09       		.byte	9
+ 2252 0853 4B       		.byte	75
+ 2253 0854 1A       		.byte	26
+ 2254 0855 60       		.byte	96
+ 2255 0856 FF       		.byte	-1
+ 2256 0857 F7       		.byte	-9
+ 2257 0858 A3       		.byte	-93
+ 2258 0859 FF       		.byte	-1
+ 2259 085a 10       		.byte	16
+ 2260 085b BD       		.byte	-67
+ 2261 085c C8       		.byte	-56
+ 2262 085d 0D       		.byte	13
+ 2263 085e 00       		.byte	0
+ 2264 085f 00       		.byte	0
+ 2265 0860 0C       		.byte	12
+ 2266 0861 00       		.byte	0
+ 2267 0862 01       		.byte	1
+ 2268 0863 40       		.byte	64
+ 2269 0864 00       		.byte	0
+ 2270 0865 50       		.byte	80
+ 2271 0866 0F       		.byte	15
+ 2272 0867 40       		.byte	64
+ 2273 0868 30       		.byte	48
+ 2274 0869 50       		.byte	80
+ 2275 086a 0F       		.byte	15
+ 2276 086b 40       		.byte	64
+ 2277 086c 00       		.byte	0
+ 2278 086d 70       		.byte	112
+ 2279 086e 0F       		.byte	15
+ 2280 086f 40       		.byte	64
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 41
+
+
+ 2281 0870 B6       		.byte	-74
+ 2282 0871 6D       		.byte	109
+ 2283 0872 DB       		.byte	-37
+ 2284 0873 00       		.byte	0
+ 2285 0874 08       		.byte	8
+ 2286 0875 00       		.byte	0
+ 2287 0876 04       		.byte	4
+ 2288 0877 40       		.byte	64
+ 2289 0878 08       		.byte	8
+ 2290 0879 03       		.byte	3
+ 2291 087a 04       		.byte	4
+ 2292 087b 40       		.byte	64
+ 2293 087c 00       		.byte	0
+ 2294 087d 00       		.byte	0
+ 2295 087e 00       		.byte	0
+ 2296 087f 00       		.byte	0
+ 2297 0880 10       		.byte	16
+ 2298 0881 B5       		.byte	-75
+ 2299 0882 06       		.byte	6
+ 2300 0883 4C       		.byte	76
+ 2301 0884 23       		.byte	35
+ 2302 0885 78       		.byte	120
+ 2303 0886 00       		.byte	0
+ 2304 0887 2B       		.byte	43
+ 2305 0888 07       		.byte	7
+ 2306 0889 D1       		.byte	-47
+ 2307 088a 05       		.byte	5
+ 2308 088b 4B       		.byte	75
+ 2309 088c 00       		.byte	0
+ 2310 088d 2B       		.byte	43
+ 2311 088e 02       		.byte	2
+ 2312 088f D0       		.byte	-48
+ 2313 0890 04       		.byte	4
+ 2314 0891 48       		.byte	72
+ 2315 0892 00       		.byte	0
+ 2316 0893 E0       		.byte	-32
+ 2317 0894 00       		.byte	0
+ 2318 0895 BF       		.byte	-65
+ 2319 0896 01       		.byte	1
+ 2320 0897 23       		.byte	35
+ 2321 0898 23       		.byte	35
+ 2322 0899 70       		.byte	112
+ 2323 089a 10       		.byte	16
+ 2324 089b BD       		.byte	-67
+ 2325 089c 48       		.byte	72
+ 2326 089d 01       		.byte	1
+ 2327 089e 00       		.byte	0
+ 2328 089f 20       		.byte	32
+ 2329 08a0 00       		.byte	0
+ 2330 08a1 00       		.byte	0
+ 2331 08a2 00       		.byte	0
+ 2332 08a3 00       		.byte	0
+ 2333 08a4 84       		.byte	-124
+ 2334 08a5 0D       		.byte	13
+ 2335 08a6 00       		.byte	0
+ 2336 08a7 00       		.byte	0
+ 2337 08a8 08       		.byte	8
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 42
+
+
+ 2338 08a9 4B       		.byte	75
+ 2339 08aa 10       		.byte	16
+ 2340 08ab B5       		.byte	-75
+ 2341 08ac 00       		.byte	0
+ 2342 08ad 2B       		.byte	43
+ 2343 08ae 03       		.byte	3
+ 2344 08af D0       		.byte	-48
+ 2345 08b0 07       		.byte	7
+ 2346 08b1 49       		.byte	73
+ 2347 08b2 08       		.byte	8
+ 2348 08b3 48       		.byte	72
+ 2349 08b4 00       		.byte	0
+ 2350 08b5 E0       		.byte	-32
+ 2351 08b6 00       		.byte	0
+ 2352 08b7 BF       		.byte	-65
+ 2353 08b8 07       		.byte	7
+ 2354 08b9 48       		.byte	72
+ 2355 08ba 03       		.byte	3
+ 2356 08bb 68       		.byte	104
+ 2357 08bc 00       		.byte	0
+ 2358 08bd 2B       		.byte	43
+ 2359 08be 00       		.byte	0
+ 2360 08bf D1       		.byte	-47
+ 2361 08c0 10       		.byte	16
+ 2362 08c1 BD       		.byte	-67
+ 2363 08c2 06       		.byte	6
+ 2364 08c3 4B       		.byte	75
+ 2365 08c4 00       		.byte	0
+ 2366 08c5 2B       		.byte	43
+ 2367 08c6 FB       		.byte	-5
+ 2368 08c7 D0       		.byte	-48
+ 2369 08c8 98       		.byte	-104
+ 2370 08c9 47       		.byte	71
+ 2371 08ca F9       		.byte	-7
+ 2372 08cb E7       		.byte	-25
+ 2373 08cc 00       		.byte	0
+ 2374 08cd 00       		.byte	0
+ 2375 08ce 00       		.byte	0
+ 2376 08cf 00       		.byte	0
+ 2377 08d0 4C       		.byte	76
+ 2378 08d1 01       		.byte	1
+ 2379 08d2 00       		.byte	0
+ 2380 08d3 20       		.byte	32
+ 2381 08d4 84       		.byte	-124
+ 2382 08d5 0D       		.byte	13
+ 2383 08d6 00       		.byte	0
+ 2384 08d7 00       		.byte	0
+ 2385 08d8 C8       		.byte	-56
+ 2386 08d9 00       		.byte	0
+ 2387 08da 00       		.byte	0
+ 2388 08db 20       		.byte	32
+ 2389 08dc 00       		.byte	0
+ 2390 08dd 00       		.byte	0
+ 2391 08de 00       		.byte	0
+ 2392 08df 00       		.byte	0
+ 2393 08e0 10       		.byte	16
+ 2394 08e1 B5       		.byte	-75
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 43
+
+
+ 2395 08e2 62       		.byte	98
+ 2396 08e3 B6       		.byte	-74
+ 2397 08e4 00       		.byte	0
+ 2398 08e5 24       		.byte	36
+ 2399 08e6 08       		.byte	8
+ 2400 08e7 E0       		.byte	-32
+ 2401 08e8 A3       		.byte	-93
+ 2402 08e9 00       		.byte	0
+ 2403 08ea 05       		.byte	5
+ 2404 08eb 4A       		.byte	74
+ 2405 08ec D0       		.byte	-48
+ 2406 08ed 5C       		.byte	92
+ 2407 08ee 00       		.byte	0
+ 2408 08ef F0       		.byte	-16
+ 2409 08f0 63       		.byte	99
+ 2410 08f1 F8       		.byte	-8
+ 2411 08f2 C8       		.byte	-56
+ 2412 08f3 20       		.byte	32
+ 2413 08f4 00       		.byte	0
+ 2414 08f5 F0       		.byte	-16
+ 2415 08f6 84       		.byte	-124
+ 2416 08f7 F8       		.byte	-8
+ 2417 08f8 01       		.byte	1
+ 2418 08f9 34       		.byte	52
+ 2419 08fa 10       		.byte	16
+ 2420 08fb 2C       		.byte	44
+ 2421 08fc F4       		.byte	-12
+ 2422 08fd DD       		.byte	-35
+ 2423 08fe F1       		.byte	-15
+ 2424 08ff E7       		.byte	-25
+ 2425 0900 88       		.byte	-120
+ 2426 0901 0D       		.byte	13
+ 2427 0902 00       		.byte	0
+ 2428 0903 00       		.byte	0
+ 2429 0904 10       		.byte	16
+ 2430 0905 B5       		.byte	-75
+ 2431 0906 0A       		.byte	10
+ 2432 0907 00       		.byte	0
+ 2433 0908 00       		.byte	0
+ 2434 0909 21       		.byte	33
+ 2435 090a 00       		.byte	0
+ 2436 090b F0       		.byte	-16
+ 2437 090c 33       		.byte	51
+ 2438 090d FA       		.byte	-6
+ 2439 090e 10       		.byte	16
+ 2440 090f BD       		.byte	-67
+ 2441 0910 10       		.byte	16
+ 2442 0911 B5       		.byte	-75
+ 2443 0912 00       		.byte	0
+ 2444 0913 F0       		.byte	-16
+ 2445 0914 03       		.byte	3
+ 2446 0915 FA       		.byte	-6
+ 2447 0916 03       		.byte	3
+ 2448 0917 68       		.byte	104
+ 2449 0918 0C       		.byte	12
+ 2450 0919 2B       		.byte	43
+ 2451 091a 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 44
+
+
+ 2452 091b D1       		.byte	-47
+ 2453 091c FE       		.byte	-2
+ 2454 091d E7       		.byte	-25
+ 2455 091e FE       		.byte	-2
+ 2456 091f E7       		.byte	-25
+ 2457 0920 70       		.byte	112
+ 2458 0921 B5       		.byte	-75
+ 2459 0922 0F       		.byte	15
+ 2460 0923 4E       		.byte	78
+ 2461 0924 0F       		.byte	15
+ 2462 0925 4D       		.byte	77
+ 2463 0926 13       		.byte	19
+ 2464 0927 E0       		.byte	-32
+ 2465 0928 29       		.byte	41
+ 2466 0929 68       		.byte	104
+ 2467 092a 6B       		.byte	107
+ 2468 092b 68       		.byte	104
+ 2469 092c AC       		.byte	-84
+ 2470 092d 68       		.byte	104
+ 2471 092e 00       		.byte	0
+ 2472 092f 22       		.byte	34
+ 2473 0930 02       		.byte	2
+ 2474 0931 E0       		.byte	-32
+ 2475 0932 01       		.byte	1
+ 2476 0933 C9       		.byte	-55
+ 2477 0934 01       		.byte	1
+ 2478 0935 C3       		.byte	-61
+ 2479 0936 04       		.byte	4
+ 2480 0937 32       		.byte	50
+ 2481 0938 A2       		.byte	-94
+ 2482 0939 42       		.byte	66
+ 2483 093a FA       		.byte	-6
+ 2484 093b D1       		.byte	-47
+ 2485 093c E8       		.byte	-24
+ 2486 093d 68       		.byte	104
+ 2487 093e 00       		.byte	0
+ 2488 093f 22       		.byte	34
+ 2489 0940 02       		.byte	2
+ 2490 0941 E0       		.byte	-32
+ 2491 0942 00       		.byte	0
+ 2492 0943 21       		.byte	33
+ 2493 0944 02       		.byte	2
+ 2494 0945 C3       		.byte	-61
+ 2495 0946 04       		.byte	4
+ 2496 0947 32       		.byte	50
+ 2497 0948 82       		.byte	-126
+ 2498 0949 42       		.byte	66
+ 2499 094a FA       		.byte	-6
+ 2500 094b D1       		.byte	-47
+ 2501 094c 10       		.byte	16
+ 2502 094d 35       		.byte	53
+ 2503 094e 01       		.byte	1
+ 2504 094f 3E       		.byte	62
+ 2505 0950 00       		.byte	0
+ 2506 0951 2E       		.byte	46
+ 2507 0952 E9       		.byte	-23
+ 2508 0953 D1       		.byte	-47
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 45
+
+
+ 2509 0954 00       		.byte	0
+ 2510 0955 F0       		.byte	-16
+ 2511 0956 E8       		.byte	-24
+ 2512 0957 F9       		.byte	-7
+ 2513 0958 FF       		.byte	-1
+ 2514 0959 F7       		.byte	-9
+ 2515 095a C2       		.byte	-62
+ 2516 095b FF       		.byte	-1
+ 2517 095c FE       		.byte	-2
+ 2518 095d E7       		.byte	-25
+ 2519 095e C0       		.byte	-64
+ 2520 095f 46       		.byte	70
+ 2521 0960 01       		.byte	1
+ 2522 0961 00       		.byte	0
+ 2523 0962 00       		.byte	0
+ 2524 0963 00       		.byte	0
+ 2525 0964 28       		.byte	40
+ 2526 0965 0E       		.byte	14
+ 2527 0966 00       		.byte	0
+ 2528 0967 00       		.byte	0
+ 2529 0968 10       		.byte	16
+ 2530 0969 B5       		.byte	-75
+ 2531 096a 00       		.byte	0
+ 2532 096b 23       		.byte	35
+ 2533 096c 0A       		.byte	10
+ 2534 096d E0       		.byte	-32
+ 2535 096e 03       		.byte	3
+ 2536 096f 2B       		.byte	43
+ 2537 0970 03       		.byte	3
+ 2538 0971 D8       		.byte	-40
+ 2539 0972 9A       		.byte	-102
+ 2540 0973 00       		.byte	0
+ 2541 0974 0C       		.byte	12
+ 2542 0975 49       		.byte	73
+ 2543 0976 50       		.byte	80
+ 2544 0977 58       		.byte	88
+ 2545 0978 00       		.byte	0
+ 2546 0979 E0       		.byte	-32
+ 2547 097a 0C       		.byte	12
+ 2548 097b 48       		.byte	72
+ 2549 097c 99       		.byte	-103
+ 2550 097d 00       		.byte	0
+ 2551 097e 0C       		.byte	12
+ 2552 097f 4A       		.byte	74
+ 2553 0980 88       		.byte	-120
+ 2554 0981 50       		.byte	80
+ 2555 0982 01       		.byte	1
+ 2556 0983 33       		.byte	51
+ 2557 0984 2F       		.byte	47
+ 2558 0985 2B       		.byte	43
+ 2559 0986 F2       		.byte	-14
+ 2560 0987 D9       		.byte	-39
+ 2561 0988 FF       		.byte	-1
+ 2562 0989 F7       		.byte	-9
+ 2563 098a 38       		.byte	56
+ 2564 098b FF       		.byte	-1
+ 2565 098c 09       		.byte	9
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 46
+
+
+ 2566 098d 4B       		.byte	75
+ 2567 098e 1B       		.byte	27
+ 2568 098f 68       		.byte	104
+ 2569 0990 00       		.byte	0
+ 2570 0991 2B       		.byte	43
+ 2571 0992 02       		.byte	2
+ 2572 0993 D1       		.byte	-47
+ 2573 0994 00       		.byte	0
+ 2574 0995 22       		.byte	34
+ 2575 0996 07       		.byte	7
+ 2576 0997 4B       		.byte	75
+ 2577 0998 1A       		.byte	26
+ 2578 0999 60       		.byte	96
+ 2579 099a 80       		.byte	-128
+ 2580 099b 22       		.byte	34
+ 2581 099c D2       		.byte	-46
+ 2582 099d 05       		.byte	5
+ 2583 099e 11       		.byte	17
+ 2584 099f 68       		.byte	104
+ 2585 09a0 01       		.byte	1
+ 2586 09a1 23       		.byte	35
+ 2587 09a2 0B       		.byte	11
+ 2588 09a3 43       		.byte	67
+ 2589 09a4 13       		.byte	19
+ 2590 09a5 60       		.byte	96
+ 2591 09a6 10       		.byte	16
+ 2592 09a7 BD       		.byte	-67
+ 2593 09a8 80       		.byte	-128
+ 2594 09a9 07       		.byte	7
+ 2595 09aa 00       		.byte	0
+ 2596 09ab 00       		.byte	0
+ 2597 09ac 11       		.byte	17
+ 2598 09ad 09       		.byte	9
+ 2599 09ae 00       		.byte	0
+ 2600 09af 00       		.byte	0
+ 2601 09b0 00       		.byte	0
+ 2602 09b1 00       		.byte	0
+ 2603 09b2 00       		.byte	0
+ 2604 09b3 20       		.byte	32
+ 2605 09b4 C0       		.byte	-64
+ 2606 09b5 00       		.byte	0
+ 2607 09b6 00       		.byte	0
+ 2608 09b7 20       		.byte	32
+ 2609 09b8 01       		.byte	1
+ 2610 09b9 4B       		.byte	75
+ 2611 09ba 1A       		.byte	26
+ 2612 09bb 68       		.byte	104
+ 2613 09bc 18       		.byte	24
+ 2614 09bd 60       		.byte	96
+ 2615 09be 70       		.byte	112
+ 2616 09bf 47       		.byte	71
+ 2617 09c0 00       		.byte	0
+ 2618 09c1 00       		.byte	0
+ 2619 09c2 04       		.byte	4
+ 2620 09c3 40       		.byte	64
+ 2621 09c4 1F       		.byte	31
+ 2622 09c5 23       		.byte	35
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 47
+
+
+ 2623 09c6 18       		.byte	24
+ 2624 09c7 40       		.byte	64
+ 2625 09c8 1E       		.byte	30
+ 2626 09c9 3B       		.byte	59
+ 2627 09ca 83       		.byte	-125
+ 2628 09cb 40       		.byte	64
+ 2629 09cc 01       		.byte	1
+ 2630 09cd 4A       		.byte	74
+ 2631 09ce 13       		.byte	19
+ 2632 09cf 60       		.byte	96
+ 2633 09d0 70       		.byte	112
+ 2634 09d1 47       		.byte	71
+ 2635 09d2 C0       		.byte	-64
+ 2636 09d3 46       		.byte	70
+ 2637 09d4 00       		.byte	0
+ 2638 09d5 E1       		.byte	-31
+ 2639 09d6 00       		.byte	0
+ 2640 09d7 E0       		.byte	-32
+ 2641 09d8 01       		.byte	1
+ 2642 09d9 BE       		.byte	-66
+ 2643 09da 70       		.byte	112
+ 2644 09db 47       		.byte	71
+ 2645 09dc 70       		.byte	112
+ 2646 09dd B5       		.byte	-75
+ 2647 09de 04       		.byte	4
+ 2648 09df 00       		.byte	0
+ 2649 09e0 0D       		.byte	13
+ 2650 09e1 00       		.byte	0
+ 2651 09e2 1F       		.byte	31
+ 2652 09e3 28       		.byte	40
+ 2653 09e4 02       		.byte	2
+ 2654 09e5 D9       		.byte	-39
+ 2655 09e6 00       		.byte	0
+ 2656 09e7 20       		.byte	32
+ 2657 09e8 FF       		.byte	-1
+ 2658 09e9 F7       		.byte	-9
+ 2659 09ea F6       		.byte	-10
+ 2660 09eb FF       		.byte	-1
+ 2661 09ec 10       		.byte	16
+ 2662 09ed 34       		.byte	52
+ 2663 09ee A4       		.byte	-92
+ 2664 09ef 00       		.byte	0
+ 2665 09f0 80       		.byte	-128
+ 2666 09f1 23       		.byte	35
+ 2667 09f2 9B       		.byte	-101
+ 2668 09f3 05       		.byte	5
+ 2669 09f4 9C       		.byte	-100
+ 2670 09f5 46       		.byte	70
+ 2671 09f6 64       		.byte	100
+ 2672 09f7 44       		.byte	68
+ 2673 09f8 20       		.byte	32
+ 2674 09f9 68       		.byte	104
+ 2675 09fa 25       		.byte	37
+ 2676 09fb 60       		.byte	96
+ 2677 09fc 70       		.byte	112
+ 2678 09fd BD       		.byte	-67
+ 2679 09fe C0       		.byte	-64
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 48
+
+
+ 2680 09ff 46       		.byte	70
+ 2681 0a00 10       		.byte	16
+ 2682 0a01 B5       		.byte	-75
+ 2683 0a02 04       		.byte	4
+ 2684 0a03 00       		.byte	0
+ 2685 0a04 06       		.byte	6
+ 2686 0a05 E0       		.byte	-32
+ 2687 0a06 08       		.byte	8
+ 2688 0a07 4B       		.byte	75
+ 2689 0a08 58       		.byte	88
+ 2690 0a09 68       		.byte	104
+ 2691 0a0a 00       		.byte	0
+ 2692 0a0b F0       		.byte	-16
+ 2693 0a0c 75       		.byte	117
+ 2694 0a0d F9       		.byte	-7
+ 2695 0a0e 07       		.byte	7
+ 2696 0a0f 4B       		.byte	75
+ 2697 0a10 9C       		.byte	-100
+ 2698 0a11 46       		.byte	70
+ 2699 0a12 64       		.byte	100
+ 2700 0a13 44       		.byte	68
+ 2701 0a14 80       		.byte	-128
+ 2702 0a15 23       		.byte	35
+ 2703 0a16 1B       		.byte	27
+ 2704 0a17 02       		.byte	2
+ 2705 0a18 9C       		.byte	-100
+ 2706 0a19 42       		.byte	66
+ 2707 0a1a F4       		.byte	-12
+ 2708 0a1b D8       		.byte	-40
+ 2709 0a1c 02       		.byte	2
+ 2710 0a1d 4B       		.byte	75
+ 2711 0a1e 98       		.byte	-104
+ 2712 0a1f 68       		.byte	104
+ 2713 0a20 60       		.byte	96
+ 2714 0a21 43       		.byte	67
+ 2715 0a22 00       		.byte	0
+ 2716 0a23 F0       		.byte	-16
+ 2717 0a24 69       		.byte	105
+ 2718 0a25 F9       		.byte	-7
+ 2719 0a26 10       		.byte	16
+ 2720 0a27 BD       		.byte	-67
+ 2721 0a28 CC       		.byte	-52
+ 2722 0a29 00       		.byte	0
+ 2723 0a2a 00       		.byte	0
+ 2724 0a2b 20       		.byte	32
+ 2725 0a2c 00       		.byte	0
+ 2726 0a2d 80       		.byte	-128
+ 2727 0a2e FF       		.byte	-1
+ 2728 0a2f FF       		.byte	-1
+ 2729 0a30 10       		.byte	16
+ 2730 0a31 B5       		.byte	-75
+ 2731 0a32 03       		.byte	3
+ 2732 0a33 4B       		.byte	75
+ 2733 0a34 1B       		.byte	27
+ 2734 0a35 7B       		.byte	123
+ 2735 0a36 58       		.byte	88
+ 2736 0a37 43       		.byte	67
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 49
+
+
+ 2737 0a38 00       		.byte	0
+ 2738 0a39 F0       		.byte	-16
+ 2739 0a3a 5E       		.byte	94
+ 2740 0a3b F9       		.byte	-7
+ 2741 0a3c 10       		.byte	16
+ 2742 0a3d BD       		.byte	-67
+ 2743 0a3e C0       		.byte	-64
+ 2744 0a3f 46       		.byte	70
+ 2745 0a40 CC       		.byte	-52
+ 2746 0a41 00       		.byte	0
+ 2747 0a42 00       		.byte	0
+ 2748 0a43 20       		.byte	32
+ 2749 0a44 F0       		.byte	-16
+ 2750 0a45 B5       		.byte	-75
+ 2751 0a46 57       		.byte	87
+ 2752 0a47 46       		.byte	70
+ 2753 0a48 4E       		.byte	78
+ 2754 0a49 46       		.byte	70
+ 2755 0a4a C0       		.byte	-64
+ 2756 0a4b B4       		.byte	-76
+ 2757 0a4c 83       		.byte	-125
+ 2758 0a4d B0       		.byte	-80
+ 2759 0a4e 04       		.byte	4
+ 2760 0a4f 00       		.byte	0
+ 2761 0a50 00       		.byte	0
+ 2762 0a51 F0       		.byte	-16
+ 2763 0a52 5C       		.byte	92
+ 2764 0a53 F9       		.byte	-7
+ 2765 0a54 01       		.byte	1
+ 2766 0a55 90       		.byte	-112
+ 2767 0a56 E7       		.byte	-25
+ 2768 0a57 1E       		.byte	30
+ 2769 0a58 2D       		.byte	45
+ 2770 0a59 2F       		.byte	47
+ 2771 0a5a 74       		.byte	116
+ 2772 0a5b D8       		.byte	-40
+ 2773 0a5c 3F       		.byte	63
+ 2774 0a5d 4B       		.byte	75
+ 2775 0a5e 1B       		.byte	27
+ 2776 0a5f 78       		.byte	120
+ 2777 0a60 DB       		.byte	-37
+ 2778 0a61 B2       		.byte	-78
+ 2779 0a62 9C       		.byte	-100
+ 2780 0a63 42       		.byte	66
+ 2781 0a64 08       		.byte	8
+ 2782 0a65 D8       		.byte	-40
+ 2783 0a66 3E       		.byte	62
+ 2784 0a67 4B       		.byte	75
+ 2785 0a68 1B       		.byte	27
+ 2786 0a69 78       		.byte	120
+ 2787 0a6a DB       		.byte	-37
+ 2788 0a6b B2       		.byte	-78
+ 2789 0a6c 9A       		.byte	-102
+ 2790 0a6d 46       		.byte	70
+ 2791 0a6e 3D       		.byte	61
+ 2792 0a6f 4B       		.byte	75
+ 2793 0a70 1B       		.byte	27
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 50
+
+
+ 2794 0a71 78       		.byte	120
+ 2795 0a72 DB       		.byte	-37
+ 2796 0a73 B2       		.byte	-78
+ 2797 0a74 99       		.byte	-103
+ 2798 0a75 46       		.byte	70
+ 2799 0a76 31       		.byte	49
+ 2800 0a77 E0       		.byte	-32
+ 2801 0a78 3B       		.byte	59
+ 2802 0a79 4B       		.byte	75
+ 2803 0a7a 1B       		.byte	27
+ 2804 0a7b 78       		.byte	120
+ 2805 0a7c DB       		.byte	-37
+ 2806 0a7d B2       		.byte	-78
+ 2807 0a7e 9C       		.byte	-100
+ 2808 0a7f 42       		.byte	66
+ 2809 0a80 08       		.byte	8
+ 2810 0a81 D8       		.byte	-40
+ 2811 0a82 3A       		.byte	58
+ 2812 0a83 4B       		.byte	75
+ 2813 0a84 1B       		.byte	27
+ 2814 0a85 78       		.byte	120
+ 2815 0a86 DB       		.byte	-37
+ 2816 0a87 B2       		.byte	-78
+ 2817 0a88 9A       		.byte	-102
+ 2818 0a89 46       		.byte	70
+ 2819 0a8a 39       		.byte	57
+ 2820 0a8b 4B       		.byte	75
+ 2821 0a8c 1B       		.byte	27
+ 2822 0a8d 78       		.byte	120
+ 2823 0a8e DB       		.byte	-37
+ 2824 0a8f B2       		.byte	-78
+ 2825 0a90 99       		.byte	-103
+ 2826 0a91 46       		.byte	70
+ 2827 0a92 23       		.byte	35
+ 2828 0a93 E0       		.byte	-32
+ 2829 0a94 37       		.byte	55
+ 2830 0a95 4B       		.byte	75
+ 2831 0a96 1B       		.byte	27
+ 2832 0a97 78       		.byte	120
+ 2833 0a98 DB       		.byte	-37
+ 2834 0a99 B2       		.byte	-78
+ 2835 0a9a 9C       		.byte	-100
+ 2836 0a9b 42       		.byte	66
+ 2837 0a9c 08       		.byte	8
+ 2838 0a9d D8       		.byte	-40
+ 2839 0a9e 36       		.byte	54
+ 2840 0a9f 4B       		.byte	75
+ 2841 0aa0 1B       		.byte	27
+ 2842 0aa1 78       		.byte	120
+ 2843 0aa2 DB       		.byte	-37
+ 2844 0aa3 B2       		.byte	-78
+ 2845 0aa4 9A       		.byte	-102
+ 2846 0aa5 46       		.byte	70
+ 2847 0aa6 35       		.byte	53
+ 2848 0aa7 4B       		.byte	75
+ 2849 0aa8 1B       		.byte	27
+ 2850 0aa9 78       		.byte	120
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 51
+
+
+ 2851 0aaa DB       		.byte	-37
+ 2852 0aab B2       		.byte	-78
+ 2853 0aac 99       		.byte	-103
+ 2854 0aad 46       		.byte	70
+ 2855 0aae 15       		.byte	21
+ 2856 0aaf E0       		.byte	-32
+ 2857 0ab0 33       		.byte	51
+ 2858 0ab1 4B       		.byte	75
+ 2859 0ab2 1B       		.byte	27
+ 2860 0ab3 78       		.byte	120
+ 2861 0ab4 DB       		.byte	-37
+ 2862 0ab5 B2       		.byte	-78
+ 2863 0ab6 9C       		.byte	-100
+ 2864 0ab7 42       		.byte	66
+ 2865 0ab8 08       		.byte	8
+ 2866 0ab9 D8       		.byte	-40
+ 2867 0aba 32       		.byte	50
+ 2868 0abb 4B       		.byte	75
+ 2869 0abc 1B       		.byte	27
+ 2870 0abd 78       		.byte	120
+ 2871 0abe DB       		.byte	-37
+ 2872 0abf B2       		.byte	-78
+ 2873 0ac0 9A       		.byte	-102
+ 2874 0ac1 46       		.byte	70
+ 2875 0ac2 31       		.byte	49
+ 2876 0ac3 4B       		.byte	75
+ 2877 0ac4 1B       		.byte	27
+ 2878 0ac5 78       		.byte	120
+ 2879 0ac6 DB       		.byte	-37
+ 2880 0ac7 B2       		.byte	-78
+ 2881 0ac8 99       		.byte	-103
+ 2882 0ac9 46       		.byte	70
+ 2883 0aca 07       		.byte	7
+ 2884 0acb E0       		.byte	-32
+ 2885 0acc 2F       		.byte	47
+ 2886 0acd 4B       		.byte	75
+ 2887 0ace 1B       		.byte	27
+ 2888 0acf 78       		.byte	120
+ 2889 0ad0 DB       		.byte	-37
+ 2890 0ad1 B2       		.byte	-78
+ 2891 0ad2 9A       		.byte	-102
+ 2892 0ad3 46       		.byte	70
+ 2893 0ad4 2E       		.byte	46
+ 2894 0ad5 4B       		.byte	75
+ 2895 0ad6 1B       		.byte	27
+ 2896 0ad7 78       		.byte	120
+ 2897 0ad8 DB       		.byte	-37
+ 2898 0ad9 B2       		.byte	-78
+ 2899 0ada 99       		.byte	-103
+ 2900 0adb 46       		.byte	70
+ 2901 0adc 2D       		.byte	45
+ 2902 0add 4B       		.byte	75
+ 2903 0ade DE       		.byte	-34
+ 2904 0adf 5D       		.byte	93
+ 2905 0ae0 2F       		.byte	47
+ 2906 0ae1 2E       		.byte	46
+ 2907 0ae2 09       		.byte	9
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 52
+
+
+ 2908 0ae3 D9       		.byte	-39
+ 2909 0ae4 2A       		.byte	42
+ 2910 0ae5 2C       		.byte	44
+ 2911 0ae6 07       		.byte	7
+ 2912 0ae7 D9       		.byte	-39
+ 2913 0ae8 19       		.byte	25
+ 2914 0ae9 22       		.byte	34
+ 2915 0aea 2B       		.byte	43
+ 2916 0aeb 4B       		.byte	75
+ 2917 0aec 1A       		.byte	26
+ 2918 0aed 60       		.byte	96
+ 2919 0aee 05       		.byte	5
+ 2920 0aef 20       		.byte	32
+ 2921 0af0 00       		.byte	0
+ 2922 0af1 F0       		.byte	-16
+ 2923 0af2 02       		.byte	2
+ 2924 0af3 F9       		.byte	-7
+ 2925 0af4 19       		.byte	25
+ 2926 0af5 25       		.byte	37
+ 2927 0af6 03       		.byte	3
+ 2928 0af7 E0       		.byte	-32
+ 2929 0af8 27       		.byte	39
+ 2930 0af9 4B       		.byte	75
+ 2931 0afa 1D       		.byte	29
+ 2932 0afb 68       		.byte	104
+ 2933 0afc 3F       		.byte	63
+ 2934 0afd 23       		.byte	35
+ 2935 0afe 1D       		.byte	29
+ 2936 0aff 40       		.byte	64
+ 2937 0b00 B5       		.byte	-75
+ 2938 0b01 42       		.byte	66
+ 2939 0b02 06       		.byte	6
+ 2940 0b03 D9       		.byte	-39
+ 2941 0b04 23       		.byte	35
+ 2942 0b05 4B       		.byte	75
+ 2943 0b06 DA       		.byte	-38
+ 2944 0b07 5D       		.byte	93
+ 2945 0b08 23       		.byte	35
+ 2946 0b09 4B       		.byte	75
+ 2947 0b0a 1A       		.byte	26
+ 2948 0b0b 60       		.byte	96
+ 2949 0b0c 05       		.byte	5
+ 2950 0b0d 20       		.byte	32
+ 2951 0b0e 00       		.byte	0
+ 2952 0b0f F0       		.byte	-16
+ 2953 0b10 F3       		.byte	-13
+ 2954 0b11 F8       		.byte	-8
+ 2955 0b12 1F       		.byte	31
+ 2956 0b13 4B       		.byte	75
+ 2957 0b14 9C       		.byte	-100
+ 2958 0b15 46       		.byte	70
+ 2959 0b16 64       		.byte	100
+ 2960 0b17 44       		.byte	68
+ 2961 0b18 23       		.byte	35
+ 2962 0b19 78       		.byte	120
+ 2963 0b1a DB       		.byte	-37
+ 2964 0b1b B2       		.byte	-78
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 53
+
+
+ 2965 0b1c 1F       		.byte	31
+ 2966 0b1d 4A       		.byte	74
+ 2967 0b1e 13       		.byte	19
+ 2968 0b1f 60       		.byte	96
+ 2969 0b20 1F       		.byte	31
+ 2970 0b21 4B       		.byte	75
+ 2971 0b22 52       		.byte	82
+ 2972 0b23 46       		.byte	70
+ 2973 0b24 1A       		.byte	26
+ 2974 0b25 60       		.byte	96
+ 2975 0b26 1F       		.byte	31
+ 2976 0b27 4B       		.byte	75
+ 2977 0b28 4A       		.byte	74
+ 2978 0b29 46       		.byte	70
+ 2979 0b2a 1A       		.byte	26
+ 2980 0b2b 60       		.byte	96
+ 2981 0b2c 05       		.byte	5
+ 2982 0b2d 20       		.byte	32
+ 2983 0b2e FF       		.byte	-1
+ 2984 0b2f F7       		.byte	-9
+ 2985 0b30 7F       		.byte	127
+ 2986 0b31 FF       		.byte	-1
+ 2987 0b32 B5       		.byte	-75
+ 2988 0b33 42       		.byte	66
+ 2989 0b34 0A       		.byte	10
+ 2990 0b35 D2       		.byte	-46
+ 2991 0b36 17       		.byte	23
+ 2992 0b37 4B       		.byte	75
+ 2993 0b38 DA       		.byte	-38
+ 2994 0b39 5D       		.byte	93
+ 2995 0b3a 17       		.byte	23
+ 2996 0b3b 4B       		.byte	75
+ 2997 0b3c 1A       		.byte	26
+ 2998 0b3d 60       		.byte	96
+ 2999 0b3e 05       		.byte	5
+ 3000 0b3f 20       		.byte	32
+ 3001 0b40 00       		.byte	0
+ 3002 0b41 F0       		.byte	-16
+ 3003 0b42 DA       		.byte	-38
+ 3004 0b43 F8       		.byte	-8
+ 3005 0b44 02       		.byte	2
+ 3006 0b45 E0       		.byte	-32
+ 3007 0b46 00       		.byte	0
+ 3008 0b47 20       		.byte	32
+ 3009 0b48 FF       		.byte	-1
+ 3010 0b49 F7       		.byte	-9
+ 3011 0b4a 46       		.byte	70
+ 3012 0b4b FF       		.byte	-1
+ 3013 0b4c 01       		.byte	1
+ 3014 0b4d 98       		.byte	-104
+ 3015 0b4e 00       		.byte	0
+ 3016 0b4f F0       		.byte	-16
+ 3017 0b50 E1       		.byte	-31
+ 3018 0b51 F8       		.byte	-8
+ 3019 0b52 03       		.byte	3
+ 3020 0b53 B0       		.byte	-80
+ 3021 0b54 0C       		.byte	12
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 54
+
+
+ 3022 0b55 BC       		.byte	-68
+ 3023 0b56 91       		.byte	-111
+ 3024 0b57 46       		.byte	70
+ 3025 0b58 9A       		.byte	-102
+ 3026 0b59 46       		.byte	70
+ 3027 0b5a F0       		.byte	-16
+ 3028 0b5b BD       		.byte	-67
+ 3029 0b5c C0       		.byte	-64
+ 3030 0b5d F1       		.byte	-15
+ 3031 0b5e FF       		.byte	-1
+ 3032 0b5f 0F       		.byte	15
+ 3033 0b60 C1       		.byte	-63
+ 3034 0b61 F1       		.byte	-15
+ 3035 0b62 FF       		.byte	-1
+ 3036 0b63 0F       		.byte	15
+ 3037 0b64 C2       		.byte	-62
+ 3038 0b65 F1       		.byte	-15
+ 3039 0b66 FF       		.byte	-1
+ 3040 0b67 0F       		.byte	15
+ 3041 0b68 C3       		.byte	-61
+ 3042 0b69 F1       		.byte	-15
+ 3043 0b6a FF       		.byte	-1
+ 3044 0b6b 0F       		.byte	15
+ 3045 0b6c C4       		.byte	-60
+ 3046 0b6d F1       		.byte	-15
+ 3047 0b6e FF       		.byte	-1
+ 3048 0b6f 0F       		.byte	15
+ 3049 0b70 C5       		.byte	-59
+ 3050 0b71 F1       		.byte	-15
+ 3051 0b72 FF       		.byte	-1
+ 3052 0b73 0F       		.byte	15
+ 3053 0b74 C6       		.byte	-58
+ 3054 0b75 F1       		.byte	-15
+ 3055 0b76 FF       		.byte	-1
+ 3056 0b77 0F       		.byte	15
+ 3057 0b78 C7       		.byte	-57
+ 3058 0b79 F1       		.byte	-15
+ 3059 0b7a FF       		.byte	-1
+ 3060 0b7b 0F       		.byte	15
+ 3061 0b7c C8       		.byte	-56
+ 3062 0b7d F1       		.byte	-15
+ 3063 0b7e FF       		.byte	-1
+ 3064 0b7f 0F       		.byte	15
+ 3065 0b80 C9       		.byte	-55
+ 3066 0b81 F1       		.byte	-15
+ 3067 0b82 FF       		.byte	-1
+ 3068 0b83 0F       		.byte	15
+ 3069 0b84 CA       		.byte	-54
+ 3070 0b85 F1       		.byte	-15
+ 3071 0b86 FF       		.byte	-1
+ 3072 0b87 0F       		.byte	15
+ 3073 0b88 CB       		.byte	-53
+ 3074 0b89 F1       		.byte	-15
+ 3075 0b8a FF       		.byte	-1
+ 3076 0b8b 0F       		.byte	15
+ 3077 0b8c CC       		.byte	-52
+ 3078 0b8d F1       		.byte	-15
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 55
+
+
+ 3079 0b8e FF       		.byte	-1
+ 3080 0b8f 0F       		.byte	15
+ 3081 0b90 CD       		.byte	-51
+ 3082 0b91 F1       		.byte	-15
+ 3083 0b92 FF       		.byte	-1
+ 3084 0b93 0F       		.byte	15
+ 3085 0b94 D4       		.byte	-44
+ 3086 0b95 0D       		.byte	13
+ 3087 0b96 00       		.byte	0
+ 3088 0b97 00       		.byte	0
+ 3089 0b98 2C       		.byte	44
+ 3090 0b99 FF       		.byte	-1
+ 3091 0b9a 0B       		.byte	11
+ 3092 0b9b 40       		.byte	64
+ 3093 0b9c 28       		.byte	40
+ 3094 0b9d FF       		.byte	-1
+ 3095 0b9e 0B       		.byte	11
+ 3096 0b9f 40       		.byte	64
+ 3097 0ba0 1C       		.byte	28
+ 3098 0ba1 FF       		.byte	-1
+ 3099 0ba2 0B       		.byte	11
+ 3100 0ba3 40       		.byte	64
+ 3101 0ba4 20       		.byte	32
+ 3102 0ba5 FF       		.byte	-1
+ 3103 0ba6 0B       		.byte	11
+ 3104 0ba7 40       		.byte	64
+ 3105 0ba8 03       		.byte	3
+ 3106 0ba9 4B       		.byte	75
+ 3107 0baa 18       		.byte	24
+ 3108 0bab 68       		.byte	104
+ 3109 0bac C0       		.byte	-64
+ 3110 0bad 23       		.byte	35
+ 3111 0bae 1B       		.byte	27
+ 3112 0baf 02       		.byte	2
+ 3113 0bb0 18       		.byte	24
+ 3114 0bb1 40       		.byte	64
+ 3115 0bb2 00       		.byte	0
+ 3116 0bb3 D0       		.byte	-48
+ 3117 0bb4 01       		.byte	1
+ 3118 0bb5 20       		.byte	32
+ 3119 0bb6 70       		.byte	112
+ 3120 0bb7 47       		.byte	71
+ 3121 0bb8 00       		.byte	0
+ 3122 0bb9 01       		.byte	1
+ 3123 0bba 0B       		.byte	11
+ 3124 0bbb 40       		.byte	64
+ 3125 0bbc 10       		.byte	16
+ 3126 0bbd B5       		.byte	-75
+ 3127 0bbe 00       		.byte	0
+ 3128 0bbf F0       		.byte	-16
+ 3129 0bc0 A5       		.byte	-91
+ 3130 0bc1 F8       		.byte	-8
+ 3131 0bc2 04       		.byte	4
+ 3132 0bc3 4A       		.byte	74
+ 3133 0bc4 13       		.byte	19
+ 3134 0bc5 68       		.byte	104
+ 3135 0bc6 C0       		.byte	-64
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 56
+
+
+ 3136 0bc7 21       		.byte	33
+ 3137 0bc8 09       		.byte	9
+ 3138 0bc9 02       		.byte	2
+ 3139 0bca 0B       		.byte	11
+ 3140 0bcb 43       		.byte	67
+ 3141 0bcc 13       		.byte	19
+ 3142 0bcd 60       		.byte	96
+ 3143 0bce 00       		.byte	0
+ 3144 0bcf F0       		.byte	-16
+ 3145 0bd0 A1       		.byte	-95
+ 3146 0bd1 F8       		.byte	-8
+ 3147 0bd2 10       		.byte	16
+ 3148 0bd3 BD       		.byte	-67
+ 3149 0bd4 00       		.byte	0
+ 3150 0bd5 01       		.byte	1
+ 3151 0bd6 0B       		.byte	11
+ 3152 0bd7 40       		.byte	64
+ 3153 0bd8 10       		.byte	16
+ 3154 0bd9 B5       		.byte	-75
+ 3155 0bda 00       		.byte	0
+ 3156 0bdb F0       		.byte	-16
+ 3157 0bdc 97       		.byte	-105
+ 3158 0bdd F8       		.byte	-8
+ 3159 0bde 08       		.byte	8
+ 3160 0bdf 49       		.byte	73
+ 3161 0be0 0A       		.byte	10
+ 3162 0be1 68       		.byte	104
+ 3163 0be2 08       		.byte	8
+ 3164 0be3 4B       		.byte	75
+ 3165 0be4 1A       		.byte	26
+ 3166 0be5 40       		.byte	64
+ 3167 0be6 80       		.byte	-128
+ 3168 0be7 24       		.byte	36
+ 3169 0be8 E4       		.byte	-28
+ 3170 0be9 01       		.byte	1
+ 3171 0bea 22       		.byte	34
+ 3172 0beb 43       		.byte	67
+ 3173 0bec 0A       		.byte	10
+ 3174 0bed 60       		.byte	96
+ 3175 0bee 0A       		.byte	10
+ 3176 0bef 68       		.byte	104
+ 3177 0bf0 13       		.byte	19
+ 3178 0bf1 40       		.byte	64
+ 3179 0bf2 80       		.byte	-128
+ 3180 0bf3 22       		.byte	34
+ 3181 0bf4 12       		.byte	18
+ 3182 0bf5 02       		.byte	2
+ 3183 0bf6 13       		.byte	19
+ 3184 0bf7 43       		.byte	67
+ 3185 0bf8 0B       		.byte	11
+ 3186 0bf9 60       		.byte	96
+ 3187 0bfa 00       		.byte	0
+ 3188 0bfb F0       		.byte	-16
+ 3189 0bfc 8B       		.byte	-117
+ 3190 0bfd F8       		.byte	-8
+ 3191 0bfe 10       		.byte	16
+ 3192 0bff BD       		.byte	-67
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 57
+
+
+ 3193 0c00 00       		.byte	0
+ 3194 0c01 01       		.byte	1
+ 3195 0c02 0B       		.byte	11
+ 3196 0c03 40       		.byte	64
+ 3197 0c04 FF       		.byte	-1
+ 3198 0c05 3F       		.byte	63
+ 3199 0c06 FF       		.byte	-1
+ 3200 0c07 FF       		.byte	-1
+ 3201 0c08 70       		.byte	112
+ 3202 0c09 B5       		.byte	-75
+ 3203 0c0a 05       		.byte	5
+ 3204 0c0b 00       		.byte	0
+ 3205 0c0c 00       		.byte	0
+ 3206 0c0d F0       		.byte	-16
+ 3207 0c0e 7E       		.byte	126
+ 3208 0c0f F8       		.byte	-8
+ 3209 0c10 04       		.byte	4
+ 3210 0c11 00       		.byte	0
+ 3211 0c12 FF       		.byte	-1
+ 3212 0c13 F7       		.byte	-9
+ 3213 0c14 C9       		.byte	-55
+ 3214 0c15 FF       		.byte	-1
+ 3215 0c16 00       		.byte	0
+ 3216 0c17 28       		.byte	40
+ 3217 0c18 03       		.byte	3
+ 3218 0c19 D0       		.byte	-48
+ 3219 0c1a FF       		.byte	-1
+ 3220 0c1b F7       		.byte	-9
+ 3221 0c1c DD       		.byte	-35
+ 3222 0c1d FF       		.byte	-1
+ 3223 0c1e 01       		.byte	1
+ 3224 0c1f 21       		.byte	33
+ 3225 0c20 00       		.byte	0
+ 3226 0c21 E0       		.byte	-32
+ 3227 0c22 00       		.byte	0
+ 3228 0c23 21       		.byte	33
+ 3229 0c24 08       		.byte	8
+ 3230 0c25 48       		.byte	72
+ 3231 0c26 28       		.byte	40
+ 3232 0c27 40       		.byte	64
+ 3233 0c28 08       		.byte	8
+ 3234 0c29 4A       		.byte	74
+ 3235 0c2a 15       		.byte	21
+ 3236 0c2b 68       		.byte	104
+ 3237 0c2c 08       		.byte	8
+ 3238 0c2d 4B       		.byte	75
+ 3239 0c2e 2B       		.byte	43
+ 3240 0c2f 40       		.byte	64
+ 3241 0c30 18       		.byte	24
+ 3242 0c31 43       		.byte	67
+ 3243 0c32 10       		.byte	16
+ 3244 0c33 60       		.byte	96
+ 3245 0c34 13       		.byte	19
+ 3246 0c35 68       		.byte	104
+ 3247 0c36 01       		.byte	1
+ 3248 0c37 29       		.byte	41
+ 3249 0c38 01       		.byte	1
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 58
+
+
+ 3250 0c39 D1       		.byte	-47
+ 3251 0c3a FF       		.byte	-1
+ 3252 0c3b F7       		.byte	-9
+ 3253 0c3c BF       		.byte	-65
+ 3254 0c3d FF       		.byte	-1
+ 3255 0c3e 20       		.byte	32
+ 3256 0c3f 00       		.byte	0
+ 3257 0c40 00       		.byte	0
+ 3258 0c41 F0       		.byte	-16
+ 3259 0c42 68       		.byte	104
+ 3260 0c43 F8       		.byte	-8
+ 3261 0c44 70       		.byte	112
+ 3262 0c45 BD       		.byte	-67
+ 3263 0c46 C0       		.byte	-64
+ 3264 0c47 46       		.byte	70
+ 3265 0c48 04       		.byte	4
+ 3266 0c49 04       		.byte	4
+ 3267 0c4a 04       		.byte	4
+ 3268 0c4b 00       		.byte	0
+ 3269 0c4c 10       		.byte	16
+ 3270 0c4d 02       		.byte	2
+ 3271 0c4e 0B       		.byte	11
+ 3272 0c4f 40       		.byte	64
+ 3273 0c50 FB       		.byte	-5
+ 3274 0c51 FB       		.byte	-5
+ 3275 0c52 FB       		.byte	-5
+ 3276 0c53 FF       		.byte	-1
+ 3277 0c54 10       		.byte	16
+ 3278 0c55 B5       		.byte	-75
+ 3279 0c56 24       		.byte	36
+ 3280 0c57 4B       		.byte	75
+ 3281 0c58 1B       		.byte	27
+ 3282 0c59 68       		.byte	104
+ 3283 0c5a 5B       		.byte	91
+ 3284 0c5b 07       		.byte	7
+ 3285 0c5c 15       		.byte	21
+ 3286 0c5d D5       		.byte	-43
+ 3287 0c5e 23       		.byte	35
+ 3288 0c5f 4B       		.byte	75
+ 3289 0c60 1B       		.byte	27
+ 3290 0c61 68       		.byte	104
+ 3291 0c62 5B       		.byte	91
+ 3292 0c63 07       		.byte	7
+ 3293 0c64 0E       		.byte	14
+ 3294 0c65 D5       		.byte	-43
+ 3295 0c66 22       		.byte	34
+ 3296 0c67 4B       		.byte	75
+ 3297 0c68 D9       		.byte	-39
+ 3298 0c69 69       		.byte	105
+ 3299 0c6a 04       		.byte	4
+ 3300 0c6b 20       		.byte	32
+ 3301 0c6c 01       		.byte	1
+ 3302 0c6d 40       		.byte	64
+ 3303 0c6e 1F       		.byte	31
+ 3304 0c6f 4C       		.byte	76
+ 3305 0c70 22       		.byte	34
+ 3306 0c71 68       		.byte	104
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 59
+
+
+ 3307 0c72 8A       		.byte	-118
+ 3308 0c73 43       		.byte	67
+ 3309 0c74 22       		.byte	34
+ 3310 0c75 60       		.byte	96
+ 3311 0c76 DA       		.byte	-38
+ 3312 0c77 69       		.byte	105
+ 3313 0c78 82       		.byte	-126
+ 3314 0c79 43       		.byte	67
+ 3315 0c7a DA       		.byte	-38
+ 3316 0c7b 61       		.byte	97
+ 3317 0c7c 1B       		.byte	27
+ 3318 0c7d 69       		.byte	105
+ 3319 0c7e 00       		.byte	0
+ 3320 0c7f 2B       		.byte	43
+ 3321 0c80 00       		.byte	0
+ 3322 0c81 D0       		.byte	-48
+ 3323 0c82 98       		.byte	-104
+ 3324 0c83 47       		.byte	71
+ 3325 0c84 04       		.byte	4
+ 3326 0c85 20       		.byte	32
+ 3327 0c86 FF       		.byte	-1
+ 3328 0c87 F7       		.byte	-9
+ 3329 0c88 BF       		.byte	-65
+ 3330 0c89 FF       		.byte	-1
+ 3331 0c8a 17       		.byte	23
+ 3332 0c8b 4B       		.byte	75
+ 3333 0c8c 1B       		.byte	27
+ 3334 0c8d 68       		.byte	104
+ 3335 0c8e 5B       		.byte	91
+ 3336 0c8f 05       		.byte	5
+ 3337 0c90 18       		.byte	24
+ 3338 0c91 D5       		.byte	-43
+ 3339 0c92 16       		.byte	22
+ 3340 0c93 4B       		.byte	75
+ 3341 0c94 1B       		.byte	27
+ 3342 0c95 68       		.byte	104
+ 3343 0c96 5B       		.byte	91
+ 3344 0c97 05       		.byte	5
+ 3345 0c98 10       		.byte	16
+ 3346 0c99 D5       		.byte	-43
+ 3347 0c9a 15       		.byte	21
+ 3348 0c9b 4B       		.byte	75
+ 3349 0c9c D9       		.byte	-39
+ 3350 0c9d 69       		.byte	105
+ 3351 0c9e 80       		.byte	-128
+ 3352 0c9f 22       		.byte	34
+ 3353 0ca0 D2       		.byte	-46
+ 3354 0ca1 00       		.byte	0
+ 3355 0ca2 11       		.byte	17
+ 3356 0ca3 40       		.byte	64
+ 3357 0ca4 11       		.byte	17
+ 3358 0ca5 48       		.byte	72
+ 3359 0ca6 02       		.byte	2
+ 3360 0ca7 68       		.byte	104
+ 3361 0ca8 8A       		.byte	-118
+ 3362 0ca9 43       		.byte	67
+ 3363 0caa 02       		.byte	2
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 60
+
+
+ 3364 0cab 60       		.byte	96
+ 3365 0cac D9       		.byte	-39
+ 3366 0cad 69       		.byte	105
+ 3367 0cae 11       		.byte	17
+ 3368 0caf 4A       		.byte	74
+ 3369 0cb0 0A       		.byte	10
+ 3370 0cb1 40       		.byte	64
+ 3371 0cb2 DA       		.byte	-38
+ 3372 0cb3 61       		.byte	97
+ 3373 0cb4 5B       		.byte	91
+ 3374 0cb5 69       		.byte	105
+ 3375 0cb6 00       		.byte	0
+ 3376 0cb7 2B       		.byte	43
+ 3377 0cb8 00       		.byte	0
+ 3378 0cb9 D0       		.byte	-48
+ 3379 0cba 98       		.byte	-104
+ 3380 0cbb 47       		.byte	71
+ 3381 0cbc 80       		.byte	-128
+ 3382 0cbd 20       		.byte	32
+ 3383 0cbe C0       		.byte	-64
+ 3384 0cbf 00       		.byte	0
+ 3385 0cc0 FF       		.byte	-1
+ 3386 0cc1 F7       		.byte	-9
+ 3387 0cc2 A2       		.byte	-94
+ 3388 0cc3 FF       		.byte	-1
+ 3389 0cc4 08       		.byte	8
+ 3390 0cc5 4B       		.byte	75
+ 3391 0cc6 1B       		.byte	27
+ 3392 0cc7 68       		.byte	104
+ 3393 0cc8 5B       		.byte	91
+ 3394 0cc9 03       		.byte	3
+ 3395 0cca 0C       		.byte	12
+ 3396 0ccb D5       		.byte	-43
+ 3397 0ccc 07       		.byte	7
+ 3398 0ccd 4B       		.byte	75
+ 3399 0cce 1B       		.byte	27
+ 3400 0ccf 68       		.byte	104
+ 3401 0cd0 5B       		.byte	91
+ 3402 0cd1 03       		.byte	3
+ 3403 0cd2 04       		.byte	4
+ 3404 0cd3 D5       		.byte	-43
+ 3405 0cd4 06       		.byte	6
+ 3406 0cd5 4B       		.byte	75
+ 3407 0cd6 9B       		.byte	-101
+ 3408 0cd7 69       		.byte	105
+ 3409 0cd8 00       		.byte	0
+ 3410 0cd9 2B       		.byte	43
+ 3411 0cda 00       		.byte	0
+ 3412 0cdb D0       		.byte	-48
+ 3413 0cdc 98       		.byte	-104
+ 3414 0cdd 47       		.byte	71
+ 3415 0cde 80       		.byte	-128
+ 3416 0cdf 20       		.byte	32
+ 3417 0ce0 C0       		.byte	-64
+ 3418 0ce1 02       		.byte	2
+ 3419 0ce2 FF       		.byte	-1
+ 3420 0ce3 F7       		.byte	-9
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 61
+
+
+ 3421 0ce4 91       		.byte	-111
+ 3422 0ce5 FF       		.byte	-1
+ 3423 0ce6 10       		.byte	16
+ 3424 0ce7 BD       		.byte	-67
+ 3425 0ce8 10       		.byte	16
+ 3426 0ce9 02       		.byte	2
+ 3427 0cea 0B       		.byte	11
+ 3428 0ceb 40       		.byte	64
+ 3429 0cec E0       		.byte	-32
+ 3430 0ced 00       		.byte	0
+ 3431 0cee 00       		.byte	0
+ 3432 0cef 20       		.byte	32
+ 3433 0cf0 64       		.byte	100
+ 3434 0cf1 01       		.byte	1
+ 3435 0cf2 00       		.byte	0
+ 3436 0cf3 20       		.byte	32
+ 3437 0cf4 FF       		.byte	-1
+ 3438 0cf5 FB       		.byte	-5
+ 3439 0cf6 FF       		.byte	-1
+ 3440 0cf7 FF       		.byte	-1
+ 3441 0cf8 02       		.byte	2
+ 3442 0cf9 30       		.byte	48
+ 3443 0cfa 80       		.byte	-128
+ 3444 0cfb 08       		.byte	8
+ 3445 0cfc 04       		.byte	4
+ 3446 0cfd D0       		.byte	-48
+ 3447 0cfe C0       		.byte	-64
+ 3448 0cff 46       		.byte	70
+ 3449 0d00 01       		.byte	1
+ 3450 0d01 38       		.byte	56
+ 3451 0d02 FD       		.byte	-3
+ 3452 0d03 D1       		.byte	-47
+ 3453 0d04 C0       		.byte	-64
+ 3454 0d05 46       		.byte	70
+ 3455 0d06 C0       		.byte	-64
+ 3456 0d07 46       		.byte	70
+ 3457 0d08 C0       		.byte	-64
+ 3458 0d09 46       		.byte	70
+ 3459 0d0a 70       		.byte	112
+ 3460 0d0b 47       		.byte	71
+ 3461 0d0c EF       		.byte	-17
+ 3462 0d0d F3       		.byte	-13
+ 3463 0d0e 10       		.byte	16
+ 3464 0d0f 80       		.byte	-128
+ 3465 0d10 72       		.byte	114
+ 3466 0d11 B6       		.byte	-74
+ 3467 0d12 70       		.byte	112
+ 3468 0d13 47       		.byte	71
+ 3469 0d14 80       		.byte	-128
+ 3470 0d15 F3       		.byte	-13
+ 3471 0d16 10       		.byte	16
+ 3472 0d17 88       		.byte	-120
+ 3473 0d18 70       		.byte	112
+ 3474 0d19 47       		.byte	71
+ 3475 0d1a C0       		.byte	-64
+ 3476 0d1b 46       		.byte	70
+ 3477 0d1c 01       		.byte	1
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 62
+
+
+ 3478 0d1d 4B       		.byte	75
+ 3479 0d1e 18       		.byte	24
+ 3480 0d1f 68       		.byte	104
+ 3481 0d20 70       		.byte	112
+ 3482 0d21 47       		.byte	71
+ 3483 0d22 C0       		.byte	-64
+ 3484 0d23 46       		.byte	70
+ 3485 0d24 44       		.byte	68
+ 3486 0d25 01       		.byte	1
+ 3487 0d26 00       		.byte	0
+ 3488 0d27 20       		.byte	32
+ 3489 0d28 0E       		.byte	14
+ 3490 0d29 4B       		.byte	75
+ 3491 0d2a 70       		.byte	112
+ 3492 0d2b B5       		.byte	-75
+ 3493 0d2c 00       		.byte	0
+ 3494 0d2d 25       		.byte	37
+ 3495 0d2e 1E       		.byte	30
+ 3496 0d2f 00       		.byte	0
+ 3497 0d30 0D       		.byte	13
+ 3498 0d31 4C       		.byte	76
+ 3499 0d32 E4       		.byte	-28
+ 3500 0d33 1A       		.byte	26
+ 3501 0d34 A4       		.byte	-92
+ 3502 0d35 10       		.byte	16
+ 3503 0d36 A5       		.byte	-91
+ 3504 0d37 42       		.byte	66
+ 3505 0d38 04       		.byte	4
+ 3506 0d39 D0       		.byte	-48
+ 3507 0d3a AB       		.byte	-85
+ 3508 0d3b 00       		.byte	0
+ 3509 0d3c F3       		.byte	-13
+ 3510 0d3d 58       		.byte	88
+ 3511 0d3e 98       		.byte	-104
+ 3512 0d3f 47       		.byte	71
+ 3513 0d40 01       		.byte	1
+ 3514 0d41 35       		.byte	53
+ 3515 0d42 F8       		.byte	-8
+ 3516 0d43 E7       		.byte	-25
+ 3517 0d44 00       		.byte	0
+ 3518 0d45 F0       		.byte	-16
+ 3519 0d46 5E       		.byte	94
+ 3520 0d47 F8       		.byte	-8
+ 3521 0d48 08       		.byte	8
+ 3522 0d49 4B       		.byte	75
+ 3523 0d4a 00       		.byte	0
+ 3524 0d4b 25       		.byte	37
+ 3525 0d4c 1E       		.byte	30
+ 3526 0d4d 00       		.byte	0
+ 3527 0d4e 08       		.byte	8
+ 3528 0d4f 4C       		.byte	76
+ 3529 0d50 E4       		.byte	-28
+ 3530 0d51 1A       		.byte	26
+ 3531 0d52 A4       		.byte	-92
+ 3532 0d53 10       		.byte	16
+ 3533 0d54 A5       		.byte	-91
+ 3534 0d55 42       		.byte	66
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 63
+
+
+ 3535 0d56 04       		.byte	4
+ 3536 0d57 D0       		.byte	-48
+ 3537 0d58 AB       		.byte	-85
+ 3538 0d59 00       		.byte	0
+ 3539 0d5a F3       		.byte	-13
+ 3540 0d5b 58       		.byte	88
+ 3541 0d5c 98       		.byte	-104
+ 3542 0d5d 47       		.byte	71
+ 3543 0d5e 01       		.byte	1
+ 3544 0d5f 35       		.byte	53
+ 3545 0d60 F8       		.byte	-8
+ 3546 0d61 E7       		.byte	-25
+ 3547 0d62 70       		.byte	112
+ 3548 0d63 BD       		.byte	-67
+ 3549 0d64 10       		.byte	16
+ 3550 0d65 0E       		.byte	14
+ 3551 0d66 00       		.byte	0
+ 3552 0d67 00       		.byte	0
+ 3553 0d68 10       		.byte	16
+ 3554 0d69 0E       		.byte	14
+ 3555 0d6a 00       		.byte	0
+ 3556 0d6b 00       		.byte	0
+ 3557 0d6c 10       		.byte	16
+ 3558 0d6d 0E       		.byte	14
+ 3559 0d6e 00       		.byte	0
+ 3560 0d6f 00       		.byte	0
+ 3561 0d70 18       		.byte	24
+ 3562 0d71 0E       		.byte	14
+ 3563 0d72 00       		.byte	0
+ 3564 0d73 00       		.byte	0
+ 3565 0d74 03       		.byte	3
+ 3566 0d75 00       		.byte	0
+ 3567 0d76 82       		.byte	-126
+ 3568 0d77 18       		.byte	24
+ 3569 0d78 93       		.byte	-109
+ 3570 0d79 42       		.byte	66
+ 3571 0d7a 02       		.byte	2
+ 3572 0d7b D0       		.byte	-48
+ 3573 0d7c 19       		.byte	25
+ 3574 0d7d 70       		.byte	112
+ 3575 0d7e 01       		.byte	1
+ 3576 0d7f 33       		.byte	51
+ 3577 0d80 FA       		.byte	-6
+ 3578 0d81 E7       		.byte	-25
+ 3579 0d82 70       		.byte	112
+ 3580 0d83 47       		.byte	71
+ 3581 0d84 00       		.byte	0
+ 3582 0d85 00       		.byte	0
+ 3583 0d86 00       		.byte	0
+ 3584 0d87 00       		.byte	0
+ 3585 0d88 01       		.byte	1
+ 3586 0d89 00       		.byte	0
+ 3587 0d8a 00       		.byte	0
+ 3588 0d8b 00       		.byte	0
+ 3589 0d8c 02       		.byte	2
+ 3590 0d8d 00       		.byte	0
+ 3591 0d8e 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 64
+
+
+ 3592 0d8f 00       		.byte	0
+ 3593 0d90 04       		.byte	4
+ 3594 0d91 00       		.byte	0
+ 3595 0d92 00       		.byte	0
+ 3596 0d93 00       		.byte	0
+ 3597 0d94 08       		.byte	8
+ 3598 0d95 00       		.byte	0
+ 3599 0d96 00       		.byte	0
+ 3600 0d97 00       		.byte	0
+ 3601 0d98 10       		.byte	16
+ 3602 0d99 00       		.byte	0
+ 3603 0d9a 00       		.byte	0
+ 3604 0d9b 00       		.byte	0
+ 3605 0d9c 20       		.byte	32
+ 3606 0d9d 00       		.byte	0
+ 3607 0d9e 00       		.byte	0
+ 3608 0d9f 00       		.byte	0
+ 3609 0da0 40       		.byte	64
+ 3610 0da1 00       		.byte	0
+ 3611 0da2 00       		.byte	0
+ 3612 0da3 00       		.byte	0
+ 3613 0da4 80       		.byte	-128
+ 3614 0da5 00       		.byte	0
+ 3615 0da6 00       		.byte	0
+ 3616 0da7 00       		.byte	0
+ 3617 0da8 80       		.byte	-128
+ 3618 0da9 00       		.byte	0
+ 3619 0daa 00       		.byte	0
+ 3620 0dab 00       		.byte	0
+ 3621 0dac 40       		.byte	64
+ 3622 0dad 00       		.byte	0
+ 3623 0dae 00       		.byte	0
+ 3624 0daf 00       		.byte	0
+ 3625 0db0 20       		.byte	32
+ 3626 0db1 00       		.byte	0
+ 3627 0db2 00       		.byte	0
+ 3628 0db3 00       		.byte	0
+ 3629 0db4 10       		.byte	16
+ 3630 0db5 00       		.byte	0
+ 3631 0db6 00       		.byte	0
+ 3632 0db7 00       		.byte	0
+ 3633 0db8 08       		.byte	8
+ 3634 0db9 00       		.byte	0
+ 3635 0dba 00       		.byte	0
+ 3636 0dbb 00       		.byte	0
+ 3637 0dbc 04       		.byte	4
+ 3638 0dbd 00       		.byte	0
+ 3639 0dbe 00       		.byte	0
+ 3640 0dbf 00       		.byte	0
+ 3641 0dc0 02       		.byte	2
+ 3642 0dc1 00       		.byte	0
+ 3643 0dc2 00       		.byte	0
+ 3644 0dc3 00       		.byte	0
+ 3645 0dc4 01       		.byte	1
+ 3646 0dc5 00       		.byte	0
+ 3647 0dc6 00       		.byte	0
+ 3648 0dc7 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 65
+
+
+ 3649 0dc8 00       		.byte	0
+ 3650 0dc9 30       		.byte	48
+ 3651 0dca 0F       		.byte	15
+ 3652 0dcb 40       		.byte	64
+ 3653 0dcc 00       		.byte	0
+ 3654 0dcd 04       		.byte	4
+ 3655 0dce 00       		.byte	0
+ 3656 0dcf 40       		.byte	64
+ 3657 0dd0 0F       		.byte	15
+ 3658 0dd1 40       		.byte	64
+ 3659 0dd2 00       		.byte	0
+ 3660 0dd3 04       		.byte	4
+ 3661 0dd4 03       		.byte	3
+ 3662 0dd5 04       		.byte	4
+ 3663 0dd6 05       		.byte	5
+ 3664 0dd7 06       		.byte	6
+ 3665 0dd8 07       		.byte	7
+ 3666 0dd9 08       		.byte	8
+ 3667 0dda 09       		.byte	9
+ 3668 0ddb 0A       		.byte	10
+ 3669 0ddc 0B       		.byte	11
+ 3670 0ddd 0C       		.byte	12
+ 3671 0dde 0E       		.byte	14
+ 3672 0ddf 0F       		.byte	15
+ 3673 0de0 10       		.byte	16
+ 3674 0de1 11       		.byte	17
+ 3675 0de2 12       		.byte	18
+ 3676 0de3 13       		.byte	19
+ 3677 0de4 14       		.byte	20
+ 3678 0de5 15       		.byte	21
+ 3679 0de6 16       		.byte	22
+ 3680 0de7 17       		.byte	23
+ 3681 0de8 18       		.byte	24
+ 3682 0de9 19       		.byte	25
+ 3683 0dea 1B       		.byte	27
+ 3684 0deb 1C       		.byte	28
+ 3685 0dec 1D       		.byte	29
+ 3686 0ded 1E       		.byte	30
+ 3687 0dee 1F       		.byte	31
+ 3688 0def 20       		.byte	32
+ 3689 0df0 21       		.byte	33
+ 3690 0df1 22       		.byte	34
+ 3691 0df2 23       		.byte	35
+ 3692 0df3 25       		.byte	37
+ 3693 0df4 26       		.byte	38
+ 3694 0df5 27       		.byte	39
+ 3695 0df6 28       		.byte	40
+ 3696 0df7 29       		.byte	41
+ 3697 0df8 2A       		.byte	42
+ 3698 0df9 2B       		.byte	43
+ 3699 0dfa 2E       		.byte	46
+ 3700 0dfb 2F       		.byte	47
+ 3701 0dfc 30       		.byte	48
+ 3702 0dfd 31       		.byte	49
+ 3703 0dfe 32       		.byte	50
+ 3704 0dff 33       		.byte	51
+ 3705 0e00 34       		.byte	52
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 66
+
+
+ 3706 0e01 35       		.byte	53
+ 3707 0e02 43       		.byte	67
+ 3708 0e03 00       		.byte	0
+ 3709 0e04 F8       		.byte	-8
+ 3710 0e05 B5       		.byte	-75
+ 3711 0e06 C0       		.byte	-64
+ 3712 0e07 46       		.byte	70
+ 3713 0e08 F8       		.byte	-8
+ 3714 0e09 BC       		.byte	-68
+ 3715 0e0a 08       		.byte	8
+ 3716 0e0b BC       		.byte	-68
+ 3717 0e0c 9E       		.byte	-98
+ 3718 0e0d 46       		.byte	70
+ 3719 0e0e 70       		.byte	112
+ 3720 0e0f 47       		.byte	71
+ 3721 0e10 A9       		.byte	-87
+ 3722 0e11 08       		.byte	8
+ 3723 0e12 00       		.byte	0
+ 3724 0e13 00       		.byte	0
+ 3725 0e14 69       		.byte	105
+ 3726 0e15 09       		.byte	9
+ 3727 0e16 00       		.byte	0
+ 3728 0e17 00       		.byte	0
+ 3729 0e18 F8       		.byte	-8
+ 3730 0e19 B5       		.byte	-75
+ 3731 0e1a C0       		.byte	-64
+ 3732 0e1b 46       		.byte	70
+ 3733 0e1c F8       		.byte	-8
+ 3734 0e1d BC       		.byte	-68
+ 3735 0e1e 08       		.byte	8
+ 3736 0e1f BC       		.byte	-68
+ 3737 0e20 9E       		.byte	-98
+ 3738 0e21 46       		.byte	70
+ 3739 0e22 70       		.byte	112
+ 3740 0e23 47       		.byte	71
+ 3741 0e24 81       		.byte	-127
+ 3742 0e25 08       		.byte	8
+ 3743 0e26 00       		.byte	0
+ 3744 0e27 00       		.byte	0
+ 3745 0e28 38       		.byte	56
+ 3746 0e29 0E       		.byte	14
+ 3747 0e2a 00       		.byte	0
+ 3748 0e2b 00       		.byte	0
+ 3749 0e2c C8       		.byte	-56
+ 3750 0e2d 00       		.byte	0
+ 3751 0e2e 00       		.byte	0
+ 3752 0e2f 20       		.byte	32
+ 3753 0e30 80       		.byte	-128
+ 3754 0e31 00       		.byte	0
+ 3755 0e32 00       		.byte	0
+ 3756 0e33 00       		.byte	0
+ 3757 0e34 40       		.byte	64
+ 3758 0e35 00       		.byte	0
+ 3759 0e36 00       		.byte	0
+ 3760 0e37 00       		.byte	0
+ 3761 0e38 00       		.byte	0
+ 3762 0e39 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 67
+
+
+ 3763 0e3a 00       		.byte	0
+ 3764 0e3b 00       		.byte	0
+ 3765 0e3c 01       		.byte	1
+ 3766 0e3d 00       		.byte	0
+ 3767 0e3e 00       		.byte	0
+ 3768 0e3f 00       		.byte	0
+ 3769 0e40 00       		.byte	0
+ 3770 0e41 00       		.byte	0
+ 3771 0e42 E0       		.byte	-32
+ 3772 0e43 2E       		.byte	46
+ 3773 0e44 C0       		.byte	-64
+ 3774 0e45 5D       		.byte	93
+ 3775 0e46 00       		.byte	0
+ 3776 0e47 00       		.byte	0
+ 3777 0e48 18       		.byte	24
+ 3778 0e49 00       		.byte	0
+ 3779 0e4a 00       		.byte	0
+ 3780 0e4b 00       		.byte	0
+ 3781 0e4c 00       		.byte	0
+ 3782 0e4d 36       		.byte	54
+ 3783 0e4e 6E       		.byte	110
+ 3784 0e4f 01       		.byte	1
+ 3785 0e50 04       		.byte	4
+ 3786 0e51 04       		.byte	4
+ 3787 0e52 04       		.byte	4
+ 3788 0e53 00       		.byte	0
+ 3789 0e54 00       		.byte	0
+ 3790 0e55 00       		.byte	0
+ 3791 0e56 00       		.byte	0
+ 3792 0e57 00       		.byte	0
+ 3793 0e58 00       		.byte	0
+ 3794 0e59 00       		.byte	0
+ 3795 0e5a 00       		.byte	0
+ 3796 0e5b 00       		.byte	0
+ 3797 0e5c 00       		.byte	0
+ 3798 0e5d 00       		.byte	0
+ 3799 0e5e 00       		.byte	0
+ 3800 0e5f 00       		.byte	0
+ 3801 0e60 00       		.byte	0
+ 3802 0e61 00       		.byte	0
+ 3803 0e62 00       		.byte	0
+ 3804 0e63 00       		.byte	0
+ 3805 0e64 00       		.byte	0
+ 3806 0e65 00       		.byte	0
+ 3807 0e66 00       		.byte	0
+ 3808 0e67 00       		.byte	0
+ 3809 0e68 00       		.byte	0
+ 3810 0e69 00       		.byte	0
+ 3811 0e6a 00       		.byte	0
+ 3812 0e6b 00       		.byte	0
+ 3813 0e6c 00       		.byte	0
+ 3814 0e6d 00       		.byte	0
+ 3815 0e6e 00       		.byte	0
+ 3816 0e6f 00       		.byte	0
+ 3817 0e70 00       		.byte	0
+ 3818 0e71 00       		.byte	0
+ 3819 0e72 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 68
+
+
+ 3820 0e73 00       		.byte	0
+ 3821 0e74 02       		.byte	2
+ 3822 0e75 0E       		.byte	14
+ 3823 0e76 00       		.byte	0
+ 3824 0e77 00       		.byte	0
+ 3825 0e78 00       		.byte	0
+ 3826 0e79 00       		.byte	0
+ 3827 0e7a 00       		.byte	0
+ 3828 0e7b 00       		.byte	0
+ 3829 0e7c 00       		.byte	0
+ 3830 0e7d 00       		.byte	0
+ 3831 0e7e 00       		.byte	0
+ 3832 0e7f 00       		.byte	0
+ 3833 0e80 00       		.byte	0
+ 3834 0e81 00       		.byte	0
+ 3835 0e82 00       		.byte	0
+ 3836 0e83 00       		.byte	0
+ 3837 0e84 00       		.byte	0
+ 3838 0e85 00       		.byte	0
+ 3839 0e86 00       		.byte	0
+ 3840 0e87 00       		.byte	0
+ 3841 0e88 00       		.byte	0
+ 3842 0e89 00       		.byte	0
+ 3843 0e8a 00       		.byte	0
+ 3844 0e8b 00       		.byte	0
+ 3845 0e8c 00       		.byte	0
+ 3846 0e8d 00       		.byte	0
+ 3847 0e8e 00       		.byte	0
+ 3848 0e8f 00       		.byte	0
+ 3849 0e90 00       		.byte	0
+ 3850 0e91 00       		.byte	0
+ 3851 0e92 00       		.byte	0
+ 3852 0e93 00       		.byte	0
+ 3853 0e94 00       		.byte	0
+ 3854 0e95 00       		.byte	0
+ 3855 0e96 00       		.byte	0
+ 3856 0e97 00       		.byte	0
+ 3857 0e98 00       		.byte	0
+ 3858 0e99 00       		.byte	0
+ 3859 0e9a 00       		.byte	0
+ 3860 0e9b 00       		.byte	0
+ 3861 0e9c 00       		.byte	0
+ 3862 0e9d 00       		.byte	0
+ 3863 0e9e 00       		.byte	0
+ 3864 0e9f 00       		.byte	0
+ 3865 0ea0 00       		.byte	0
+ 3866 0ea1 00       		.byte	0
+ 3867 0ea2 00       		.byte	0
+ 3868 0ea3 00       		.byte	0
+ 3869 0ea4 00       		.byte	0
+ 3870 0ea5 00       		.byte	0
+ 3871 0ea6 00       		.byte	0
+ 3872 0ea7 00       		.byte	0
+ 3873 0ea8 00       		.byte	0
+ 3874 0ea9 00       		.byte	0
+ 3875 0eaa 00       		.byte	0
+ 3876 0eab 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 69
+
+
+ 3877 0eac 00       		.byte	0
+ 3878 0ead 00       		.byte	0
+ 3879 0eae 00       		.byte	0
+ 3880 0eaf 00       		.byte	0
+ 3881 0eb0 00       		.byte	0
+ 3882 0eb1 00       		.byte	0
+ 3883 0eb2 00       		.byte	0
+ 3884 0eb3 00       		.byte	0
+ 3885 0eb4 E4       		.byte	-28
+ 3886 0eb5 00       		.byte	0
+ 3887 0eb6 00       		.byte	0
+ 3888 0eb7 20       		.byte	32
+ 3889 0eb8 00       		.byte	0
+ 3890 0eb9 00       		.byte	0
+ 3891 0eba 00       		.byte	0
+ 3892 0ebb 00       		.byte	0
+ 3893 0ebc 00       		.byte	0
+ 3894 0ebd 00       		.byte	0
+ 3895 0ebe 00       		.byte	0
+ 3896 0ebf 00       		.byte	0
+ 3897 0ec0 00       		.byte	0
+ 3898 0ec1 00       		.byte	0
+ 3899 0ec2 00       		.byte	0
+ 3900 0ec3 00       		.byte	0
+ 3901 0ec4 00       		.byte	0
+ 3902 0ec5 00       		.byte	0
+ 3903 0ec6 00       		.byte	0
+ 3904 0ec7 00       		.byte	0
+ 3905 0ec8 00       		.byte	0
+ 3906 0ec9 00       		.byte	0
+ 3907 0eca 00       		.byte	0
+ 3908 0ecb 00       		.byte	0
+ 3909 0ecc 00       		.byte	0
+ 3910 0ecd 00       		.byte	0
+ 3911 0ece 00       		.byte	0
+ 3912 0ecf 00       		.byte	0
+ 3913 0ed0 00       		.byte	0
+ 3914 0ed1 00       		.byte	0
+ 3915 0ed2 00       		.byte	0
+ 3916 0ed3 00       		.byte	0
+ 3917 0ed4 00       		.byte	0
+ 3918 0ed5 00       		.byte	0
+ 3919 0ed6 00       		.byte	0
+ 3920 0ed7 00       		.byte	0
+ 3921 0ed8 00       		.byte	0
+ 3922 0ed9 00       		.byte	0
+ 3923 0eda 00       		.byte	0
+ 3924 0edb 00       		.byte	0
+ 3925 0edc 00       		.byte	0
+ 3926 0edd 00       		.byte	0
+ 3927 0ede 00       		.byte	0
+ 3928 0edf 00       		.byte	0
+ 3929 0ee0 00       		.byte	0
+ 3930 0ee1 00       		.byte	0
+ 3931 0ee2 00       		.byte	0
+ 3932 0ee3 00       		.byte	0
+ 3933 0ee4 00       		.byte	0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 70
+
+
+ 3934 0ee5 00       		.byte	0
+ 3935 0ee6 00       		.byte	0
+ 3936 0ee7 00       		.byte	0
+ 3937 0ee8 00       		.byte	0
+ 3938 0ee9 00       		.byte	0
+ 3939 0eea 00       		.byte	0
+ 3940 0eeb 00       		.byte	0
+ 3941 0eec 00       		.byte	0
+ 3942 0eed 00       		.byte	0
+ 3943 0eee 00       		.byte	0
+ 3944 0eef 00       		.byte	0
+ 3945 0ef0 00       		.byte	0
+ 3946 0ef1 00       		.byte	0
+ 3947 0ef2 00       		.byte	0
+ 3948 0ef3 00       		.byte	0
+ 3949 0ef4 00       		.byte	0
+ 3950 0ef5 00       		.byte	0
+ 3951 0ef6 00       		.byte	0
+ 3952 0ef7 00       		.byte	0
+ 3953 0ef8 00       		.byte	0
+ 3954 0ef9 00       		.byte	0
+ 3955 0efa 00       		.byte	0
+ 3956 0efb 00       		.byte	0
+ 3957 0efc 00       		.byte	0
+ 3958 0efd 00       		.byte	0
+ 3959 0efe 00       		.byte	0
+ 3960 0eff 00       		.byte	0
+ 3961              		.section	.cyflashprotect,"a",%progbits
+ 3962              		.align	2
+ 3963              		.type	cy_meta_flashprotect, %object
+ 3964              		.size	cy_meta_flashprotect, 32
+ 3965              	cy_meta_flashprotect:
+ 3966 0000 00000000 		.space	32
+ 3966      00000000 
+ 3966      00000000 
+ 3966      00000000 
+ 3966      00000000 
+ 3967              		.text
+ 3968              	.Letext0:
+ 3969              		.file 1 "Generated_Source\\PSoC4\\cybootloader.c"
+ 3970              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 3971              		.section	.debug_info,"",%progbits
+ 3972              	.Ldebug_info0:
+ 3973 0000 4F010000 		.4byte	0x14f
+ 3974 0004 0400     		.2byte	0x4
+ 3975 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 3976 000a 04       		.byte	0x4
+ 3977 000b 01       		.uleb128 0x1
+ 3978 000c BC000000 		.4byte	.LASF18
+ 3979 0010 0C       		.byte	0xc
+ 3980 0011 B1010000 		.4byte	.LASF19
+ 3981 0015 53010000 		.4byte	.LASF20
+ 3982 0019 00000000 		.4byte	.Ldebug_line0
+ 3983 001d 02       		.uleb128 0x2
+ 3984 001e 01       		.byte	0x1
+ 3985 001f 06       		.byte	0x6
+ 3986 0020 E0010000 		.4byte	.LASF0
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 71
+
+
+ 3987 0024 02       		.uleb128 0x2
+ 3988 0025 01       		.byte	0x1
+ 3989 0026 08       		.byte	0x8
+ 3990 0027 49000000 		.4byte	.LASF1
+ 3991 002b 02       		.uleb128 0x2
+ 3992 002c 02       		.byte	0x2
+ 3993 002d 05       		.byte	0x5
+ 3994 002e A7010000 		.4byte	.LASF2
+ 3995 0032 02       		.uleb128 0x2
+ 3996 0033 02       		.byte	0x2
+ 3997 0034 07       		.byte	0x7
+ 3998 0035 69000000 		.4byte	.LASF3
+ 3999 0039 02       		.uleb128 0x2
+ 4000 003a 04       		.byte	0x4
+ 4001 003b 05       		.byte	0x5
+ 4002 003c D7010000 		.4byte	.LASF4
+ 4003 0040 02       		.uleb128 0x2
+ 4004 0041 04       		.byte	0x4
+ 4005 0042 07       		.byte	0x7
+ 4006 0043 57000000 		.4byte	.LASF5
+ 4007 0047 02       		.uleb128 0x2
+ 4008 0048 08       		.byte	0x8
+ 4009 0049 05       		.byte	0x5
+ 4010 004a 94010000 		.4byte	.LASF6
+ 4011 004e 02       		.uleb128 0x2
+ 4012 004f 08       		.byte	0x8
+ 4013 0050 07       		.byte	0x7
+ 4014 0051 90000000 		.4byte	.LASF7
+ 4015 0055 03       		.uleb128 0x3
+ 4016 0056 04       		.byte	0x4
+ 4017 0057 05       		.byte	0x5
+ 4018 0058 696E7400 		.ascii	"int\000"
+ 4019 005c 02       		.uleb128 0x2
+ 4020 005d 04       		.byte	0x4
+ 4021 005e 07       		.byte	0x7
+ 4022 005f 83000000 		.4byte	.LASF8
+ 4023 0063 04       		.uleb128 0x4
+ 4024 0064 43000000 		.4byte	.LASF21
+ 4025 0068 02       		.byte	0x2
+ 4026 0069 FB01     		.2byte	0x1fb
+ 4027 006b 24000000 		.4byte	0x24
+ 4028 006f 02       		.uleb128 0x2
+ 4029 0070 04       		.byte	0x4
+ 4030 0071 04       		.byte	0x4
+ 4031 0072 3D000000 		.4byte	.LASF9
+ 4032 0076 02       		.uleb128 0x2
+ 4033 0077 08       		.byte	0x8
+ 4034 0078 04       		.byte	0x4
+ 4035 0079 7C000000 		.4byte	.LASF10
+ 4036 007d 02       		.uleb128 0x2
+ 4037 007e 01       		.byte	0x1
+ 4038 007f 08       		.byte	0x8
+ 4039 0080 A2010000 		.4byte	.LASF11
+ 4040 0084 05       		.uleb128 0x5
+ 4041 0085 9B000000 		.4byte	0x9b
+ 4042 0089 94000000 		.4byte	0x94
+ 4043 008d 06       		.uleb128 0x6
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 72
+
+
+ 4044 008e 94000000 		.4byte	0x94
+ 4045 0092 3F       		.byte	0x3f
+ 4046 0093 00       		.byte	0
+ 4047 0094 02       		.uleb128 0x2
+ 4048 0095 04       		.byte	0x4
+ 4049 0096 07       		.byte	0x7
+ 4050 0097 4A010000 		.4byte	.LASF12
+ 4051 009b 07       		.uleb128 0x7
+ 4052 009c 63000000 		.4byte	0x63
+ 4053 00a0 08       		.uleb128 0x8
+ 4054 00a1 22000000 		.4byte	.LASF13
+ 4055 00a5 01       		.byte	0x1
+ 4056 00a6 0E       		.byte	0xe
+ 4057 00a7 B1000000 		.4byte	0xb1
+ 4058 00ab 05       		.uleb128 0x5
+ 4059 00ac 03       		.byte	0x3
+ 4060 00ad 00000000 		.4byte	cy_meta_loader
+ 4061 00b1 07       		.uleb128 0x7
+ 4062 00b2 84000000 		.4byte	0x84
+ 4063 00b6 05       		.uleb128 0x5
+ 4064 00b7 9B000000 		.4byte	0x9b
+ 4065 00bb C7000000 		.4byte	0xc7
+ 4066 00bf 09       		.uleb128 0x9
+ 4067 00c0 94000000 		.4byte	0x94
+ 4068 00c4 FF0E     		.2byte	0xeff
+ 4069 00c6 00       		.byte	0
+ 4070 00c7 08       		.uleb128 0x8
+ 4071 00c8 14000000 		.4byte	.LASF14
+ 4072 00cc 01       		.byte	0x1
+ 4073 00cd 21       		.byte	0x21
+ 4074 00ce D8000000 		.4byte	0xd8
+ 4075 00d2 05       		.uleb128 0x5
+ 4076 00d3 03       		.byte	0x3
+ 4077 00d4 00000000 		.4byte	cy_bootloader
+ 4078 00d8 07       		.uleb128 0x7
+ 4079 00d9 B6000000 		.4byte	0xb6
+ 4080 00dd 05       		.uleb128 0x5
+ 4081 00de 9B000000 		.4byte	0x9b
+ 4082 00e2 ED000000 		.4byte	0xed
+ 4083 00e6 06       		.uleb128 0x6
+ 4084 00e7 94000000 		.4byte	0x94
+ 4085 00eb 0B       		.byte	0xb
+ 4086 00ec 00       		.byte	0
+ 4087 00ed 0A       		.uleb128 0xa
+ 4088 00ee 31000000 		.4byte	.LASF15
+ 4089 00f2 01       		.byte	0x1
+ 4090 00f3 0A02     		.2byte	0x20a
+ 4091 00f5 FF000000 		.4byte	0xff
+ 4092 00f9 05       		.uleb128 0x5
+ 4093 00fa 03       		.byte	0x3
+ 4094 00fb 00000000 		.4byte	cy_metadata
+ 4095 00ff 07       		.uleb128 0x7
+ 4096 0100 DD000000 		.4byte	0xdd
+ 4097 0104 05       		.uleb128 0x5
+ 4098 0105 9B000000 		.4byte	0x9b
+ 4099 0109 14010000 		.4byte	0x114
+ 4100 010d 06       		.uleb128 0x6
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 73
+
+
+ 4101 010e 94000000 		.4byte	0x94
+ 4102 0112 1F       		.byte	0x1f
+ 4103 0113 00       		.byte	0
+ 4104 0114 0A       		.uleb128 0xa
+ 4105 0115 A7000000 		.4byte	.LASF16
+ 4106 0119 01       		.byte	0x1
+ 4107 011a 1502     		.2byte	0x215
+ 4108 011c 26010000 		.4byte	0x126
+ 4109 0120 05       		.uleb128 0x5
+ 4110 0121 03       		.byte	0x3
+ 4111 0122 00000000 		.4byte	cy_meta_flashprotect
+ 4112 0126 07       		.uleb128 0x7
+ 4113 0127 04010000 		.4byte	0x104
+ 4114 012b 05       		.uleb128 0x5
+ 4115 012c 9B000000 		.4byte	0x9b
+ 4116 0130 3B010000 		.4byte	0x13b
+ 4117 0134 06       		.uleb128 0x6
+ 4118 0135 94000000 		.4byte	0x94
+ 4119 0139 00       		.byte	0
+ 4120 013a 00       		.byte	0
+ 4121 013b 0A       		.uleb128 0xa
+ 4122 013c 00000000 		.4byte	.LASF17
+ 4123 0140 01       		.byte	0x1
+ 4124 0141 2202     		.2byte	0x222
+ 4125 0143 4D010000 		.4byte	0x14d
+ 4126 0147 05       		.uleb128 0x5
+ 4127 0148 03       		.byte	0x3
+ 4128 0149 00000000 		.4byte	cy_meta_chipprotect
+ 4129 014d 07       		.uleb128 0x7
+ 4130 014e 2B010000 		.4byte	0x12b
+ 4131 0152 00       		.byte	0
+ 4132              		.section	.debug_abbrev,"",%progbits
+ 4133              	.Ldebug_abbrev0:
+ 4134 0000 01       		.uleb128 0x1
+ 4135 0001 11       		.uleb128 0x11
+ 4136 0002 01       		.byte	0x1
+ 4137 0003 25       		.uleb128 0x25
+ 4138 0004 0E       		.uleb128 0xe
+ 4139 0005 13       		.uleb128 0x13
+ 4140 0006 0B       		.uleb128 0xb
+ 4141 0007 03       		.uleb128 0x3
+ 4142 0008 0E       		.uleb128 0xe
+ 4143 0009 1B       		.uleb128 0x1b
+ 4144 000a 0E       		.uleb128 0xe
+ 4145 000b 10       		.uleb128 0x10
+ 4146 000c 17       		.uleb128 0x17
+ 4147 000d 00       		.byte	0
+ 4148 000e 00       		.byte	0
+ 4149 000f 02       		.uleb128 0x2
+ 4150 0010 24       		.uleb128 0x24
+ 4151 0011 00       		.byte	0
+ 4152 0012 0B       		.uleb128 0xb
+ 4153 0013 0B       		.uleb128 0xb
+ 4154 0014 3E       		.uleb128 0x3e
+ 4155 0015 0B       		.uleb128 0xb
+ 4156 0016 03       		.uleb128 0x3
+ 4157 0017 0E       		.uleb128 0xe
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 74
+
+
+ 4158 0018 00       		.byte	0
+ 4159 0019 00       		.byte	0
+ 4160 001a 03       		.uleb128 0x3
+ 4161 001b 24       		.uleb128 0x24
+ 4162 001c 00       		.byte	0
+ 4163 001d 0B       		.uleb128 0xb
+ 4164 001e 0B       		.uleb128 0xb
+ 4165 001f 3E       		.uleb128 0x3e
+ 4166 0020 0B       		.uleb128 0xb
+ 4167 0021 03       		.uleb128 0x3
+ 4168 0022 08       		.uleb128 0x8
+ 4169 0023 00       		.byte	0
+ 4170 0024 00       		.byte	0
+ 4171 0025 04       		.uleb128 0x4
+ 4172 0026 16       		.uleb128 0x16
+ 4173 0027 00       		.byte	0
+ 4174 0028 03       		.uleb128 0x3
+ 4175 0029 0E       		.uleb128 0xe
+ 4176 002a 3A       		.uleb128 0x3a
+ 4177 002b 0B       		.uleb128 0xb
+ 4178 002c 3B       		.uleb128 0x3b
+ 4179 002d 05       		.uleb128 0x5
+ 4180 002e 49       		.uleb128 0x49
+ 4181 002f 13       		.uleb128 0x13
+ 4182 0030 00       		.byte	0
+ 4183 0031 00       		.byte	0
+ 4184 0032 05       		.uleb128 0x5
+ 4185 0033 01       		.uleb128 0x1
+ 4186 0034 01       		.byte	0x1
+ 4187 0035 49       		.uleb128 0x49
+ 4188 0036 13       		.uleb128 0x13
+ 4189 0037 01       		.uleb128 0x1
+ 4190 0038 13       		.uleb128 0x13
+ 4191 0039 00       		.byte	0
+ 4192 003a 00       		.byte	0
+ 4193 003b 06       		.uleb128 0x6
+ 4194 003c 21       		.uleb128 0x21
+ 4195 003d 00       		.byte	0
+ 4196 003e 49       		.uleb128 0x49
+ 4197 003f 13       		.uleb128 0x13
+ 4198 0040 2F       		.uleb128 0x2f
+ 4199 0041 0B       		.uleb128 0xb
+ 4200 0042 00       		.byte	0
+ 4201 0043 00       		.byte	0
+ 4202 0044 07       		.uleb128 0x7
+ 4203 0045 26       		.uleb128 0x26
+ 4204 0046 00       		.byte	0
+ 4205 0047 49       		.uleb128 0x49
+ 4206 0048 13       		.uleb128 0x13
+ 4207 0049 00       		.byte	0
+ 4208 004a 00       		.byte	0
+ 4209 004b 08       		.uleb128 0x8
+ 4210 004c 34       		.uleb128 0x34
+ 4211 004d 00       		.byte	0
+ 4212 004e 03       		.uleb128 0x3
+ 4213 004f 0E       		.uleb128 0xe
+ 4214 0050 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 75
+
+
+ 4215 0051 0B       		.uleb128 0xb
+ 4216 0052 3B       		.uleb128 0x3b
+ 4217 0053 0B       		.uleb128 0xb
+ 4218 0054 49       		.uleb128 0x49
+ 4219 0055 13       		.uleb128 0x13
+ 4220 0056 3F       		.uleb128 0x3f
+ 4221 0057 19       		.uleb128 0x19
+ 4222 0058 02       		.uleb128 0x2
+ 4223 0059 18       		.uleb128 0x18
+ 4224 005a 00       		.byte	0
+ 4225 005b 00       		.byte	0
+ 4226 005c 09       		.uleb128 0x9
+ 4227 005d 21       		.uleb128 0x21
+ 4228 005e 00       		.byte	0
+ 4229 005f 49       		.uleb128 0x49
+ 4230 0060 13       		.uleb128 0x13
+ 4231 0061 2F       		.uleb128 0x2f
+ 4232 0062 05       		.uleb128 0x5
+ 4233 0063 00       		.byte	0
+ 4234 0064 00       		.byte	0
+ 4235 0065 0A       		.uleb128 0xa
+ 4236 0066 34       		.uleb128 0x34
+ 4237 0067 00       		.byte	0
+ 4238 0068 03       		.uleb128 0x3
+ 4239 0069 0E       		.uleb128 0xe
+ 4240 006a 3A       		.uleb128 0x3a
+ 4241 006b 0B       		.uleb128 0xb
+ 4242 006c 3B       		.uleb128 0x3b
+ 4243 006d 05       		.uleb128 0x5
+ 4244 006e 49       		.uleb128 0x49
+ 4245 006f 13       		.uleb128 0x13
+ 4246 0070 3F       		.uleb128 0x3f
+ 4247 0071 19       		.uleb128 0x19
+ 4248 0072 02       		.uleb128 0x2
+ 4249 0073 18       		.uleb128 0x18
+ 4250 0074 00       		.byte	0
+ 4251 0075 00       		.byte	0
+ 4252 0076 00       		.byte	0
+ 4253              		.section	.debug_aranges,"",%progbits
+ 4254 0000 14000000 		.4byte	0x14
+ 4255 0004 0200     		.2byte	0x2
+ 4256 0006 00000000 		.4byte	.Ldebug_info0
+ 4257 000a 04       		.byte	0x4
+ 4258 000b 00       		.byte	0
+ 4259 000c 0000     		.2byte	0
+ 4260 000e 0000     		.2byte	0
+ 4261 0010 00000000 		.4byte	0
+ 4262 0014 00000000 		.4byte	0
+ 4263              		.section	.debug_line,"",%progbits
+ 4264              	.Ldebug_line0:
+ 4265 0000 4F000000 		.section	.debug_str,"MS",%progbits,1
+ 4265      02004900 
+ 4265      00000201 
+ 4265      FB0E0D00 
+ 4265      01010101 
+ 4266              	.LASF17:
+ 4267 0000 63795F6D 		.ascii	"cy_meta_chipprotect\000"
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 76
+
+
+ 4267      6574615F 
+ 4267      63686970 
+ 4267      70726F74 
+ 4267      65637400 
+ 4268              	.LASF14:
+ 4269 0014 63795F62 		.ascii	"cy_bootloader\000"
+ 4269      6F6F746C 
+ 4269      6F616465 
+ 4269      7200
+ 4270              	.LASF13:
+ 4271 0022 63795F6D 		.ascii	"cy_meta_loader\000"
+ 4271      6574615F 
+ 4271      6C6F6164 
+ 4271      657200
+ 4272              	.LASF15:
+ 4273 0031 63795F6D 		.ascii	"cy_metadata\000"
+ 4273      65746164 
+ 4273      61746100 
+ 4274              	.LASF9:
+ 4275 003d 666C6F61 		.ascii	"float\000"
+ 4275      7400
+ 4276              	.LASF21:
+ 4277 0043 75696E74 		.ascii	"uint8\000"
+ 4277      3800
+ 4278              	.LASF1:
+ 4279 0049 756E7369 		.ascii	"unsigned char\000"
+ 4279      676E6564 
+ 4279      20636861 
+ 4279      7200
+ 4280              	.LASF5:
+ 4281 0057 6C6F6E67 		.ascii	"long unsigned int\000"
+ 4281      20756E73 
+ 4281      69676E65 
+ 4281      6420696E 
+ 4281      7400
+ 4282              	.LASF3:
+ 4283 0069 73686F72 		.ascii	"short unsigned int\000"
+ 4283      7420756E 
+ 4283      7369676E 
+ 4283      65642069 
+ 4283      6E7400
+ 4284              	.LASF10:
+ 4285 007c 646F7562 		.ascii	"double\000"
+ 4285      6C6500
+ 4286              	.LASF8:
+ 4287 0083 756E7369 		.ascii	"unsigned int\000"
+ 4287      676E6564 
+ 4287      20696E74 
+ 4287      00
+ 4288              	.LASF7:
+ 4289 0090 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 4289      206C6F6E 
+ 4289      6720756E 
+ 4289      7369676E 
+ 4289      65642069 
+ 4290              	.LASF16:
+ 4291 00a7 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 77
+
+
+ 4291      6574615F 
+ 4291      666C6173 
+ 4291      6870726F 
+ 4291      74656374 
+ 4292              	.LASF18:
+ 4293 00bc 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 4293      43313120 
+ 4293      352E342E 
+ 4293      31203230 
+ 4293      31363036 
+ 4294 00ef 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 4294      20726576 
+ 4294      6973696F 
+ 4294      6E203233 
+ 4294      37373135 
+ 4295 0122 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 4295      66756E63 
+ 4295      74696F6E 
+ 4295      2D736563 
+ 4295      74696F6E 
+ 4296              	.LASF12:
+ 4297 014a 73697A65 		.ascii	"sizetype\000"
+ 4297      74797065 
+ 4297      00
+ 4298              	.LASF20:
+ 4299 0153 433A5C55 		.ascii	"C:\\Users\\uemre\\Documents\\PSoC Creator\\Workspac"
+ 4299      73657273 
+ 4299      5C75656D 
+ 4299      72655C44 
+ 4299      6F63756D 
+ 4300 0181 6530335C 		.ascii	"e03\\Design01.cydsn\000"
+ 4300      44657369 
+ 4300      676E3031 
+ 4300      2E637964 
+ 4300      736E00
+ 4301              	.LASF6:
+ 4302 0194 6C6F6E67 		.ascii	"long long int\000"
+ 4302      206C6F6E 
+ 4302      6720696E 
+ 4302      7400
+ 4303              	.LASF11:
+ 4304 01a2 63686172 		.ascii	"char\000"
+ 4304      00
+ 4305              	.LASF2:
+ 4306 01a7 73686F72 		.ascii	"short int\000"
+ 4306      7420696E 
+ 4306      7400
+ 4307              	.LASF19:
+ 4308 01b1 47656E65 		.ascii	"Generated_Source\\PSoC4\\cybootloader.c\000"
+ 4308      72617465 
+ 4308      645F536F 
+ 4308      75726365 
+ 4308      5C50536F 
+ 4309              	.LASF4:
+ 4310 01d7 6C6F6E67 		.ascii	"long int\000"
+ 4310      20696E74 
+ 4310      00
+ARM GAS  C:\Users\uemre\AppData\Local\Temp\cccHvlxf.s 			page 78
+
+
+ 4311              	.LASF0:
+ 4312 01e0 7369676E 		.ascii	"signed char\000"
+ 4312      65642063 
+ 4312      68617200 
+ 4313              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
